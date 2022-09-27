@@ -6,14 +6,10 @@
 }
 
 body{
-    background-color: grey;
+    background-color: gray;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-p,h3{
-    color: beige;
 }
 
 nav a{
@@ -40,33 +36,36 @@ nav a:hover{
     background-color: rgba(204, 60, 60, 0.601);
 }
 
-/* view list of recipes */
-
-.recipe-box{
+.add-recipe-box{
+    width: 80%;
+    border: solid red 2px;
+    margin-top: 5rem;
+}
+.add-recipe-box form{
     display: flex;
-    margin-top: 2rem;
-    border: solid yellow 2px;
+    flex-flow: column nowrap;
     align-items: center;
 }
 
-.recipe-details-box{
-    display: flex;
-}
-
-.recipe-details-box p{
-    padding: .4rem;
-    margin: 1rem;
-    border: solid red 2px;
-}
-
-.recipe-options-box a{
-    border: solid green 2px;
-    padding: .4rem;
+.add-recipe-box input,button{
     margin: .5rem;
-    text-decoration: none;
-    color: wheat;
+    height: 3rem;
+    font-size: large;
 }
 
-.recipe-options-box a:hover{
-    background-color: rgba(35, 152, 35, 0.563);
+.add-recipe-box input{
+    width: 100%;
 }
+
+.add-recipe-box button{
+    width: 20%;
+    background-color: aliceblue;
+    border: solid 2px blue;
+    border-radius: 15px;
+}
+
+.add-recipe-box button:hover{
+    background-color: lightblue;
+    cursor: pointer;
+}
+

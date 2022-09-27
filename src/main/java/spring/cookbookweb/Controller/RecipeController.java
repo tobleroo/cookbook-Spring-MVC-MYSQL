@@ -40,8 +40,8 @@ public class RecipeController {
     }
 
     @PostMapping("/saverecipedemo")
-    public String getDataForm(@RequestParam("ingrName") String[] ingrNames, 
-        @RequestParam("ingrAmount") int[]ingrAmounts,
+    public String getDataForm(@RequestParam(required = false) String[] ingrNames,  // required false changed to NAME name in input html
+        @RequestParam(required = false) int[]ingrAmounts,
         @RequestParam("recipeName") String recipeName,
         @RequestParam("recipeDescription") String recipeDesc,
         @RequestParam("recipeDiff") String difficulty,

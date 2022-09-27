@@ -7,22 +7,15 @@
         <link th:href="@{/css/add-recipe.css}" rel="stylesheet" />
     </head>
     <body>
-    
+
+        <nav>
+            <a th:href="@{/addrecipepage}">Add new recipe</a>
+            <a th:href="@{/recipies}">View cookbook</a>
+            <a th:href="@{/generate-dish}">Generate a dish</a>
+            <a href="#">create a mealplan</a>
+        </nav>
+        
         <div class="add-recipe-box">
-            <h3>Add new Recipe</h3>
-            <form th:action="@{/saverecipe}" th:object="${recipe}" method="post">
-
-                <input type="text" th:field="*{recipeName}" placeholder="recipe name">
-                <input type="text" th:field="*{description}" placeholder="enter description">
-                <input type="text" th:field="*{difficulty}" placeholder="difficulty">
-                <input type="number" th:field="*{cookTime}" placeholder="cooking time (minutes)">
-                <button type="submit">add it!</button>
-                <input type="hidden" th:field="*{id}">
-            </form>
-        </div>
-
-        <!-- try a form send without a spring object binding -->
-        <div >
             <form method="post" th:action="@{/saverecipedemo}">
 
                 <input type="text" th:name="recipeName" placeholder="recipe name">
@@ -31,13 +24,13 @@
                 <input type="number" th:name="recipeTime" placeholder="cooking time (minutes)">
 
                 <!-- recipe stuff below -->
-                <input type="text" placeholder="ingredient name" th:name="ingrName">
+                <!-- <input type="text" placeholder="ingredient name" th:name="ingrName">
                 <input type="number" placeholder="enter amount" th:name="ingrAmount">
                 <input type="text" placeholder="ingredient name" th:name="ingrName">
                 <input type="number" placeholder="enter amount" th:name="ingrAmount">
                 <input type="text" placeholder="ingredient name" th:name="ingrName">
-                <input type="number" placeholder="enter amount" th:name="ingrAmount">
-                <button type="submit">add it(DEMO)!</button>
+                <input type="number" placeholder="enter amount" th:name="ingrAmount"> -->
+                <button type="submit">add it!</button>
             </form>
         </div>
 

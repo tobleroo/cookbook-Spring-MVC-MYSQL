@@ -1,0 +1,25 @@
+<html xmlns="http://www.thymeleaf.org">
+<head>
+    <title>Generator</title>
+    <link th:href="@{/css/view-recipies.css}" rel="stylesheet" />
+</head>
+<body>
+
+    <nav>
+        <a th:href="@{/addrecipepage}">Add new recipe</a>
+        <a th:href="@{/recipies}">View cookbook</a>
+        <a href="#">Generate a dish</a>
+        <a href="#">create a mealplan</a>
+    </nav>
+
+    <div class="selections-box">
+        <form th:action="@{/getrandomdish}" method="get">
+            <button type="submit">Generate</button>
+        </form>
+    </div>
+
+    <div th:each="recipe: ${recipes}" class="show-recipe-box">
+        <p th:text="${recipe.recipeName}"></p>
+    </div>
+
+</body>
