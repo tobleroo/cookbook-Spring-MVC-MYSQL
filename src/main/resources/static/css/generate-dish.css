@@ -1,0 +1,99 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    outline: 0;
+}
+
+body{
+    background-color: gray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+nav a{
+    text-decoration: none;
+    color: beige;
+    padding: 1rem 1.5rem;
+    border: solid red 2px;
+    border-radius: 20px;
+    margin: 0 .5rem;
+}
+
+/* view-recipies styling */
+
+nav{
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    justify-content: center;
+    background-color: rgb(75, 74, 74);
+    padding: 1rem 0;
+}
+
+nav a:hover{
+    background-color: rgba(204, 60, 60, 0.601);
+}
+
+.generator-box{
+    display: flex;
+    flex-direction: row;
+    border: solid red 2px;
+    width: 80%;
+    margin-top: 10rem;
+    max-width: 70rem;
+}
+
+.selections-box{
+    border: green solid 2px;
+    flex:1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.selections-box button{
+    padding: 1rem;
+    background-color: blue;
+    color: white;
+}
+
+.show-recipe-box{
+    flex:1;
+    border: solid yellow 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem 0;
+}
+
+.recipe-card{
+    border: solid blue 3px;
+    display: flex;
+    flex-flow: column nowrap;
+    max-width: 75%;
+}
+
+.recipe-title-box h3{
+    padding: 2rem;
+    border-bottom: solid black 2px;
+}
+
+.recipe-description-box{
+    padding: 1.5rem .5rem;
+}
+
+.recipe-details-box{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    border-top: solid black 2px;
+}
+
+.recipe-details-box p{
+    padding: .5rem;
+    border-left: solid blue 2px;
+    border-right: solid green 2px;
+}
+

@@ -19,9 +19,9 @@
             <form method="post" th:action="@{/saverecipedemo}">
 
                 <input type="text" th:name="recipeName" placeholder="recipe name">
-                <input type="text" th:name="recipeDescription" placeholder="enter description">
                 <input type="text" th:name="recipeDiff" placeholder="difficulty">
                 <input type="number" th:name="recipeTime" placeholder="cooking time (minutes)">
+                <textarea type="text" th:name="recipeDescription" placeholder="enter description"></textarea>
 
                 <!-- recipe stuff below -->
                 <!-- <input type="text" placeholder="ingredient name" th:name="ingrName">

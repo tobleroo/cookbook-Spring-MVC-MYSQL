@@ -1,6 +1,7 @@
 package spring.cookbookweb.Controller;
 
 import java.util.Optional;
+import java.util.Random;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,11 +26,10 @@ public class GeneratorController {
 
     @GetMapping("/getrandomdish")
     public String giveRandomDish(Model model){
-        long nmr = 2;
-
-        Optional<Recipe> generatedRecipe = repository.findById(nmr);
+        Random randominator = new Random();
+        int selectedDishNumber = randominator.nextInt(repository.findAll().size());
         
-        // model.addAttribute("recipes", generatedRecipe);
+        model.addAttribute("recipes", repository.findAll().get(selectedDishNumber));
         return "generate-dish";
     }
 }
