@@ -1,22 +1,30 @@
-
-
 <html xmlns="http://www.thymeleaf.org">
-
 <head>
     <title>all recipies</title>
     <link th:href="@{/css/view-recipies.css}" rel="stylesheet" />
 </head>
 <body>
 
-    <p>testing</p>
-    
-    <div th:each="recipes: ${recipes}">
-        <p th:text="${recipes.recipeName}"></p>
-        <a th:href="@{/updaterecipe(id=${recipes.id})}">update recipe</a>
-        <a th:href="@{/deleterecipe(id=${recipes.id})}">Delete recipe</a>
-    </div>
+    <nav>
+        <a th:href="@{/addrecipepage}">Add new recipe</a>
+        <a href="#">View cookbook</a>
+        <a href="#">Generate a dish</a>
+        <a href="#">create a mealplan</a>
+    </nav>
 
-    <a th:href="@{/addrecipepage}">Add a new recipe</a>
+
+    <div th:each="recipes: ${recipes}" class="recipe-box">
+        <div class="recipe-details-box">
+            <p th:text="${recipes.recipeName}"></p>
+            <p th:text="${recipes.description}"></p>
+            <p th:text="${recipes.difficulty}"></p>
+            <p th:text="${recipes.cookTime}"></p>
+        </div>
+        <div class="recipe-options-box">
+            <a th:href="@{/updaterecipe(id=${recipes.id})}">update recipe</a>
+            <a th:href="@{/deleterecipe(id=${recipes.id})}">Delete recipe</a>
+        </div>
+    </div>
     
 
 </body>
