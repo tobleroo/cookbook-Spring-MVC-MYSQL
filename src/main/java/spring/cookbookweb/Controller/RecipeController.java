@@ -46,9 +46,11 @@ public class RecipeController {
         @RequestParam("recipeDescription") String recipeDesc,
         @RequestParam("recipeDiff") String difficulty,
         @RequestParam("recipeTime") int cookTime){
-        Recipe newRecipe = new Recipe(recipeName, recipeDesc, cookTime, difficulty);
 
+        Recipe newRecipe = new Recipe(recipeName, recipeDesc, cookTime, difficulty);
         repository.save(newRecipe);
+
+        // later use ingredients arrays to add to separate DB's
         return "redirect:/recipies";
     }
 

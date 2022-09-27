@@ -1,3 +1,10 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    outline: 0;
+}
+
 body{
     background-color: grey;
     display: flex;
@@ -23,6 +30,9 @@ nav a{
 nav{
     display: flex;
     flex-flow: row nowrap;
+    width: 100%;
+    justify-content: center;
+    background-color: rgb(75, 74, 74);
 }
 
 nav a:hover{
@@ -31,4 +41,10 @@ nav a:hover{
 
 /* view list of recipes */
 
+.recipe-box{
+    display: flex;
+}
 
+.recipe-details-box{
+    display: flex;
+}
