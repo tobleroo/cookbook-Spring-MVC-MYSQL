@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/css/fragments.css}">
+</head>
+<body>
+
+    <nav th:fragment="navbar">
+        <div class="logo-homepage">
+            
+        </div>
+        <a th:href="@{/}">Homepage</a>
+        <a th:href="@{/about}">About Me</a>
+        <a th:href="@{/blog}">Blog</a>
+        <a th:href="@{/contact}">Contact</a>
+    </nav>
+
+</body>
+</html>

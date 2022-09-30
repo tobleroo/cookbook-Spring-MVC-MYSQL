@@ -12,7 +12,7 @@ body{
     align-items: center;
 }
 
-nav a{
+/* nav a{
     text-decoration: none;
     color: beige;
     padding: 1rem 1.5rem;
@@ -23,7 +23,7 @@ nav a{
 
 /* view-recipies styling */
 
-nav{
+/* nav{
     display: flex;
     flex-flow: row nowrap;
     width: 100%;
@@ -34,7 +34,7 @@ nav{
 
 nav a:hover{
     background-color: rgba(204, 60, 60, 0.601);
-}
+} */
 
 .add-recipe-box{
     width: 80%;

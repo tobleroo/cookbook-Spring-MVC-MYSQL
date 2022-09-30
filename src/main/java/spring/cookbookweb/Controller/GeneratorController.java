@@ -1,13 +1,11 @@
 package spring.cookbookweb.Controller;
 
-import java.util.Optional;
 import java.util.Random;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import spring.cookbookweb.Entity.Recipe;
 import spring.cookbookweb.Repository.RecipeRepository;
 
 @Controller

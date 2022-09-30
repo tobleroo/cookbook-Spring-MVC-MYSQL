@@ -8,12 +8,7 @@
     </head>
     <body>
 
-        <nav>
-            <a th:href="@{/addrecipepage}">Add new recipe</a>
-            <a th:href="@{/recipies}">View cookbook</a>
-            <a th:href="@{/generate-dish}">Generate a dish</a>
-            <a href="#">create a mealplan</a>
-        </nav>
+        <div th:replace="fragments/nav :: navbar"></div>
         
         <div class="add-recipe-box">
             <form method="post" th:action="@{/saverecipedemo}">
