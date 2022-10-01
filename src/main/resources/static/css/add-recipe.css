@@ -1,45 +1,12 @@
-*{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    outline: 0;
-}
-
-body{
-    background-color: gray;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* nav a{
-    text-decoration: none;
-    color: beige;
-    padding: 1rem 1.5rem;
-    border: solid red 2px;
-    border-radius: 20px;
-    margin: 0 .5rem;
-}
-
-/* view-recipies styling */
-
-/* nav{
-    display: flex;
-    flex-flow: row nowrap;
-    width: 100%;
-    justify-content: center;
-    background-color: rgb(75, 74, 74);
-    padding: 1rem 0;
-}
-
-nav a:hover{
-    background-color: rgba(204, 60, 60, 0.601);
-} */
 
 .add-recipe-box{
-    width: 80%;
-    border: solid red 2px;
+    width: 60%;
+    max-width: 40rem;
+    border: solid lightblue 2px;
     margin-top: 5rem;
+    margin: auto;
+    padding: 2rem;
+    border-radius: 15px;
 }
 .add-recipe-box form{
     display: flex;
@@ -47,35 +14,98 @@ nav a:hover{
     align-items: center;
 }
 
-.add-recipe-box input,button{
-    margin: .5rem;
-    height: 3rem;
-    font-size: large;
-}
+/* recipe name input */
 
-.add-recipe-box input{
+.recipe-name-box{
+    display: flex;
+    flex-direction: column;
     width: 100%;
 }
 
-.add-recipe-box textarea{
-    min-width: 50%;
-    min-height: 6rem;
-    font-size: medium;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    padding: .5rem;
-    max-width: 99%;
-    max-height: 15rem;
+.recipe-name-box label{
+    font-size: larger;
 }
 
-.add-recipe-box button{
-    width: 20%;
-    background-color: aliceblue;
-    border: solid 2px blue;
+.recipe-name-box input{
+    height: 3rem;
+    font-size: larger;
+}
+
+/* specifikations inputs */
+
+.recipe-specs-box{
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    margin: 2rem 0;
+    justify-content: space-around;
+}
+
+.specs-input{
+    display: flex;
+    flex-direction: column;
+    min-width: none;
+}
+
+.specs-input label{
+    font-size: larger;
+}
+
+.specs-input select{
+    font-size: large;
+    width: 8rem;
+    height: 3rem;
+}
+
+.specs-input input{
+    width: 5rem;
+    height: 3rem;
+    font-size: larger;
+}
+
+.specs-time-box input{
+    align-self: center;
+    text-align: center;
+}
+
+/* textarea and bellow */ 
+
+.recipe-desc-box{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 5rem;
+}
+
+.recipe-desc-box textarea{
+    width: 100%;
+    min-height: 10vh;
+    max-height: 20vh;
+    font-size: large;
+    font: 1.1em sans-serif;
+    resize: vertical;
+}
+
+.recipe-desc-box label{
+    font-size: larger;
+}
+
+button{
+    padding: 1rem;
     border-radius: 15px;
+    background-color: lightblue;
+    border: solid blue 2px;
+    font-size: larger;
+    margin-top: 1rem;
 }
 
-.add-recipe-box button:hover{
-    background-color: lightblue;
+button:hover{
     cursor: pointer;
+    background-color: blue;
+    color: white;
 }
+
+
+
+
 

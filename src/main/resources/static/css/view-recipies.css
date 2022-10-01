@@ -1,72 +1,88 @@
-*{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    outline: 0;
-}
 
+/* overall layout */
 body{
-    background-color: grey;
-    display: flex;
-    flex-direction: column;
     align-items: center;
 }
 
-p,h3{
-    color: beige;
-}
-
-nav a{
-    text-decoration: none;
-    color: beige;
-    padding: 1rem 1.5rem;
-    border: solid red 2px;
-    border-radius: 20px;
-    margin: 0 .5rem;
-}
-
-/* view-recipies styling */
-
-nav{
+.view-box{
+    margin-top: 5rem;
+    width: 80%;
+    max-width: 100rem;
+    border: solid yellow 2px;
     display: flex;
-    flex-flow: row nowrap;
-    width: 100%;
-    justify-content: center;
-    background-color: rgb(75, 74, 74);
-    padding: 1rem 0;
+    flex-flow: row wrap;
 }
-
-nav a:hover{
-    background-color: rgba(204, 60, 60, 0.601);
-}
-
-/* view list of recipes */
 
 .recipe-box{
-    display: flex;
-    margin-top: 2rem;
-    border: solid yellow 2px;
-    align-items: center;
-}
-
-.recipe-details-box{
-    display: flex;
-}
-
-.recipe-details-box p{
-    padding: .4rem;
+    border: solid 2px green;
     margin: 1rem;
-    border: solid red 2px;
+    min-width: 15rem;
+    max-width: 20rem;
+}
+
+.recipe-title{
+    padding: .5rem;
+    border-bottom: solid black 2px;
+}
+
+.recipe-title p{
+    float: left;
+}
+
+.recipe-data{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+}
+
+.recipe-data p{
+    margin: .5rem;
+    border-bottom: solid black 2px;
+    font-size:large;
+}
+
+/* buttons styling */ 
+
+.recipe-options-box{
+    margin: 1rem 0;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .recipe-options-box a{
-    border: solid green 2px;
-    padding: .4rem;
-    margin: .5rem;
+    padding: .7rem 1rem;
     text-decoration: none;
-    color: wheat;
+    color: black;
+    border-radius: 15px;
 }
 
-.recipe-options-box a:hover{
-    background-color: rgba(35, 152, 35, 0.563);
+#updateBtn{
+    background-color: lightblue;
 }
+
+#deleteBtn{
+    background-color: rgb(184, 33, 33);
+}
+
+.recipe-options-box i{
+    background-color: gray;
+    padding: .5rem;
+}
+
+.recipe-options-box button{
+    border: none;
+    cursor: pointer;
+    border: solid red 2px;
+}
+
+/* description data */ 
+
+.recipe-desc{
+    border: solid blue 2px;
+    border-radius: 15px;
+    margin: 1rem;
+    padding: .5rem;
+    display:none;
+}
+
+

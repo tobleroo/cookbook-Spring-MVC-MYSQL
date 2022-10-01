@@ -1,32 +1,39 @@
 <html xmlns="http://www.thymeleaf.org">
 <head>
     <title>all recipies</title>
+    <link th:href="@{/css/fragments.css}" rel="stylesheet" />
     <link th:href="@{/css/view-recipies.css}" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 
-    <nav>
-        <a th:href="@{/addrecipepage}">Add new recipe</a>
-        <a href="#">View cookbook</a>
-        <a href="#">Generate a dish</a>
-        <a href="#">create a mealplan</a>
-    </nav>
+    <div th:replace="fragments/nav :: navbar"></div>
 
-
-    <div th:each="recipes: ${recipes}" class="recipe-box">
-        <div class="recipe-details-box">
-            <p th:text="${recipes.recipeName}"></p>
-            <p th:text="${recipes.description}"></p>
-            <p th:text="${recipes.difficulty}"></p>
-            <p th:text="${recipes.cookTime}"></p>
-        </div>
-        <div class="recipe-options-box">
-            <a th:href="@{/updaterecipe(id=${recipes.id})}">update recipe</a>
-            <a th:href="@{/deleterecipe(id=${recipes.id})}">Delete recipe</a>
+    <div class="view-box">
+        <div th:each="recipes: ${recipes}" class="recipe-box">
+            <div class="recipe-title">
+                <h2 th:text="${recipes.recipeName}"></h2>
+            </div>
+            <div class="recipe-data">
+                <p>difficulty: <span th:text="${recipes.difficulty}"></span></p>
+                <p>Cooking time: <span th:text="${recipes.cookTime}"></span> minutes</p>
+                <p>Type: <span th:text="${recipes.mealType}"></span></p>
+            </div>
+            <div class="recipe-options-box">
+                <a th:href="@{/updaterecipe(id=${recipes.id})}" id="updateBtn">update recipe</a>
+                <a th:href="@{/deleterecipe(id=${recipes.id})}" id="deleteBtn">Delete recipe</a>
+                <button type="button" onclick="showData()" th:id="${#ids.seq('showBtn')}"><i class="fa-solid fa-arrow-down fa-2x"></i></button>
+            </div>
+            <div class="recipe-desc" th:id="${#ids.seq('descBox')}">
+                <p th:text="${recipes.description}"></p>
+            </div>
         </div>
     </div>
-    
 
+    <div th:replace="fragments/footer :: footer-basic"></div>
+    
+    <script type="text/javascript" th:src="@{/js/viewRecipe.js}"></script>
+    <script src="https://kit.fontawesome.com/1ebb5ff465.js" crossorigin="anonymous"></script>
 </body>
 
 
