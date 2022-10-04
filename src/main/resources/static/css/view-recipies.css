@@ -2,19 +2,20 @@
 /* overall layout */
 body{
     align-items: center;
+    color: white;
 }
 
 .view-box{
     margin-top: 5rem;
     width: 80%;
     max-width: 100rem;
-    border: solid yellow 2px;
     display: flex;
     flex-flow: row wrap;
 }
 
 .recipe-box{
-    border: solid 2px green;
+    border: solid 2px rgb(139, 247, 255);
+    border-radius: 15px;
     margin: 1rem;
     min-width: 15rem;
     max-width: 20rem;
@@ -22,7 +23,7 @@ body{
 
 .recipe-title{
     padding: .5rem;
-    border-bottom: solid black 2px;
+    border-bottom: solid rgb(80, 212, 186) 2px;
 }
 
 .recipe-title p{
@@ -37,7 +38,7 @@ body{
 
 .recipe-data p{
     margin: .5rem;
-    border-bottom: solid black 2px;
+    border-bottom: solid rgb(43, 77, 94) 2px;
     font-size:large;
 }
 
@@ -47,6 +48,7 @@ body{
     margin: 1rem 0;
     display: flex;
     justify-content: space-evenly;
+    flex-flow: row wrap;
 }
 
 .recipe-options-box a{
@@ -57,7 +59,7 @@ body{
 }
 
 #updateBtn{
-    background-color: lightblue;
+    background-color: rgb(58, 172, 210);
 }
 
 #deleteBtn{
@@ -70,9 +72,12 @@ body{
 }
 
 .recipe-options-box button{
-    border: none;
     cursor: pointer;
-    border: solid red 2px;
+    border: solid rgb(0, 255, 0) 2px;
+    background-color: rgb(169, 233, 169);
+    border-radius: 15px;
+    padding: 1rem 3rem;
+    margin-top: .5rem;
 }
 
 /* description data */ 
@@ -83,6 +88,79 @@ body{
     margin: 1rem;
     padding: .5rem;
     display:none;
+}
+
+/* big screen settings */
+
+.big-screen{
+    position: absolute;
+    left: 15%;
+    top: 15%;
+    margin: auto;
+    background-color: rgb(0, 18, 108);
+    border: solid lightblue 3px;
+    border-radius: 15px;
+    z-index: 1;
+    display: none;
+    flex-direction: column;
+    height: 70%;
+    width: 70%;
+    color: white;
+}
+
+/*exit box */
+
+.exit-btn-box button{
+    float: right;
+    margin: .5rem;
+    height: 2rem
+}
+
+.overview-details-box{
+    display: flex;
+    flex-flow: row wrap;
+    padding: 1rem;
+    height: 45%;
+}
+
+.img-view-box{
+    flex:1;
+    text-align: center;
+}
+
+.details-box{
+    flex:1;
+}
+
+.details-box h2{
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* descriptions and ingredients view */
+.specifics-details-box{
+    display: flex;
+    flex-flow: row wrap;
+    padding: .5rem;
+    height: 50%;
+}
+
+.description-box-big{
+    flex:1;
+    border: solid rgb(170, 170, 170) 2px;
+    border-radius: 15px;
+    margin-right: .5rem;
+}
+
+.description-box-big p{
+    padding: 1rem;
+}
+
+.ingredients-box-big{
+    flex:1;
+    text-align: center;
+    border: solid rgb(181, 181, 181) 2px;
+    border-radius: 15px;
 }
 
 

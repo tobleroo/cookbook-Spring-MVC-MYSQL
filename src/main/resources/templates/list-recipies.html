@@ -12,21 +12,46 @@
     <div class="view-box">
         <div th:each="recipes: ${recipes}" class="recipe-box">
             <div class="recipe-title">
-                <h2 th:text="${recipes.recipeName}"></h2>
+                <h2 th:text="${recipes.recipeName}" th:id="${#ids.seq('recipeNameID')}"></h2>
             </div>
             <div class="recipe-data">
-                <p>difficulty: <span th:text="${recipes.difficulty}"></span></p>
-                <p>Cooking time: <span th:text="${recipes.cookTime}"></span> minutes</p>
-                <p>Type: <span th:text="${recipes.mealType}"></span></p>
+                <p>difficulty: <span th:text="${recipes.difficulty}" th:id="${#ids.seq('difficultyID')}"></span></p>
+                <p>Cooking time: <span th:text="${recipes.cookTime}" th:id="${#ids.seq('cookTimeID')}"></span> minutes</p>
+                <p>Type: <span th:text="${recipes.mealType}" th:id="${#ids.seq('mealTypeID')}"></span></p>
             </div>
             <div class="recipe-options-box">
                 <a th:href="@{/updaterecipe(id=${recipes.id})}" id="updateBtn">update recipe</a>
                 <a th:href="@{/deleterecipe(id=${recipes.id})}" id="deleteBtn">Delete recipe</a>
-                <button type="button" onclick="showData()" th:id="${#ids.seq('showBtn')}"><i class="fa-solid fa-arrow-down fa-2x"></i></button>
+                <button type="button" onclick="showData(this.id)" th:id="${#ids.seq('showBtn')}">Details</button>
             </div>
             <div class="recipe-desc" th:id="${#ids.seq('descBox')}">
-                <p th:text="${recipes.description}"></p>
+                <p th:text="${recipes.description}" th:id="${#ids.seq('descriptionID')}"></p>
             </div>
+        </div>
+    </div>
+
+    <div class="big-screen" id="bigScreenID">
+        <div class="exit-btn-box">
+            <button type="button" onclick="closeBigBox()">Exit box</button>
+        </div>
+        <div class="overview-details-box">
+            <div class="img-view-box">
+                <p>COMING SOON</p>
+            </div>
+            <div class="details-box">
+                <h2 id="putTitleRecipe"></h2>
+                <p>Difficulty: <span id="putDifficulty"></span></p>
+                <p>Time: <span id="putCookTime"></span> minutes</p>
+                <p>Type: <span id="putMealType"></span></p>
+            </div>
+        </div>
+        <div class="specifics-details-box">
+            <div class="description-box-big">
+                <p id="putDescription"></p>
+            </div>
+            <div class="ingredients-box-big">
+                <p>COMING SOON</p>
+            </div> 
         </div>
     </div>
 

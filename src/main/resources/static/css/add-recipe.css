@@ -1,3 +1,6 @@
+body{
+    color: white;
+}
 
 .add-recipe-box{
     width: 60%;
@@ -29,6 +32,8 @@
 .recipe-name-box input{
     height: 3rem;
     font-size: larger;
+    background-color: rgba(101, 101, 144, 0.488);
+    color: white;
 }
 
 /* specifikations inputs */
@@ -55,12 +60,16 @@
     font-size: large;
     width: 8rem;
     height: 3rem;
+    background-color: rgba(101, 101, 144, 0.488);
+    color: white;
 }
 
 .specs-input input{
     width: 5rem;
     height: 3rem;
     font-size: larger;
+    background-color: rgba(101, 101, 144, 0.488);
+    color: white;
 }
 
 .specs-time-box input{
@@ -84,6 +93,9 @@
     font-size: large;
     font: 1.1em sans-serif;
     resize: vertical;
+    background-color: rgba(101, 101, 144, 0.488);
+    color: white;
+    padding: .5rem;
 }
 
 .recipe-desc-box label{
