@@ -2,11 +2,12 @@
 
 .generator-box{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     border: solid red 2px;
     width: 80%;
     margin-top: 10rem;
     max-width: 70rem;
+    margin: auto;
 }
 
 .selections-box{
@@ -37,6 +38,7 @@
     display: flex;
     flex-flow: column nowrap;
     max-width: 75%;
+    background-color: aliceblue;
 }
 
 .recipe-title-box h3{

@@ -15,7 +15,7 @@
             <form method="post" th:action="@{/saverecipedemo}">
                 <div class="recipe-name-box">
                     <label for="recipeName">Recipe name:</label>
-                    <input type="text" th:name="recipeName" id="recipeName">
+                    <input type="text" th:name="recipeName" id="recipeName" th:attr= "value = ${recipe.recipeName}">
                 </div>
                 <div class="recipe-specs-box">
                     <div class="specs-input">
@@ -37,13 +37,16 @@
                     </div>
                     <div class="specs-input specs-time-box">
                         <label for="cookTime">Cooking time (minutes):</label>
-                        <input type="number" id="cookTime" th:name="recipeTime" min="0" max="1000">
+                        <input type="number" id="cookTime" th:name="recipeTime" min="0" max="1000" th:attr= "value = ${recipe.cookTime}">
                     </div>
                 </div>
                 <div class="recipe-desc-box">
                     <label for="recipeDescription">Description:</label>
-                    <textarea type="text" id="recipeDescription" th:name="recipeDescription"></textarea>
+                    <textarea type="text" id="recipeDescription" th:name="recipeDescription" th:text="${recipe.description}"></textarea>
                 </div>
+                <input type="number" style="display: none;" th:field="${recipe.id}" th:name="id">
+
+                <!-- th:field="${recipe.description}" -->
 
                 <!-- recipe stuff below -->
                 <!-- <input type="text" placeholder="ingredient name" th:name="ingrName">
