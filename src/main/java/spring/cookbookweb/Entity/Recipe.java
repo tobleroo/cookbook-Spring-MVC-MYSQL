@@ -12,7 +12,7 @@ public class Recipe {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long recipeId;
     
     private String recipeName;
     private String description;
@@ -48,10 +48,10 @@ public class Recipe {
     }
 
     public long getId() {
-        return id;
+        return recipeId;
     }
     public void setId(long id) {
-        this.id = id;
+        this.recipeId = id;
     }
     public String getRecipeName() {
         return recipeName;
@@ -78,7 +78,7 @@ public class Recipe {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + (int) (id ^ (id >>> 32));
+        result = prime * result + (int) (recipeId ^ (recipeId >>> 32));
         result = prime * result + ((recipeName == null) ? 0 : recipeName.hashCode());
         result = prime * result + ((description == null) ? 0 : description.hashCode());
         result = prime * result + cookTime;
@@ -96,7 +96,7 @@ public class Recipe {
         if (getClass() != obj.getClass())
             return false;
         Recipe other = (Recipe) obj;
-        if (id != other.id)
+        if (recipeId != other.recipeId)
             return false;
         if (recipeName == null) {
             if (other.recipeName != null)
@@ -125,7 +125,7 @@ public class Recipe {
 
     @Override
     public String toString() {
-        return "Recipe [id=" + id + ", recipeName=" + recipeName + ", description=" + description + ", cookTime="
+        return "Recipe [id=" + recipeId + ", recipeName=" + recipeName + ", description=" + description + ", cookTime="
                 + cookTime + ", difficulty=" + difficulty + ", mealType=" + mealType + "]";
     }
 
