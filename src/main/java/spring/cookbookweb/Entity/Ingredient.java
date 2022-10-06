@@ -12,11 +12,15 @@ import javax.persistence.Table;
 public class Ingredient {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long ingredientId;
 
     // @Column(unique = true)
     private String ingredientName;
+
+    
+    // ManyToMany connection to Recipe class can be found 
+    // in Recipe class. using unidir manyToMany with ingredient class(this)
 
     
     public Ingredient(){}
@@ -24,7 +28,7 @@ public class Ingredient {
     public Ingredient(String ingredientName) {
         this.ingredientName = ingredientName;
     }
-
+    
     public long getId() {
         return ingredientId;
     }
@@ -53,14 +57,14 @@ public class Ingredient {
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
-            return true;
+        return true;
         if (obj == null)
-            return false;
+        return false;
         if (getClass() != obj.getClass())
-            return false;
+        return false;
         Ingredient other = (Ingredient) obj;
         if (ingredientId != other.ingredientId)
-            return false;
+        return false;
         if (ingredientName == null) {
             if (other.ingredientName != null)
                 return false;

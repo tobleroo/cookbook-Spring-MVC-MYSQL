@@ -1,9 +1,15 @@
 package spring.cookbookweb.Entity;
 
+import java.util.Collection;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -11,7 +17,7 @@ import javax.persistence.Table;
 public class Recipe {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long recipeId;
     
     private String recipeName;
@@ -21,32 +27,47 @@ public class Recipe {
     private String mealType;
 
 
+    // ManyToMany connection to ingredients DB table
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "recipe_has_ingredient", joinColumns = @JoinColumn(name = "recipe_id", referencedColumnName = "recipeId"),
+    inverseJoinColumns = @JoinColumn(name = "ingredient_id", referencedColumnName = "ingredientId"))
+    private Collection<Ingredient> ingredients;
+    
     public Recipe (){}
-
-    public Recipe (String name,String desc, int time, String diff, String meal){
+    
+    public Recipe (String name,String desc, int time, String diff, String meal, Collection<Ingredient> ingredients){
         this.recipeName = name;
         this.description = desc;
         this.cookTime = time;
         this.difficulty = diff;
         this.mealType = meal;
+        this.ingredients = ingredients;
     }
     
+    public Collection<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Collection<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
     public int getCookTime() {
         return cookTime;
     }
-
+    
     public void setCookTime(int cookTime) {
         this.cookTime = cookTime;
     }
-
+    
     public String getDifficulty() {
         return difficulty;
     }
-
+    
     public void setDifficulty(String difficulty) {
         this.difficulty = difficulty;
     }
-
+    
     public long getId() {
         return recipeId;
     }
@@ -65,11 +86,11 @@ public class Recipe {
     public void setDescription(String description) {
         this.description = description;
     }
-
+    
     public String getMealType() {
         return mealType;
     }
-
+    
     public void setMealType(String mealType) {
         this.mealType = mealType;
     }

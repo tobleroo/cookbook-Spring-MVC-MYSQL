@@ -1,5 +1,8 @@
 package spring.cookbookweb.Controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,7 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+import spring.cookbookweb.Entity.Ingredient;
 import spring.cookbookweb.Entity.Recipe;
 import spring.cookbookweb.Repository.RecipeRepository;
 
@@ -49,11 +52,19 @@ public class RecipeController {
         @RequestParam("recipeType") String recipeType,
         @RequestParam("id") long id){
 
+        //list for testing insert of ingredients
+        List<Ingredient> myIngrs = new ArrayList<Ingredient>();
+        Ingredient ingr1 = new Ingredient("koldolme");
+        myIngrs.add(ingr1);
+        Ingredient ingr2 = new Ingredient("sparris");
+        myIngrs.add(ingr2);
+
         Recipe newRecipe;
         if(id == 0){
-            newRecipe = new Recipe(recipeName, recipeDesc, cookTime, difficulty, recipeType);
+            newRecipe = new Recipe(recipeName, recipeDesc, cookTime, difficulty, recipeType, myIngrs);
+
         }else{
-            newRecipe = new Recipe(recipeName, recipeDesc, cookTime, difficulty, recipeType);
+            newRecipe = new Recipe(recipeName, recipeDesc, cookTime, difficulty, recipeType, myIngrs);
             newRecipe.setId(id);
         }
 
@@ -66,6 +77,7 @@ public class RecipeController {
     @GetMapping("/updaterecipe")
     public String updateRecipe(@RequestParam long id, Model model){
         Recipe changeRecipe = repository.findById(id).get();
+        // System.out.println(changeRecipe.getAllIngredients());
         model.addAttribute("recipe", changeRecipe);
         return "add-recipe";
     }
