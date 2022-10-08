@@ -105,6 +105,7 @@ public class Recipe {
         result = prime * result + cookTime;
         result = prime * result + ((difficulty == null) ? 0 : difficulty.hashCode());
         result = prime * result + ((mealType == null) ? 0 : mealType.hashCode());
+        result = prime * result + ((ingredients == null) ? 0 : ingredients.hashCode());
         return result;
     }
 
@@ -141,13 +142,23 @@ public class Recipe {
                 return false;
         } else if (!mealType.equals(other.mealType))
             return false;
+        if (ingredients == null) {
+            if (other.ingredients != null)
+                return false;
+        } else if (!ingredients.equals(other.ingredients))
+            return false;
         return true;
     }
 
     @Override
     public String toString() {
-        return "Recipe [id=" + recipeId + ", recipeName=" + recipeName + ", description=" + description + ", cookTime="
-                + cookTime + ", difficulty=" + difficulty + ", mealType=" + mealType + "]";
+        return "Recipe [recipeId=" + recipeId + ", recipeName=" + recipeName + ", description=" + description
+                + ", cookTime=" + cookTime + ", difficulty=" + difficulty + ", mealType=" + mealType + ", ingredients="
+                + ingredients + "]";
     }
+
+    
+
+    
 
 }
