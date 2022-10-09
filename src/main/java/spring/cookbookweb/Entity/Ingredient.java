@@ -1,9 +1,13 @@
 package spring.cookbookweb.Entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 
@@ -15,14 +19,20 @@ public class Ingredient {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long ingredientId;
 
-    // @Column(unique = true)
     private String ingredientName;
 
     
-    // ManyToMany connection to Recipe class can be found 
-    // in Recipe class. using unidir manyToMany with ingredient class(this)
+    @ManyToMany(mappedBy = "ingredients")
+    private List<Recipe> recipe = new ArrayList<>();
 
-    
+    public List<Recipe> getRecipe() {
+        return recipe;
+    }
+
+    public void setRecipe(List<Recipe> recipe) {
+        this.recipe = recipe;
+    }
+
     public Ingredient(){}
     
     public Ingredient(String ingredientName) {
@@ -51,6 +61,7 @@ public class Ingredient {
         int result = 1;
         result = prime * result + (int) (ingredientId ^ (ingredientId >>> 32));
         result = prime * result + ((ingredientName == null) ? 0 : ingredientName.hashCode());
+        result = prime * result + ((recipe == null) ? 0 : recipe.hashCode());
         return result;
     }
 
@@ -70,12 +81,18 @@ public class Ingredient {
                 return false;
         } else if (!ingredientName.equals(other.ingredientName))
             return false;
+        if (recipe == null) {
+            if (other.recipe != null)
+                return false;
+        } else if (!recipe.equals(other.recipe))
+            return false;
         return true;
     }
 
     @Override
     public String toString() {
-        return "Ingredient [ingredientId=" + ingredientId + ", ingredientName=" + ingredientName + "]";
+        return "Ingredient [ingredientId=" + ingredientId + ", ingredientName=" + ingredientName + ", recipe=" + recipe
+                + "]";
     }
     
 }

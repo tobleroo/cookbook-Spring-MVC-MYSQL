@@ -1,7 +1,6 @@
 package spring.cookbookweb.Controller;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,20 +11,30 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import spring.cookbookweb.Entity.Ingredient;
 import spring.cookbookweb.Entity.Recipe;
+import spring.cookbookweb.Repository.IngredientRepository;
 import spring.cookbookweb.Repository.RecipeRepository;
+import spring.cookbookweb.Services.AddRecipeService;
 
 
 @Controller
 public class RecipeController {
     
     private final RecipeRepository repository;
+    private final IngredientRepository ingrRepo;
 
-    RecipeController(RecipeRepository repository){
+    RecipeController(RecipeRepository repository, IngredientRepository ingrRepo){
         this.repository = repository;
+        this.ingrRepo = ingrRepo;
     }
 
     @GetMapping("/recipies")
     public String showRecipies(Model model){
+
+        // quick check recipe service methods
+        AddRecipeService myService = new AddRecipeService(ingrRepo, repository);
+        myService.checkIfIngredientExists();
+
+        
         model.addAttribute("recipes", repository.findAll());
         return "list-recipies";
     }
@@ -36,6 +45,7 @@ public class RecipeController {
         return "add-recipe";
     }
 
+    // not used currently. sacerecipeDEMO beneath used instead
     @PostMapping("/saverecipe")
     public String saveRecipe(@ModelAttribute Recipe recipe){
         repository.save(recipe);
@@ -53,7 +63,7 @@ public class RecipeController {
         @RequestParam("id") long id){
 
         //list for testing insert of ingredients
-        List<Ingredient> myIngrs = new ArrayList<Ingredient>();
+        ArrayList<Ingredient> myIngrs = new ArrayList<Ingredient>();
         Ingredient ingr1 = new Ingredient("koldolme");
         myIngrs.add(ingr1);
         Ingredient ingr2 = new Ingredient("sparris");
