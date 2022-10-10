@@ -1,8 +1,11 @@
 package spring.cookbookweb.Entity;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,13 +26,13 @@ public class Ingredient {
 
     
     @ManyToMany(mappedBy = "ingredients")
-    private List<Recipe> recipe = new ArrayList<>();
+    private Set<Recipe> recipe = new HashSet<>();
 
-    public List<Recipe> getRecipe() {
+    public Set<Recipe> getRecipe() {
         return recipe;
     }
 
-    public void setRecipe(List<Recipe> recipe) {
+    public void setRecipe(Set<Recipe> recipe) {
         this.recipe = recipe;
     }
 

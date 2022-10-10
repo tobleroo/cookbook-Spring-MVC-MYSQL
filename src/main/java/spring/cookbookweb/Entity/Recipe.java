@@ -1,7 +1,9 @@
 package spring.cookbookweb.Entity;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -32,24 +34,23 @@ public class Recipe {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "recipe_has_ingredient", joinColumns = @JoinColumn(name = "recipe_id", referencedColumnName = "recipeId"),
     inverseJoinColumns = @JoinColumn(name = "ingredient_id", referencedColumnName = "ingredientId"))
-    private List<Ingredient> ingredients = new ArrayList<>();
+    private Set<Ingredient> ingredients = new HashSet<>();
     
     public Recipe (){}
     
-    public Recipe (String name,String desc, int time, String diff, String meal, ArrayList<Ingredient> ingredients){
+    public Recipe (String name,String desc, int time, String diff, String meal){
         this.recipeName = name;
         this.description = desc;
         this.cookTime = time;
         this.difficulty = diff;
         this.mealType = meal;
-        this.ingredients = ingredients;
     }
     
-    public List<Ingredient> getIngredients() {
+    public Set<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<Ingredient> ingredients) {
+    public void setIngredients(Set<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
 

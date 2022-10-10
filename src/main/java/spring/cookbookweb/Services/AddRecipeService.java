@@ -2,7 +2,11 @@ package spring.cookbookweb.Services;
 
 
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -22,23 +26,26 @@ public class AddRecipeService {
         this.recRepo = recRepo;
     }
 
-    // check if the ingredient already exists
-    public void checkIfIngredientExists(){
-        //get all currently existing ingredients in DB
-        // List<Ingredient> myIngrs = ingrRepo.findAll();
-        //System.out.println(myIngrs.get(0).getIngredientName());
+    // check if the ingredient already exists else save it
+    public void addIngredientsToDB(String [] ingredientsToAdd){
 
-        //see if i get ingredients when i collect a recipe obj
-        Long one = (long) 1;
-        Recipe myRecipe = recRepo.findById(one).get();
-        List<Ingredient> recipeIngrs = myRecipe.getIngredients();
-        // System.out.println(recipeIngrs.get(0).getIngredientName());
-
-        // get all ingredients
-        List<Ingredient> allIngrs = ingrRepo.findAll();
-        for (Ingredient ingredient : allIngrs) {
-            System.out.println(ingredient.getIngredientName());
+        // convert string array to ingredient obj
+        Set<Ingredient> newIngredients = new HashSet<>();
+        for(String ingrNewName : ingredientsToAdd){
+            newIngredients.add(new Ingredient(ingrNewName));
         }
+        // run through each new ingredient to see if it exists and save
+        for(Ingredient newIngr : newIngredients){
+            if(ingrRepo.findByIngredientName(newIngr.getIngredientName()) == null){
+                ingrRepo.save(newIngr);
+                System.out.println("ingredient object saved to DB");
+            }else{
+                System.out.println("obj does exist already");
+            }
+        }
+    }
+
+    public void addRecipeToDBWithIngredients(){
         
     }
 }

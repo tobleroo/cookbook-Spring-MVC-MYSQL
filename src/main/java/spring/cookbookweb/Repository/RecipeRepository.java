@@ -7,5 +7,7 @@ import spring.cookbookweb.Entity.Recipe;
 
 @Repository
 public interface RecipeRepository extends JpaRepository<Recipe, Long>{
+
+    Recipe findByRecipeName(String name);
     
 }

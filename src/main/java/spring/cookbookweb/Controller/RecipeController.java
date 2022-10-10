@@ -1,6 +1,8 @@
 package spring.cookbookweb.Controller;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,23 +21,28 @@ import spring.cookbookweb.Services.AddRecipeService;
 @Controller
 public class RecipeController {
     
-    private final RecipeRepository repository;
+    private final RecipeRepository recipeRepo;
     private final IngredientRepository ingrRepo;
+    
 
     RecipeController(RecipeRepository repository, IngredientRepository ingrRepo){
-        this.repository = repository;
+        this.recipeRepo = repository;
         this.ingrRepo = ingrRepo;
     }
 
     @GetMapping("/recipies")
     public String showRecipies(Model model){
 
-        // quick check recipe service methods
-        AddRecipeService myService = new AddRecipeService(ingrRepo, repository);
-        myService.checkIfIngredientExists();
-
+        //save ingredients to a set list
+        // Set<Ingredient> demoIngredients = new HashSet<>();
+        // demoIngredients.add(new Ingredient("potato"));
+        // demoIngredients.add(new Ingredient("cucumber"));
+        // demoIngredients.add(new Ingredient("carrot"));
+        // demoIngredients.add(new Ingredient("spaghetti"));
+        // check if they already exists in DB and save it
+        // myRecipeService.addIngredientsToDB(demoIngredients);
         
-        model.addAttribute("recipes", repository.findAll());
+        model.addAttribute("recipes", recipeRepo.findAll());
         return "list-recipies";
     }
 
@@ -48,7 +55,7 @@ public class RecipeController {
     // not used currently. sacerecipeDEMO beneath used instead
     @PostMapping("/saverecipe")
     public String saveRecipe(@ModelAttribute Recipe recipe){
-        repository.save(recipe);
+        recipeRepo.save(recipe);
         return "redirect:/recipies";
     }
 
@@ -62,31 +69,31 @@ public class RecipeController {
         @RequestParam("recipeType") String recipeType,
         @RequestParam("id") long id){
 
-        //list for testing insert of ingredients
-        ArrayList<Ingredient> myIngrs = new ArrayList<Ingredient>();
-        Ingredient ingr1 = new Ingredient("koldolme");
-        myIngrs.add(ingr1);
-        Ingredient ingr2 = new Ingredient("sparris");
-        myIngrs.add(ingr2);
+        AddRecipeService myRecipeService = new AddRecipeService(ingrRepo, recipeRepo);
 
+        // demo for prototyping saving ingredients to db
+        String [] ingredientNames = {"gurka", "potatis","sallad","hasch"};
+        myRecipeService.addIngredientsToDB(ingredientNames);
+        
+
+        //currently working to add a recipe
         Recipe newRecipe;
         if(id == 0){
-            newRecipe = new Recipe(recipeName, recipeDesc, cookTime, difficulty, recipeType, myIngrs);
-
+            //if recipe doesnt exist
+            newRecipe = new Recipe(recipeName, recipeDesc, cookTime, difficulty, recipeType);
         }else{
-            newRecipe = new Recipe(recipeName, recipeDesc, cookTime, difficulty, recipeType, myIngrs);
+            newRecipe = new Recipe(recipeName, recipeDesc, cookTime, difficulty, recipeType);
             newRecipe.setId(id);
         }
 
-        repository.save(newRecipe);
+        recipeRepo.save(newRecipe);
 
-        // later use ingredients arrays to add to separate DB's
         return "redirect:/recipies";
     }
 
     @GetMapping("/updaterecipe")
     public String updateRecipe(@RequestParam long id, Model model){
-        Recipe changeRecipe = repository.findById(id).get();
+        Recipe changeRecipe = recipeRepo.findById(id).get();
         // System.out.println(changeRecipe.getAllIngredients());
         model.addAttribute("recipe", changeRecipe);
         return "add-recipe";
@@ -94,7 +101,7 @@ public class RecipeController {
 
     @GetMapping("/deleterecipe")
     public String deleteRecipe(@RequestParam long id){
-        repository.deleteById(id);
+        recipeRepo.deleteById(id);
         return "redirect:/recipies";
     }
 }
