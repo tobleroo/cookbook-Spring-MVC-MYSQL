@@ -3,11 +3,7 @@ package spring.cookbookweb.Services;
 
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -45,6 +41,11 @@ public class AddRecipeService {
             }
         }
     }
+
+    // method to save ingredients AMOUNT types
+
+    // method to save ingredient weight types
+
 
     public void addRecipeToDBWithIngredients(Recipe myRecipe, String[] ingredients){
         
