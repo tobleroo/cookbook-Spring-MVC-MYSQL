@@ -26,13 +26,13 @@ public class Ingredient {
 
     
     @ManyToMany(mappedBy = "ingredients")
-    private Set<Recipe> recipe = new HashSet<>();
+    private List<Recipe> recipe = new ArrayList<>();
 
-    public Set<Recipe> getRecipe() {
+    public List<Recipe> getRecipe() {
         return recipe;
     }
 
-    public void setRecipe(Set<Recipe> recipe) {
+    public void setRecipe(List<Recipe> recipe) {
         this.recipe = recipe;
     }
 
@@ -57,6 +57,7 @@ public class Ingredient {
     public void setIngredientName(String ingredientName) {
         this.ingredientName = ingredientName;
     }
+    
 
     @Override
     public int hashCode() {

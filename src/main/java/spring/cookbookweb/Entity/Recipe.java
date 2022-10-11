@@ -34,7 +34,7 @@ public class Recipe {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "recipe_has_ingredient", joinColumns = @JoinColumn(name = "recipe_id", referencedColumnName = "recipeId"),
     inverseJoinColumns = @JoinColumn(name = "ingredient_id", referencedColumnName = "ingredientId"))
-    private Set<Ingredient> ingredients = new HashSet<>();
+    private List<Ingredient> ingredients = new ArrayList<>();
     
     public Recipe (){}
     
@@ -46,11 +46,11 @@ public class Recipe {
         this.mealType = meal;
     }
     
-    public Set<Ingredient> getIngredients() {
+    public List<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(Set<Ingredient> ingredients) {
+    public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
 
@@ -100,6 +100,8 @@ public class Recipe {
     public void setMealType(String mealType) {
         this.mealType = mealType;
     }
+
+    
 
     @Override
     public int hashCode() {

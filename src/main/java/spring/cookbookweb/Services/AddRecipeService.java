@@ -31,7 +31,7 @@ public class AddRecipeService {
     public void addIngredientsToDB(String [] ingredientsToAdd){
 
         // convert string array to ingredient obj
-        Set<Ingredient> newIngredients = new HashSet<>();
+        List<Ingredient> newIngredients = new ArrayList<>();
         for(String ingrNewName : ingredientsToAdd){
             newIngredients.add(new Ingredient(ingrNewName));
         }
@@ -50,18 +50,12 @@ public class AddRecipeService {
         
         
         List<Ingredient> ingredientsList = new ArrayList<>();
-        Set<Ingredient> mySetOfIngrs = new HashSet<>();
-        // for(String ingredientToAdd : ingredients){
-        //     Ingredient demo = ingrRepo.findByIngredientName(ingredientToAdd);
-        //     mySetOfIngrs.add(demo);
-        // }
+        for(String myIngrName : ingredients){
+            ingredientsList.add(ingrRepo.findByIngredientName(myIngrName));
+        }
 
-        // cant add more than one ingredient obj to the set
-        Ingredient demo = ingrRepo.findByIngredientName("potato");
-        mySetOfIngrs.add(demo);
-        Ingredient demo2 = ingrRepo.findByIngredientName("sallad");
-        mySetOfIngrs.add(demo2);
-        System.out.println(mySetOfIngrs.isEmpty());
+        myRecipe.setIngredients(ingredientsList);
+        recRepo.save(myRecipe);
         
     }
 }
