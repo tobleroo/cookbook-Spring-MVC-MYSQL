@@ -2,6 +2,7 @@ package spring.cookbookweb.Services;
 
 
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -45,7 +46,22 @@ public class AddRecipeService {
         }
     }
 
-    public void addRecipeToDBWithIngredients(){
+    public void addRecipeToDBWithIngredients(Recipe myRecipe, String[] ingredients){
+        
+        
+        List<Ingredient> ingredientsList = new ArrayList<>();
+        Set<Ingredient> mySetOfIngrs = new HashSet<>();
+        // for(String ingredientToAdd : ingredients){
+        //     Ingredient demo = ingrRepo.findByIngredientName(ingredientToAdd);
+        //     mySetOfIngrs.add(demo);
+        // }
+
+        // cant add more than one ingredient obj to the set
+        Ingredient demo = ingrRepo.findByIngredientName("potato");
+        mySetOfIngrs.add(demo);
+        Ingredient demo2 = ingrRepo.findByIngredientName("sallad");
+        mySetOfIngrs.add(demo2);
+        System.out.println(mySetOfIngrs.isEmpty());
         
     }
 }

@@ -75,7 +75,6 @@ public class RecipeController {
         String [] ingredientNames = {"gurka", "potatis","sallad","hasch"};
         myRecipeService.addIngredientsToDB(ingredientNames);
         
-
         //currently working to add a recipe
         Recipe newRecipe;
         if(id == 0){
@@ -86,7 +85,7 @@ public class RecipeController {
             newRecipe.setId(id);
         }
 
-        recipeRepo.save(newRecipe);
+        myRecipeService.addRecipeToDBWithIngredients(newRecipe, ingredientNames);
 
         return "redirect:/recipies";
     }

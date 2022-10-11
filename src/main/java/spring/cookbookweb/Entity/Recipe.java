@@ -54,6 +54,10 @@ public class Recipe {
         this.ingredients = ingredients;
     }
 
+    public void setOneIngredient(Ingredient oneIngredient){
+        this.ingredients.add(oneIngredient);
+    }
+
     public int getCookTime() {
         return cookTime;
     }
