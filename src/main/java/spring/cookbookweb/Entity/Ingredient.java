@@ -3,11 +3,14 @@ package spring.cookbookweb.Entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -21,9 +24,34 @@ public class Ingredient {
 
     private String ingredientName;
 
-    
     @ManyToMany(mappedBy = "ingredients")
     private List<Recipe> recipe = new ArrayList<>();
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ingredientAmountId")
+    private IngredientAmount amount;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ingredientWeightId")
+    private IngredientWeightType weight;
+    
+    public Ingredient(){}
+    
+    public Ingredient(String ingredientName) {
+        this.ingredientName = ingredientName;
+    }
+
+    public long getIngredientId() {
+        return ingredientId;
+    }
+
+    public IngredientAmount getAmount() {
+        return amount;
+    }
+
+    public void setAmount(IngredientAmount amount) {
+        this.amount = amount;
+    }
 
     public List<Recipe> getRecipe() {
         return recipe;
@@ -33,12 +61,6 @@ public class Ingredient {
         this.recipe = recipe;
     }
 
-    public Ingredient(){}
-    
-    public Ingredient(String ingredientName) {
-        this.ingredientName = ingredientName;
-    }
-    
     public long getId() {
         return ingredientId;
     }
@@ -54,8 +76,15 @@ public class Ingredient {
     public void setIngredientName(String ingredientName) {
         this.ingredientName = ingredientName;
     }
-    
 
+    public IngredientWeightType getWeight() {
+        return weight;
+    }
+
+    public void setWeight(IngredientWeightType weight) {
+        this.weight = weight;
+    }
+    
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -95,5 +124,6 @@ public class Ingredient {
         return "Ingredient [ingredientId=" + ingredientId + ", ingredientName=" + ingredientName + ", recipe=" + recipe
                 + "]";
     }
+
     
 }

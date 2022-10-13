@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import spring.cookbookweb.Entity.Recipe;
+import spring.cookbookweb.Repository.IngredientAmountRepository;
 import spring.cookbookweb.Repository.IngredientRepository;
+import spring.cookbookweb.Repository.IngredientWeightRepository;
 import spring.cookbookweb.Repository.RecipeRepository;
 import spring.cookbookweb.Services.AddRecipeService;
 
@@ -18,11 +20,16 @@ public class RecipeController {
     
     private final RecipeRepository recipeRepo;
     private final IngredientRepository ingrRepo;
+    private final IngredientAmountRepository amountRepo;
+    private final IngredientWeightRepository weightRepo;
     
 
-    RecipeController(RecipeRepository repository, IngredientRepository ingrRepo){
+    RecipeController(RecipeRepository repository, IngredientRepository ingrRepo,
+    IngredientAmountRepository amountRepo, IngredientWeightRepository weightRepo){
         this.recipeRepo = repository;
         this.ingrRepo = ingrRepo;
+        this.amountRepo = amountRepo;
+        this.weightRepo = weightRepo;
     }
 
     @GetMapping("/recipies")
@@ -64,11 +71,15 @@ public class RecipeController {
         @RequestParam("recipeType") String recipeType,
         @RequestParam("id") long id){
 
-        AddRecipeService myRecipeService = new AddRecipeService(ingrRepo, recipeRepo);
+        AddRecipeService myRecipeService = new AddRecipeService(ingrRepo, recipeRepo, amountRepo, weightRepo);
 
         // demo for prototyping saving ingredients to db
         String [] ingredientNames = {"gurka", "potatis","sallad","hasch"};
+        float[] ingredientAmount = {2,4,5,6};
+        String [] ingredientWeights = {"tone","kilogram","mg","ounce"};
         myRecipeService.addIngredientsToDB(ingredientNames);
+        myRecipeService.addAmountsToDB(ingredientAmount);
+        myRecipeService.addWeightsTypeToDB(ingredientWeights);
         
         //currently working to add a recipe
         Recipe newRecipe;
@@ -80,7 +91,7 @@ public class RecipeController {
             newRecipe.setId(id);
         }
 
-        myRecipeService.addRecipeToDBWithIngredients(newRecipe, ingredientNames);
+        myRecipeService.addRecipeToDBWithIngredients(newRecipe, ingredientNames, ingredientAmount);
 
         return "redirect:/recipies";
     }
