@@ -50,4 +50,45 @@ public class IngredientAmount {
         this.ingredient = ingredient;
     }
 
+    
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + (int) (ingredientAmountId ^ (ingredientAmountId >>> 32));
+        result = prime * result + Float.floatToIntBits(amount);
+        result = prime * result + ((ingredient == null) ? 0 : ingredient.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        IngredientAmount other = (IngredientAmount) obj;
+        if (ingredientAmountId != other.ingredientAmountId)
+            return false;
+        if (Float.floatToIntBits(amount) != Float.floatToIntBits(other.amount))
+            return false;
+        if (ingredient == null) {
+            if (other.ingredient != null)
+                return false;
+        } else if (!ingredient.equals(other.ingredient))
+            return false;
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "IngredientAmount [ingredientAmountId=" + ingredientAmountId + ", amount=" + amount + ", ingredient="
+                + ingredient + "]";
+    }
+
+    
+
 }

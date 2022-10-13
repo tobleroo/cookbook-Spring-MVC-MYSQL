@@ -35,14 +35,8 @@ public class RecipeController {
     @GetMapping("/recipies")
     public String showRecipies(Model model){
 
-        //save ingredients to a set list
-        // Set<Ingredient> demoIngredients = new HashSet<>();
-        // demoIngredients.add(new Ingredient("potato"));
-        // demoIngredients.add(new Ingredient("cucumber"));
-        // demoIngredients.add(new Ingredient("carrot"));
-        // demoIngredients.add(new Ingredient("spaghetti"));
-        // check if they already exists in DB and save it
-        // myRecipeService.addIngredientsToDB(demoIngredients);
+        Recipe demo = recipeRepo.findByRecipeName("first complete recipe");
+        System.out.print(demo.getIngredients().get(0));
         
         model.addAttribute("recipes", recipeRepo.findAll());
         return "list-recipies";
@@ -91,7 +85,7 @@ public class RecipeController {
             newRecipe.setId(id);
         }
 
-        myRecipeService.addRecipeToDBWithIngredients(newRecipe, ingredientNames, ingredientAmount);
+        myRecipeService.addRecipeToDBWithIngredients(newRecipe, ingredientNames, ingredientAmount, ingredientWeights);
 
         return "redirect:/recipies";
     }

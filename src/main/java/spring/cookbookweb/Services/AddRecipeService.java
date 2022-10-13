@@ -90,13 +90,14 @@ public class AddRecipeService {
     }
 
     // final method to save it all to a recipe to db
-    public void addRecipeToDBWithIngredients(Recipe myRecipe, String[] ingredients, float[] ingrAmounts){
+    public void addRecipeToDBWithIngredients(Recipe myRecipe, String[] ingredients, float[] ingrAmounts, String [] weightType){
         
         List<Ingredient> ingredientsList = new ArrayList<>();
-        //add amount and wheight type to the ingredients first, then add them to the right recipe
+        //add amount and weight type to the ingredients first, then add them to the right recipe
         for(int i = 0; i < ingredients.length; i++){
             Ingredient oneIngredient = ingrRepo.findByIngredientName(ingredients[i]);
             oneIngredient.setAmount(amountRepo.findByAmount(ingrAmounts[i]));
+            oneIngredient.setWeight(weightRepo.findByWeightType(weightType[i]));
             ingredientsList.add(oneIngredient);
         }
 

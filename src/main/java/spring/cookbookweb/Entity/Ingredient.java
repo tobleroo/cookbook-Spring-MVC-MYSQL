@@ -28,7 +28,7 @@ public class Ingredient {
     private List<Recipe> recipe = new ArrayList<>();
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "ingredientAmountId")
+    @JoinColumn(name = "ingredient_amount_id")
     private IngredientAmount amount;
 
     @OneToOne(cascade = CascadeType.ALL)
