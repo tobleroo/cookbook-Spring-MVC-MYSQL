@@ -82,7 +82,7 @@ public class AddRecipeService {
         for(IngredientWeightType newIngrWeight : newAmounts){
             if(weightRepo.findByWeightType(newIngrWeight.getWeightType())== null){
                 weightRepo.save(newIngrWeight);
-                System.out.println("ingredient amount object saved to DB");
+                System.out.println("ingredient weight object saved to DB");
             }else{
                 System.out.println("amount does exist already in DB");
             }
@@ -96,8 +96,8 @@ public class AddRecipeService {
         //add amount and weight type to the ingredients first, then add them to the right recipe
         for(int i = 0; i < ingredients.length; i++){
             Ingredient oneIngredient = ingrRepo.findByIngredientName(ingredients[i]);
-            oneIngredient.setAmount(amountRepo.findByAmount(ingrAmounts[i]));
-            oneIngredient.setWeight(weightRepo.findByWeightType(weightType[i]));
+            oneIngredient.setAmountObj(amountRepo.findByAmount(ingrAmounts[i]));
+            oneIngredient.setWeightObj(weightRepo.findByWeightType(weightType[i]));
             ingredientsList.add(oneIngredient);
         }
 

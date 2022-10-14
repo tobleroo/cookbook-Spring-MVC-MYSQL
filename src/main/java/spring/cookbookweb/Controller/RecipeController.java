@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import spring.cookbookweb.Entity.Ingredient;
 import spring.cookbookweb.Entity.Recipe;
 import spring.cookbookweb.Repository.IngredientAmountRepository;
 import spring.cookbookweb.Repository.IngredientRepository;
@@ -35,8 +36,8 @@ public class RecipeController {
     @GetMapping("/recipies")
     public String showRecipies(Model model){
 
-        Recipe demo = recipeRepo.findByRecipeName("first complete recipe");
-        System.out.print(demo.getIngredients().get(0));
+        Recipe demo = recipeRepo.findByRecipeName("first recipe");
+        System.out.println(demo.getIngredients().get(0).getWeightObj().getWeightType());
         
         model.addAttribute("recipes", recipeRepo.findAll());
         return "list-recipies";

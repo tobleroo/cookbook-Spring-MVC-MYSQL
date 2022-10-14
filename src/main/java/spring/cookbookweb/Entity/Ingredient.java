@@ -32,7 +32,7 @@ public class Ingredient {
     private IngredientAmount amount;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "ingredientWeightId")
+    @JoinColumn(name = "ingredient_weight_id")
     private IngredientWeightType weight;
     
     public Ingredient(){}
@@ -45,15 +45,15 @@ public class Ingredient {
         return ingredientId;
     }
 
-    public IngredientAmount getAmount() {
+    public IngredientAmount getAmountObj() {
         return amount;
     }
 
-    public void setAmount(IngredientAmount amount) {
+    public void setAmountObj(IngredientAmount amount) {
         this.amount = amount;
     }
 
-    public List<Recipe> getRecipe() {
+    public List<Recipe> getRecipeObj() {
         return recipe;
     }
 
@@ -77,11 +77,11 @@ public class Ingredient {
         this.ingredientName = ingredientName;
     }
 
-    public IngredientWeightType getWeight() {
+    public IngredientWeightType getWeightObj() {
         return weight;
     }
 
-    public void setWeight(IngredientWeightType weight) {
+    public void setWeightObj(IngredientWeightType weight) {
         this.weight = weight;
     }
     
@@ -122,8 +122,10 @@ public class Ingredient {
     @Override
     public String toString() {
         return "Ingredient [ingredientId=" + ingredientId + ", ingredientName=" + ingredientName + ", recipe=" + recipe
-                + "]";
+                + ", amount=" + amount + ", weight=" + weight + "]";
     }
+
+    
 
     
 }
