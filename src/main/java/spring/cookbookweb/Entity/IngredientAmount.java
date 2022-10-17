@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,8 +23,8 @@ public class IngredientAmount {
     
     private float amount;
 
-    @OneToMany(mappedBy = "amount")
-    private List<Ingredient> ingredient = new ArrayList<>();
+    @ManyToMany(mappedBy = "amount")
+    private List<Recipe> recipe = new ArrayList<>();
 
     public IngredientAmount() {}
 
@@ -47,15 +48,13 @@ public class IngredientAmount {
         this.amount = amount;
     }
 
-    public List<Ingredient> getIngredient() {
-        return ingredient;
+    public List<Recipe> getRecipe() {
+        return recipe;
     }
 
-    public void setIngredient(List<Ingredient> ingredient) {
-        this.ingredient = ingredient;
+    public void setRecipe(List<Recipe> recipe) {
+        this.recipe = recipe;
     }
-
-    
 
     @Override
     public int hashCode() {
@@ -63,7 +62,7 @@ public class IngredientAmount {
         int result = 1;
         result = prime * result + (int) (ingredientAmountId ^ (ingredientAmountId >>> 32));
         result = prime * result + Float.floatToIntBits(amount);
-        result = prime * result + ((ingredient == null) ? 0 : ingredient.hashCode());
+        result = prime * result + ((recipe == null) ? 0 : recipe.hashCode());
         return result;
     }
 
@@ -80,19 +79,21 @@ public class IngredientAmount {
             return false;
         if (Float.floatToIntBits(amount) != Float.floatToIntBits(other.amount))
             return false;
-        if (ingredient == null) {
-            if (other.ingredient != null)
+        if (recipe == null) {
+            if (other.recipe != null)
                 return false;
-        } else if (!ingredient.equals(other.ingredient))
+        } else if (!recipe.equals(other.recipe))
             return false;
         return true;
     }
 
     @Override
     public String toString() {
-        return "IngredientAmount [ingredientAmountId=" + ingredientAmountId + ", amount=" + amount + ", ingredient="
-                + ingredient + "]";
+        return "IngredientAmount [ingredientAmountId=" + ingredientAmountId + ", amount=" + amount + ", recipe="
+                + recipe + "]";
     }
+
+    
 
     
 

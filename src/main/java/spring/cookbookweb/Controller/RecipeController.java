@@ -1,5 +1,6 @@
 package spring.cookbookweb.Controller;
 
+import org.slf4j.helpers.SubstituteLogger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,9 +35,6 @@ public class RecipeController {
 
     @GetMapping("/recipies")
     public String showRecipies(Model model){
-
-        // Recipe demo = recipeRepo.findByRecipeName("first recipe");
-        // System.out.println(demo.getIngredients().get(0).getWeightObj().getWeightType());
         
         model.addAttribute("recipes", recipeRepo.findAll());
         return "list-recipies";
@@ -62,7 +60,7 @@ public class RecipeController {
         AddRecipeService myRecipeService = new AddRecipeService(ingrRepo, recipeRepo, amountRepo, weightRepo);
 
 
-        System.out.print(ingrNames[0] + ingrAmounts[0] + ingrWeights[0]);
+        System.out.println(ingrNames[0] + ingrAmounts[0] + ingrWeights[0]);
 
         myRecipeService.addIngredientsToDB(ingrNames);
         myRecipeService.addAmountsToDB(ingrAmounts);

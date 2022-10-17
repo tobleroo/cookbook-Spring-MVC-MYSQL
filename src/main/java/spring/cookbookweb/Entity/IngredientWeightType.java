@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,21 +23,13 @@ public class IngredientWeightType {
 
     private String weightType;
 
-    @OneToMany(mappedBy = "amount")
-    private List<Ingredient> ingredient = new ArrayList<>();
+    @ManyToMany(mappedBy = "weight")
+    private List<Recipe> recipe = new ArrayList<>();
 
     public IngredientWeightType() {}
 
     public IngredientWeightType(String weightType) {
         this.weightType = weightType;
-    }
-
-    public List<Ingredient> getIngredient() {
-        return ingredient;
-    }
-
-    public void setIngredient(List<Ingredient> ingredient) {
-        this.ingredient = ingredient;
     }
 
     public long getIngredientWeightId() {
@@ -57,7 +50,7 @@ public class IngredientWeightType {
         int result = 1;
         result = prime * result + (int) (ingredientWeightId ^ (ingredientWeightId >>> 32));
         result = prime * result + ((weightType == null) ? 0 : weightType.hashCode());
-        result = prime * result + ((ingredient == null) ? 0 : ingredient.hashCode());
+        result = prime * result + ((recipe == null) ? 0 : recipe.hashCode());
         return result;
     }
 
@@ -77,10 +70,10 @@ public class IngredientWeightType {
                 return false;
         } else if (!weightType.equals(other.weightType))
             return false;
-        if (ingredient == null) {
-            if (other.ingredient != null)
+        if (recipe == null) {
+            if (other.recipe != null)
                 return false;
-        } else if (!ingredient.equals(other.ingredient))
+        } else if (!recipe.equals(other.recipe))
             return false;
         return true;
     }
@@ -88,7 +81,9 @@ public class IngredientWeightType {
     @Override
     public String toString() {
         return "IngredientWeightType [ingredientWeightId=" + ingredientWeightId + ", weightType=" + weightType
-                + ", ingredient=" + ingredient + "]";
+                + ", recipe=" + recipe + "]";
     }
+
+
     
 }

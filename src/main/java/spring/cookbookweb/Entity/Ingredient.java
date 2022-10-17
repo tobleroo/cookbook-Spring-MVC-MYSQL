@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -28,14 +29,6 @@ public class Ingredient {
 
     @ManyToMany(mappedBy = "ingredients")
     private List<Recipe> recipe = new ArrayList<>();
-
-    @ManyToOne
-    @JoinColumn(name = "ingredient_amount_id")
-    private IngredientAmount amount;
-
-    @ManyToOne
-    @JoinColumn(name = "ingredient_weight_id")
-    private IngredientWeightType weight;
     
     public Ingredient(){}
     
@@ -45,14 +38,6 @@ public class Ingredient {
 
     public long getIngredientId() {
         return ingredientId;
-    }
-
-    public IngredientAmount getAmountObj() {
-        return amount;
-    }
-
-    public void setAmountObj(IngredientAmount amount) {
-        this.amount = amount;
     }
 
     public List<Recipe> getRecipeObj() {
@@ -79,14 +64,6 @@ public class Ingredient {
         this.ingredientName = ingredientName;
     }
 
-    public IngredientWeightType getWeightObj() {
-        return weight;
-    }
-
-    public void setWeightObj(IngredientWeightType weight) {
-        this.weight = weight;
-    }
-    
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -124,8 +101,10 @@ public class Ingredient {
     @Override
     public String toString() {
         return "Ingredient [ingredientId=" + ingredientId + ", ingredientName=" + ingredientName + ", recipe=" + recipe
-                + ", amount=" + amount + ", weight=" + weight + "]";
+                + "]";
     }
+    
+
 
     
 

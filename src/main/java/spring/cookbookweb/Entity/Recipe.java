@@ -34,6 +34,16 @@ public class Recipe {
     @JoinTable(name = "recipe_has_ingredient", joinColumns = @JoinColumn(name = "recipe_id", referencedColumnName = "recipeId"),
     inverseJoinColumns = @JoinColumn(name = "ingredient_id", referencedColumnName = "ingredientId"))
     private List<Ingredient> ingredients = new ArrayList<>();
+
+    // @JoinTable(name = "recipe_has_ingredient", joinColumns = @JoinColumn(name = "recipe_id_fk", referencedColumnName = "recipeId"),
+    // inverseJoinColumns = @JoinColumn(name = "ingredient_amount_id_fk", referencedColumnName = "ingredientAmountId"))
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<IngredientAmount> amount = new ArrayList<>();
+
+    // @JoinTable(name = "recipe_has_ingredient", joinColumns = @JoinColumn(name = "recipe_id_fk", referencedColumnName = "recipeId"),
+    // inverseJoinColumns = @JoinColumn(name = "ingredient_weight_id_fk", referencedColumnName = "ingredientWeightId"))
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<IngredientWeightType> weight = new ArrayList<>();
     
     public Recipe (){}
     
@@ -45,6 +55,22 @@ public class Recipe {
         this.mealType = meal;
     }
     
+    public List<IngredientAmount> getAmount() {
+        return amount;
+    }
+
+    public void setAmount(List<IngredientAmount> amount) {
+        this.amount = amount;
+    }
+
+    public List<IngredientWeightType> getWeight() {
+        return weight;
+    }
+
+    public void setWeight(List<IngredientWeightType> weight) {
+        this.weight = weight;
+    }
+
     public List<Ingredient> getIngredients() {
         return ingredients;
     }
@@ -162,6 +188,14 @@ public class Recipe {
         return "Recipe [recipeId=" + recipeId + ", recipeName=" + recipeName + ", description=" + description
                 + ", cookTime=" + cookTime + ", difficulty=" + difficulty + ", mealType=" + mealType + ", ingredients="
                 + ingredients + "]";
+    }
+
+    public void setRecipeId(long recipeId) {
+        this.recipeId = recipeId;
+    }
+
+    public long getRecipeId() {
+        return recipeId;
     }
 
     
