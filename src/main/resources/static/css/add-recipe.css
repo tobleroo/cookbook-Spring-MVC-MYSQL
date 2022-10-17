@@ -102,7 +102,69 @@ body{
     font-size: larger;
 }
 
-button{
+/* ingredients inputs */
+
+.add-ingredient-btn-box button{
+    background-color: green;
+    color: white;
+    padding: .5rem;
+    margin: .5rem 0;
+}
+
+.add-ingredient-btn-box button:hover{
+    cursor: pointer;
+    background-color: rgb(23, 206, 23);
+}
+
+.ingredients-box{
+    margin-top: 2rem;
+    width: 100%;
+    border-top: solid yellow 2px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+}
+
+.one-ingredient-box{
+    display: flex;
+    flex-flow: row nowrap;
+    margin-top: 1rem;
+    width: 100%;
+    justify-content:left;
+}
+
+.one-ingredient-box input{
+    height: 3rem;
+    margin: 0 .5rem;
+    font-size: larger;
+    background: rgba(101, 101, 144, 0.488);
+    color: white;
+}
+
+.ingr-name{
+    width: 35%;
+}
+.ingr-amount{
+    width: 17%;
+}
+.ingr-weight{
+    width: 25%;
+}
+
+.removeBtn{
+    display:inline-block;
+    padding: .5rem;
+    background-color: rgb(197, 35, 35);
+}
+
+.removeBtn:hover{
+    background-color: rgb(240, 97, 97);
+    cursor: pointer;
+}
+
+/* button to send recipe to DB */
+
+#add-recipe-btn{
     padding: 1rem;
     border-radius: 15px;
     background-color: lightblue;
@@ -111,7 +173,7 @@ button{
     margin-top: 1rem;
 }
 
-button:hover{
+#add-recipe-btn:hover{
     cursor: pointer;
     background-color: blue;
     color: white;

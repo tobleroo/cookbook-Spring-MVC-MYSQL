@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import spring.cookbookweb.Entity.Ingredient;
 import spring.cookbookweb.Entity.Recipe;
 import spring.cookbookweb.Repository.IngredientAmountRepository;
 import spring.cookbookweb.Repository.IngredientRepository;
@@ -36,8 +35,8 @@ public class RecipeController {
     @GetMapping("/recipies")
     public String showRecipies(Model model){
 
-        Recipe demo = recipeRepo.findByRecipeName("first recipe");
-        System.out.println(demo.getIngredients().get(0).getWeightObj().getWeightType());
+        // Recipe demo = recipeRepo.findByRecipeName("first recipe");
+        // System.out.println(demo.getIngredients().get(0).getWeightObj().getWeightType());
         
         model.addAttribute("recipes", recipeRepo.findAll());
         return "list-recipies";
@@ -49,16 +48,10 @@ public class RecipeController {
         return "add-recipe";
     }
 
-    // not used currently. sacerecipeDEMO beneath used instead
-    @PostMapping("/saverecipe")
-    public String saveRecipe(@ModelAttribute Recipe recipe){
-        recipeRepo.save(recipe);
-        return "redirect:/recipies";
-    }
-
     @PostMapping("/saverecipedemo")
-    public String getDataForm(@RequestParam(required = false) String[] ingrNames,  // required false changed to NAME name in input html
-        @RequestParam(required = false) int[]ingrAmounts,
+    public String getDataForm(@RequestParam("ingrName") String[] ingrNames,  // required false changed to NAME name in input html
+        @RequestParam("ingrAmount") float[]ingrAmounts,
+        @RequestParam("ingrWeight") String[] ingrWeights,
         @RequestParam("recipeName") String recipeName,
         @RequestParam("recipeDescription") String recipeDesc,
         @RequestParam("recipeDiff") String difficulty,
@@ -68,13 +61,12 @@ public class RecipeController {
 
         AddRecipeService myRecipeService = new AddRecipeService(ingrRepo, recipeRepo, amountRepo, weightRepo);
 
-        // demo for prototyping saving ingredients to db
-        String [] ingredientNames = {"gurka", "potatis","sallad","hasch"};
-        float[] ingredientAmount = {2,4,5,6};
-        String [] ingredientWeights = {"tone","kilogram","mg","ounce"};
-        myRecipeService.addIngredientsToDB(ingredientNames);
-        myRecipeService.addAmountsToDB(ingredientAmount);
-        myRecipeService.addWeightsTypeToDB(ingredientWeights);
+
+        System.out.print(ingrNames[0] + ingrAmounts[0] + ingrWeights[0]);
+
+        myRecipeService.addIngredientsToDB(ingrNames);
+        myRecipeService.addAmountsToDB(ingrAmounts);
+        myRecipeService.addWeightsTypeToDB(ingrWeights);
         
         //currently working to add a recipe
         Recipe newRecipe;
@@ -86,7 +78,7 @@ public class RecipeController {
             newRecipe.setId(id);
         }
 
-        myRecipeService.addRecipeToDBWithIngredients(newRecipe, ingredientNames, ingredientAmount, ingredientWeights);
+        myRecipeService.addRecipeToDBWithIngredients(newRecipe, ingrNames, ingrAmounts, ingrWeights);
 
         return "redirect:/recipies";
     }

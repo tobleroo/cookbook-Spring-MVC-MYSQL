@@ -1,10 +1,15 @@
 package spring.cookbookweb.Entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,8 +22,8 @@ public class IngredientWeightType {
 
     private String weightType;
 
-    @OneToOne(mappedBy = "weight")
-    private Ingredient ingredient;
+    @OneToMany(mappedBy = "amount")
+    private List<Ingredient> ingredient = new ArrayList<>();
 
     public IngredientWeightType() {}
 
@@ -26,11 +31,11 @@ public class IngredientWeightType {
         this.weightType = weightType;
     }
 
-    public Ingredient getIngredient() {
+    public List<Ingredient> getIngredient() {
         return ingredient;
     }
 
-    public void setIngredient(Ingredient ingredient) {
+    public void setIngredient(List<Ingredient> ingredient) {
         this.ingredient = ingredient;
     }
 

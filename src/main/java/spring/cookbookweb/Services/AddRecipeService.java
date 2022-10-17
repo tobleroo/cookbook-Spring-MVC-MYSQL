@@ -90,7 +90,7 @@ public class AddRecipeService {
     }
 
     // final method to save it all to a recipe to db
-    public void addRecipeToDBWithIngredients(Recipe myRecipe, String[] ingredients, float[] ingrAmounts, String [] weightType){
+    public void addRecipeToDBWithIngredients(Recipe myRecipe, String[] ingredients, float[] ingrAmounts, String[] weightType){
         
         List<Ingredient> ingredientsList = new ArrayList<>();
         //add amount and weight type to the ingredients first, then add them to the right recipe
