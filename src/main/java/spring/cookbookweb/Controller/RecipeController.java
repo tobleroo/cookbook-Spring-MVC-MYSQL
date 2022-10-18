@@ -23,6 +23,7 @@ public class RecipeController {
     private final IngredientRepository ingrRepo;
     private final IngredientAmountRepository amountRepo;
     private final IngredientWeightRepository weightRepo;
+    private final AddRecipeService myRecipeService;
     
 
     RecipeController(RecipeRepository repository, IngredientRepository ingrRepo,
@@ -31,6 +32,7 @@ public class RecipeController {
         this.ingrRepo = ingrRepo;
         this.amountRepo = amountRepo;
         this.weightRepo = weightRepo;
+        this.myRecipeService = new AddRecipeService(this.ingrRepo, this.recipeRepo, this.amountRepo, this.weightRepo);
     }
 
     @GetMapping("/recipies")
@@ -57,8 +59,8 @@ public class RecipeController {
         @RequestParam("recipeType") String recipeType,
         @RequestParam("id") long id){
 
-        AddRecipeService myRecipeService = new AddRecipeService(ingrRepo, recipeRepo, amountRepo, weightRepo);
-
+        // AddRecipeService myRecipeService = new AddRecipeService(ingrRepo, recipeRepo, amountRepo, weightRepo);
+        
 
         System.out.println(ingrNames[0] + ingrAmounts[0] + ingrWeights[0]);
 
@@ -91,7 +93,7 @@ public class RecipeController {
 
     @GetMapping("/deleterecipe")
     public String deleteRecipe(@RequestParam long id){
-        recipeRepo.deleteById(id);
+        myRecipeService.deleteOneRecipe(id);
         return "redirect:/recipies";
     }
 }

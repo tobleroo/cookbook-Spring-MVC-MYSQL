@@ -35,14 +35,14 @@ public class Recipe {
     inverseJoinColumns = @JoinColumn(name = "ingredient_id", referencedColumnName = "ingredientId"))
     private List<Ingredient> ingredients = new ArrayList<>();
 
-    // @JoinTable(name = "recipe_has_ingredient", joinColumns = @JoinColumn(name = "recipe_id_fk", referencedColumnName = "recipeId"),
-    // inverseJoinColumns = @JoinColumn(name = "ingredient_amount_id_fk", referencedColumnName = "ingredientAmountId"))
     @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "recipe_has_amounts", joinColumns = @JoinColumn(name = "recipe_id", referencedColumnName = "recipeId"),
+    inverseJoinColumns = @JoinColumn(name = "ingredient_amount_id", referencedColumnName = "ingredientAmountId"))
     private List<IngredientAmount> amount = new ArrayList<>();
 
-    // @JoinTable(name = "recipe_has_ingredient", joinColumns = @JoinColumn(name = "recipe_id_fk", referencedColumnName = "recipeId"),
-    // inverseJoinColumns = @JoinColumn(name = "ingredient_weight_id_fk", referencedColumnName = "ingredientWeightId"))
     @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "recipe_has_weights", joinColumns = @JoinColumn(name = "recipe_id", referencedColumnName = "recipeId"),
+    inverseJoinColumns = @JoinColumn(name = "ingredient_weight_id", referencedColumnName = "ingredientWeightId"))
     private List<IngredientWeightType> weight = new ArrayList<>();
     
     public Recipe (){}

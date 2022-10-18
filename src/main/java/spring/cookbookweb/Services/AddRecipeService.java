@@ -108,4 +108,8 @@ public class AddRecipeService {
         recRepo.save(myRecipe);
         
     }
+
+    public void deleteOneRecipe(Long id){
+        
+    }
 }
