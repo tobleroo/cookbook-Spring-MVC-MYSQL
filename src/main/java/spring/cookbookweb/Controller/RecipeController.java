@@ -1,13 +1,16 @@
 package spring.cookbookweb.Controller;
 
-import org.slf4j.helpers.SubstituteLogger;
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import spring.cookbookweb.Entity.Ingredient;
+import spring.cookbookweb.Entity.IngredientAmount;
+import spring.cookbookweb.Entity.IngredientWeightType;
 import spring.cookbookweb.Entity.Recipe;
 import spring.cookbookweb.Repository.IngredientAmountRepository;
 import spring.cookbookweb.Repository.IngredientRepository;
@@ -59,11 +62,6 @@ public class RecipeController {
         @RequestParam("recipeType") String recipeType,
         @RequestParam("id") long id){
 
-        // AddRecipeService myRecipeService = new AddRecipeService(ingrRepo, recipeRepo, amountRepo, weightRepo);
-        
-
-        System.out.println(ingrNames[0] + ingrAmounts[0] + ingrWeights[0]);
-
         myRecipeService.addIngredientsToDB(ingrNames);
         myRecipeService.addAmountsToDB(ingrAmounts);
         myRecipeService.addWeightsTypeToDB(ingrWeights);
@@ -93,7 +91,14 @@ public class RecipeController {
 
     @GetMapping("/deleterecipe")
     public String deleteRecipe(@RequestParam long id){
-        myRecipeService.deleteOneRecipe(id);
+        // myRecipeService.deleteOneRecipe(id);
+
+        //find the right recipe
+        Recipe recipeToDelete = recipeRepo.findByRecipeId(id);
+        recipeToDelete.getIngredients().removeAll(recipeToDelete.getIngredients());
+        recipeToDelete.getWeight().removeAll(recipeToDelete.getWeight());
+        recipeToDelete.getAmount().removeAll(recipeToDelete.getAmount());
+        recipeRepo.delete(recipeToDelete);
         return "redirect:/recipies";
     }
 }

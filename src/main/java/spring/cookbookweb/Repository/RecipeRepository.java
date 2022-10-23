@@ -9,5 +9,7 @@ import spring.cookbookweb.Entity.Recipe;
 public interface RecipeRepository extends JpaRepository<Recipe, Long>{
 
     Recipe findByRecipeName(String name);
+
+    Recipe findByRecipeId(long id);
     
 }
