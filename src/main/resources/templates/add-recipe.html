@@ -36,8 +36,12 @@
                         </select>
                     </div>
                     <div class="specs-input specs-time-box">
-                        <label for="cookTime">Cooking time (minutes):</label>
+                        <label for="cookTime">time(minutes):</label>
                         <input type="number" id="cookTime" th:name="recipeTime" min="0" max="1000" th:attr= "value = ${recipe.cookTime}" required>
+                    </div>
+                    <div class="specs-input">
+                        <label for="portions">Portions:</label>
+                        <input type="number" id="portions" th:name="recipePortions" min="0" max="1000" th:attr= "value = ${recipe.portions}" required>
                     </div>
                 </div>
                 <div class="recipe-desc-box">
@@ -54,9 +58,17 @@
                         <button type="button" id="addIngrBtn">add ingredient</button>
                     </div>
                     <div class="one-ingredient-box" id="input-box">
-                        <input type="text" placeholder="ingredient name" th:name="ingrName" id="ingrName" required class="ingr-name">
-                        <input type="number" placeholder="weight" th:name="ingrAmount" id="ingrAmount" required class="ingr-amount">
-                        <input type="text" placeholder="weight type" th:name="ingrWeight" id="ingrWeight" required class="ingr-weight">
+                        <input type="text" placeholder="ingredient name" th:name="ingrName" id="ingrName" class="ingr-name">
+                        <input type="number" placeholder="weight" th:name="ingrAmount" id="ingrAmount" class="ingr-amount" step=".01">
+                        <input type="text" placeholder="weight type" th:name="ingrWeight" id="ingrWeight" class="ingr-weight">
+                    </div>
+                    <!-- foreach with ingredients for updateing recipes -->
+                    <div class="update-ingredient-box one-ingredient-box" th:each="ingredientData: ${ingredientList}" th:id="${#ids.seq('existingID')}">
+                        <input type="text" placeholder="ingredient name" th:name="ingrName" id="ingrName" required class="ingr-name" th:attr= "value = ${ingredientData.ingredientName}">
+                        <input type="number" placeholder="weight" th:name="ingrAmount" id="ingrAmount" required class="ingr-amount" step=".01" th:attr= "value = ${ingredientData.amount}">
+                        <input type="text" placeholder="weight type" th:name="ingrWeight" id="ingrWeight" required class="ingr-weight" th:attr= "value = ${ingredientData.weightType}">
+                        <!-- add remove Btn -->
+                        <button type="button" onclick="removeExistingIngredient(this.id)" class="removeBtn" th:id="${#ids.seq('IdToRemove')}">Remove</button>
                     </div>
                 </div>
 

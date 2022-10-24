@@ -28,7 +28,7 @@ function addMoreIngredientInputs(){
     removeBtn.id = 'RemoveIngredientBtn' + idForInputs;
     removeBtn.className = 'removeBtn';
     // removeBtn.onclick = removeIngredientFunc(this.id);
-    removeBtn.setAttribute("onclick", "removeIngredientFunc(this.id);");
+    removeBtn.setAttribute("onclick", "removeNewIngredientFunc(this.id);");
     removeBtn.textContent = 'remove';
 
     //add remove btn to the ingredient div
@@ -43,9 +43,15 @@ function addMoreIngredientInputs(){
 
 addIngredientBtn.addEventListener('click', addMoreIngredientInputs);
 
-function removeIngredientFunc(id){
+function removeNewIngredientFunc(id){
 
     var idNum = id[19];
     
     document.getElementById('input-box' + idNum).remove();
+}
+
+function removeExistingIngredient(idName){
+    var id = idName[10]
+
+    document.getElementById('existingID' + id).remove();
 }

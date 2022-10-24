@@ -27,6 +27,7 @@ public class Recipe {
     private int cookTime;
     private String difficulty;
     private String mealType;
+    private int portions;
 
 
     // ManyToMany connection to ingredients DB table
@@ -47,14 +48,28 @@ public class Recipe {
     
     public Recipe (){}
     
-    public Recipe (String name,String desc, int time, String diff, String meal){
-        this.recipeName = name;
-        this.description = desc;
-        this.cookTime = time;
-        this.difficulty = diff;
-        this.mealType = meal;
-    }
     
+    public Recipe(String recipeName, String description, int cookTime, String difficulty, String mealType,
+            int portions) {
+        this.recipeName = recipeName;
+        this.description = description;
+        this.cookTime = cookTime;
+        this.difficulty = difficulty;
+        this.mealType = mealType;
+        this.portions = portions;
+    }
+
+
+    public int getPortions() {
+        return portions;
+    }
+
+
+    public void setPortions(int portions) {
+        this.portions = portions;
+    }
+
+
     public List<IngredientAmount> getAmount() {
         return amount;
     }
@@ -126,7 +141,14 @@ public class Recipe {
         this.mealType = mealType;
     }
 
-    
+    public void setRecipeId(long recipeId) {
+        this.recipeId = recipeId;
+    }
+
+    public long getRecipeId() {
+        return recipeId;
+    }
+
 
     @Override
     public int hashCode() {
@@ -138,9 +160,13 @@ public class Recipe {
         result = prime * result + cookTime;
         result = prime * result + ((difficulty == null) ? 0 : difficulty.hashCode());
         result = prime * result + ((mealType == null) ? 0 : mealType.hashCode());
+        result = prime * result + portions;
         result = prime * result + ((ingredients == null) ? 0 : ingredients.hashCode());
+        result = prime * result + ((amount == null) ? 0 : amount.hashCode());
+        result = prime * result + ((weight == null) ? 0 : weight.hashCode());
         return result;
     }
+
 
     @Override
     public boolean equals(Object obj) {
@@ -175,27 +201,32 @@ public class Recipe {
                 return false;
         } else if (!mealType.equals(other.mealType))
             return false;
+        if (portions != other.portions)
+            return false;
         if (ingredients == null) {
             if (other.ingredients != null)
                 return false;
         } else if (!ingredients.equals(other.ingredients))
             return false;
+        if (amount == null) {
+            if (other.amount != null)
+                return false;
+        } else if (!amount.equals(other.amount))
+            return false;
+        if (weight == null) {
+            if (other.weight != null)
+                return false;
+        } else if (!weight.equals(other.weight))
+            return false;
         return true;
     }
+
 
     @Override
     public String toString() {
         return "Recipe [recipeId=" + recipeId + ", recipeName=" + recipeName + ", description=" + description
-                + ", cookTime=" + cookTime + ", difficulty=" + difficulty + ", mealType=" + mealType + ", ingredients="
-                + ingredients + "]";
-    }
-
-    public void setRecipeId(long recipeId) {
-        this.recipeId = recipeId;
-    }
-
-    public long getRecipeId() {
-        return recipeId;
+                + ", cookTime=" + cookTime + ", difficulty=" + difficulty + ", mealType=" + mealType + ", portions="
+                + portions + ", ingredients=" + ingredients + ", amount=" + amount + ", weight=" + weight + "]";
     }
 
     
