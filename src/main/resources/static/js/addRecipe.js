@@ -12,35 +12,16 @@ function addMoreIngredientInputs(){
 
     //use innerhtml create new instead
     var oneIngredientBox = document.createElement('div');
-    // oneIngredientBox.id = 
+    oneIngredientBox.id = 'input-box' + idForInputs;
+    oneIngredientBox.classList.add('one-ingredient-box');
 
+    let inputHtml = `<input type="text" placeholder="ingredient name" name="ingrName" id="ingrName${idForInputs}" class="ingr-name">
+    <input type="number" placeholder="weight" name="ingrAmount" id="ingrAmount${idForInputs}" class="ingr-amount" step=".01">
+    <input type="text" placeholder="weight type" name="ingrWeight" id="ingrWeight${idForInputs}" class="ingr-weight">
+    <button type="button" id="RemoveIngredientBtn${idForInputs}" class="removeBtn" onclick="removeNewIngredientFunc(this.id)">Remove</button>`;
+    oneIngredientBox.innerHTML = inputHtml;
 
-    //clone current inputbox
-    var inputClone = document.getElementById('input-box').cloneNode(true);
-    inputClone.id = 'input-box' + idForInputs;
-    //change id of each input elements
-    inputClone.getElementsByTagName('input')[0].id = 'ingrName' + idForInputs;
-    inputClone.getElementsByTagName('input')[1].id = 'ingrAmount' + idForInputs;
-    inputClone.getElementsByTagName('input')[2].id = 'ingrWeight' + idForInputs;
-
-    //clear text in inputs
-    inputClone.getElementsByTagName('input')[0].value = "";
-    inputClone.getElementsByTagName('input')[1].value = "";
-    inputClone.getElementsByTagName('input')[2].value = "";
-
-    // add remove btn
-    var removeBtn = document.createElement('button');
-    removeBtn.id = 'RemoveIngredientBtn' + idForInputs;
-    removeBtn.className = 'removeBtn';
-    // removeBtn.onclick = removeIngredientFunc(this.id);
-    removeBtn.setAttribute("onclick", "removeNewIngredientFunc(this.id);");
-    removeBtn.textContent = 'remove';
-
-    //add remove btn to the ingredient div
-    inputClone.appendChild(removeBtn);
-
-    // add ignredient div to parent with all ingredients
-    inputBox.appendChild(inputClone);
+    inputBox.appendChild(oneIngredientBox);
 
     idForInputs++;
 }

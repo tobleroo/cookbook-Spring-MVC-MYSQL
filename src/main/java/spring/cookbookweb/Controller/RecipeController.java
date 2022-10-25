@@ -1,6 +1,5 @@
 package spring.cookbookweb.Controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -62,11 +61,15 @@ public class RecipeController {
         @RequestParam("id") long id,
         @RequestParam("recipePortions") int portions){
 
+        // for(String ignrs : ingrNames){
+        //     System.out.println(ignrs);
+        // }
+
         myRecipeService.addIngredientsToDB(ingrNames);
         myRecipeService.addAmountsToDB(ingrAmounts);
         myRecipeService.addWeightsTypeToDB(ingrWeights);
         
-        //currently working to add a recipe
+        // currently working to add a recipe
         Recipe newRecipe;
         if(id == 0){
             //if recipe doesnt exist
@@ -85,13 +88,9 @@ public class RecipeController {
     public String updateRecipe(@RequestParam long id, Model model){
         Recipe changeRecipe = recipeRepo.findById(id).get();
         
-        List<ShowRecipeIngredientsService> ingredients = new ArrayList<>();
-        for(int i = 0; i < changeRecipe.getIngredients().size(); i++){
-            ingredients.add(new ShowRecipeIngredientsService(
-            changeRecipe.getIngredients().get(i).getIngredientName()
-            ,changeRecipe.getAmount().get(i).getAmount()
-            ,changeRecipe.getWeight().get(i).getWeightType()));
-        }
+        List<ShowRecipeIngredientsService> ingredients = ShowRecipeIngredientsService
+            .extrectIngredients(changeRecipe);
+
         model.addAttribute("ingredientList", ingredients);
         model.addAttribute("recipe", changeRecipe);
         return "add-recipe";
