@@ -57,7 +57,7 @@
                     <div class="add-ingredient-btn-box">
                         <button type="button" id="addIngrBtn">add ingredient</button>
                     </div>
-                    <div class="one-ingredient-box" id="input-box">
+                    <div class="one-ingredient-box" id="input-box" th:if ="${#lists.isEmpty(ingredientList)}">
                         <input type="text" placeholder="ingredient name" th:name="ingrName" id="ingrName" class="ingr-name">
                         <input type="number" placeholder="weight" th:name="ingrAmount" id="ingrAmount" class="ingr-amount" step=".01">
                         <input type="text" placeholder="weight type" th:name="ingrWeight" id="ingrWeight" class="ingr-weight">

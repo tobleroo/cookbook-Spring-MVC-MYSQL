@@ -6,10 +6,15 @@ const addIngredientBtn = document.getElementById('addIngrBtn');
 var idForInputs = 1;
 // function to add more ingredients inputs fields
 function addMoreIngredientInputs(){
-    
 
     // get box of input divs to add inputs to
     var inputBox = document.getElementById('inputsBox');
+
+    //use innerhtml create new instead
+    var oneIngredientBox = document.createElement('div');
+    // oneIngredientBox.id = 
+
+
     //clone current inputbox
     var inputClone = document.getElementById('input-box').cloneNode(true);
     inputClone.id = 'input-box' + idForInputs;
@@ -34,7 +39,6 @@ function addMoreIngredientInputs(){
     //add remove btn to the ingredient div
     inputClone.appendChild(removeBtn);
 
-    
     // add ignredient div to parent with all ingredients
     inputBox.appendChild(inputClone);
 
