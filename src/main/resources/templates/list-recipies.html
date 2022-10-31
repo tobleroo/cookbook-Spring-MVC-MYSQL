@@ -27,6 +27,17 @@
             <div class="recipe-desc" th:id="${#ids.seq('descBox')}">
                 <p th:text="${recipes.description}" th:id="${#ids.seq('descriptionID')}"></p>
             </div>
+
+            <div th:id="${#ids.seq('ingredientNameID')}" style="display: none;">
+                <span th:each="ingredient :${recipes.ingredients}" th:text="${ingredient.ingredientName}"></span>
+            </div>
+            <div th:id="${#ids.seq('ingredientAmountID')}" style="display: none;">
+                <span th:each="amount :${recipes.amount}" th:text="${amount.amount}"></span>
+            </div>
+            <div th:id="${#ids.seq('ingredientWeightID')}" style="display: none;">
+                <span th:each="weightType :${recipes.weight}" th:text="${weightType.weightType}"></span>
+            </div>
+            <!-- <button type="button" onclick="turnIngredientsToLists('ingredient-names')">demo click</button> -->
         </div>
     </div>
 

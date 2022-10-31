@@ -26,10 +26,46 @@ function showData(optionsNum){
         document.getElementById('putDescription').innerText = mealDescription;
         bigScreen.style.display = 'flex';
     }
+
+    //ingredient data
+    const list = turnIngredientsToLists(id);
+
+    // add to big screen ingredient box as htmlcode
+
+    
+    // list.forEach(element => {
+    //     console.log(element);
+    // })
 }
 
 function closeBigBox(){
     document.getElementById('bigScreenID').style.display = 'none';
+}
 
+//get the ingredient data from specific recipe and add to a complete list
+// that will be returns to add to big screen of recipe details
+function turnIngredientsToLists(idToDiv){
 
+    const ingredientNames = [];
+    document.getElementById('ingredientNameID' + idToDiv).querySelectorAll('span').forEach(data => {
+        ingredientNames.push(data.innerText);
+    })
+
+    const ingredientAmounts = [];
+    document.getElementById('ingredientAmountID' + idToDiv).querySelectorAll('span').forEach(data => {
+        ingredientAmounts.push(data.innerText);
+    })
+
+    const ingredientWeights = [];
+    document.getElementById('ingredientWeightID' + idToDiv).querySelectorAll('span').forEach(data => {
+        ingredientWeights.push(data.innerText);
+    })
+
+    const listOfAllData = [];
+    for(let i = 0; i < ingredientNames.length; i++){
+        const oneIngredient = [ingredientNames[i],ingredientAmounts[i],ingredientWeights[i]]
+        listOfAllData.push(oneIngredient);
+    }
+
+    return listOfAllData;
 }
