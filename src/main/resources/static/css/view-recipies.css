@@ -154,6 +154,7 @@ body{
 
 .description-box-big p{
     padding: 1rem;
+    font-size: larger;
 }
 
 .ingredients-box-big{
@@ -161,6 +162,31 @@ body{
     text-align: center;
     border: solid rgb(181, 181, 181) 2px;
     border-radius: 15px;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    overflow: auto;
 }
 
+.one-ingredient{
+    display: flex;
+    flex-flow: row wrap;
+    margin: 1rem;
+}
+
+.one-ingredient p{
+    border-bottom: solid red 2px;
+    padding: .5rem;
+    font-size: larger;
+}
+
+#ingredient-amount{
+    padding-right: .2rem;
+    margin-right: 0;
+}
+
+#ingredient-weight{
+    padding-left: 0;
+    margin-left: 0;
+}
 

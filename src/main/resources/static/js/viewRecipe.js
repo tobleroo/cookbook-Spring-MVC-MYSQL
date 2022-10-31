@@ -30,12 +30,26 @@ function showData(optionsNum){
     //ingredient data
     const list = turnIngredientsToLists(id);
 
-    // add to big screen ingredient box as htmlcode
+    // ingredient div in big screen
+    const ingredientBigBox = document.getElementById('ingredientsBigBox');
+
+    let ingredientHTML = '';
+
+    list.forEach(element =>{
+        ingredientHTML += `<div class="one-ingredient">
+        <p>${element[0]}</p>
+        <p id="ingredient-amount">${element[1]}</p>
+        <p id="ingredient-weight">${element[2]}</p>
+    </div>`
+    })
+
+    ingredientBigBox.innerHTML = ingredientHTML;
+    console.log(ingredientHTML);
 
     
-    // list.forEach(element => {
-    //     console.log(element);
-    // })
+    list.forEach(element => {
+        console.log(element);
+    })
 }
 
 function closeBigBox(){
