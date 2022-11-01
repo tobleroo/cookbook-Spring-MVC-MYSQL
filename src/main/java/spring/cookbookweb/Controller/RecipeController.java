@@ -1,4 +1,4 @@
-package spring.cookbookweb.Controller;
+ package spring.cookbookweb.Controller;
 
 import java.util.List;
 
@@ -44,7 +44,7 @@ public class RecipeController {
     }
 
     @GetMapping("/addrecipepage")
-    public String addEmployeeForm(Model model){
+    public String addRecipeForm(Model model){
         model.addAttribute("recipe", new Recipe());
         return "add-recipe";
     }
@@ -60,10 +60,6 @@ public class RecipeController {
         @RequestParam("recipeType") String recipeType,
         @RequestParam("id") long id,
         @RequestParam("recipePortions") int portions){
-
-        // for(String ignrs : ingrNames){
-        //     System.out.println(ignrs);
-        // }
 
         myRecipeService.addIngredientsToDB(ingrNames);
         myRecipeService.addAmountsToDB(ingrAmounts);
