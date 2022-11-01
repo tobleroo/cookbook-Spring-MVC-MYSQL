@@ -1,5 +1,7 @@
 package spring.cookbookweb.Repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -12,4 +14,15 @@ public interface RecipeRepository extends JpaRepository<Recipe, Long>{
 
     Recipe findByRecipeId(long id);
     
+    List<Recipe> findByMealType(String type);
+
+    List<Recipe> findByCookTimeLessThanEqual(int maxTime);
+
+    List<Recipe> findByMealTypeAndCookTimeLessThanEqual(String type, int maxtime);
+
+    List<Recipe> findByRecipeNameContaining(String name);
+
+    List<Recipe> findByRecipeNameContainingAndCookTimeLessThanEqual(String searchName, int maxTime);
+
+    List<Recipe> findByRecipeNameContainingAndMealTypeAndCookTimeLessThanEqual(String searchName, String mealType, int maxtime);
 }
