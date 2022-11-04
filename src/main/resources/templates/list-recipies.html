@@ -9,21 +9,7 @@
 
     <div th:replace="fragments/nav :: navbar"></div>
 
-    <section class="searchbar-box">
-        <form method="get" th:action="@{/recipies/filtered}">
-            <select name="mealType" id="mealInput">
-                <option value="all">All</option>
-                <option value="breakfast">Breakfast</option>
-                <option value="lunch">Lunch</option>
-                <option value="dinner">Dinner</option>
-                <option value="snack">Snack</option>
-            </select>
-            <input type="number" placeholder="max cooking time" name="cookTime">
-            <input type="text" name="recipeName" id="recipeName" placeholder="Search by name">
-            <button type="submit">search</button>
-
-        </form>
-    </section>
+    <section th:replace="fragments/search-bar :: searchbar-basic"></section>
 
     <div class="view-box">
         <div th:each="recipes: ${recipes}" class="recipe-box">

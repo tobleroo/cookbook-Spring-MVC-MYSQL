@@ -37,19 +37,20 @@ public class SearchService {
         }
 
         List<Recipe> searchesRecipies = new ArrayList<>();
+
+        //1. all types , no search text , max time
+        //2. all types , with search text , max time
+        //3. specific type, no search , time
+        //4. specific type, search text, time
+
         if(mealType.equals("all") && nameToSearch == ""){
-            //search all with no input name search. if time isnt inputed it will return all.
             searchesRecipies = recRepo.findByCookTimeLessThanEqual(cookTime);
-            System.out.println("in first");
+        }else if(mealType.equals("all") && nameToSearch != ""){
+            searchesRecipies = recRepo.findByRecipeNameContainingAndCookTimeLessThanEqual(nameToSearch, cookTime);
         }else if(!(mealType.equals("all")) && nameToSearch == ""){
             searchesRecipies = recRepo.findByMealTypeAndCookTimeLessThanEqual(mealType, cookTime);
         }else if(!(mealType.equals("all")) && nameToSearch != ""){
-            //search by NOT all with name search inputed
             searchesRecipies = recRepo.findByRecipeNameContainingAndMealTypeAndCookTimeLessThanEqual(nameToSearch, mealType, cookTime);
-            System.out.println("in second");
-        }else if(nameToSearch != ""){
-            searchesRecipies = recRepo.findByRecipeNameContainingAndCookTimeLessThanEqual(nameToSearch, cookTime);
-            System.out.println("in third");
         }
         
         return searchesRecipies;

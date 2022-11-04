@@ -9,13 +9,30 @@
     <div th:replace="fragments/nav :: navbar"></div>
 
     <div class="generator-box">
-        <div class="selections-box">
+
+        <!-- <div class="selections-box">
             <form th:action="@{/getrandomdish}" method="get">
                 <button type="submit">Generate</button>
             </form>
-        </div>
+        </div> -->
+
+        <section th:fragment="searchbar-basic" class="searchbar-box">
+            <form method="get" th:action="@{/generator/filtered}">
+                <select name="mealType" id="mealInput">
+                    <option value="all">All</option>
+                    <option value="breakfast">Breakfast</option>
+                    <option value="lunch">Lunch</option>
+                    <option value="dinner">Dinner</option>
+                    <option value="snack">Snack</option>
+                </select>
+                <input type="number" placeholder="max cooking time" name="cookTime">
+                <input type="text" name="recipeName" id="recipeName" placeholder="Search by name">
+                <button type="submit">search</button>
     
-        <div th:each="recipe: ${recipes}" class="show-recipe-box">
+            </form>
+        </section>
+    
+        <div th:each="recipe: ${recipe}" class="show-recipe-box">
 
             <div class="recipe-card">
                 <div class="recipe-title-box">

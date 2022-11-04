@@ -16,13 +16,16 @@ public interface RecipeRepository extends JpaRepository<Recipe, Long>{
     
     List<Recipe> findByMealType(String type);
 
-    List<Recipe> findByCookTimeLessThanEqual(int maxTime);
-
-    List<Recipe> findByMealTypeAndCookTimeLessThanEqual(String type, int maxtime);
-
     List<Recipe> findByRecipeNameContaining(String name);
-
+    
+    // fresh searches
+    //1.
+    List<Recipe> findByCookTimeLessThanEqual(int maxTime);
+    //2.
     List<Recipe> findByRecipeNameContainingAndCookTimeLessThanEqual(String searchName, int maxTime);
-
+    //3.
+    List<Recipe> findByMealTypeAndCookTimeLessThanEqual(String type, int maxtime);
+    //4.
     List<Recipe> findByRecipeNameContainingAndMealTypeAndCookTimeLessThanEqual(String searchName, String mealType, int maxtime);
+
 }
