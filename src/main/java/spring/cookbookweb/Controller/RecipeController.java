@@ -43,11 +43,11 @@ public class RecipeController {
         return "list-recipies";
     }
 
-    @GetMapping("/addrecipepage")
-    public String addRecipeForm(Model model){
-        model.addAttribute("recipe", new Recipe());
-        return "add-recipe";
-    }
+    // @GetMapping("/addrecipepage")
+    // public String addRecipeForm(Model model){
+    //     model.addAttribute("recipe", new Recipe());
+    //     return "add-recipe";
+    // }
 
     @PostMapping("/saverecipedemo")
     public String getDataForm(@RequestParam("ingrName") String[] ingrNames,  // required false changed to NAME name in input html
@@ -85,7 +85,7 @@ public class RecipeController {
         Recipe changeRecipe = recipeRepo.findById(id).get();
         
         List<ShowRecipeIngredientsService> ingredients = ShowRecipeIngredientsService
-            .extrectIngredients(changeRecipe);
+            .extractIngredients(changeRecipe);
 
         model.addAttribute("ingredientList", ingredients);
         model.addAttribute("recipe", changeRecipe);

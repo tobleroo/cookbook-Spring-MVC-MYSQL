@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import spring.cookbookweb.Entity.Recipe;
 import spring.cookbookweb.Repository.RecipeRepository;
+import spring.cookbookweb.Services.GeneratorRecipeService;
 import spring.cookbookweb.Services.SearchService;
 
 @Controller
@@ -41,13 +42,12 @@ public class GeneratorController {
     @GetMapping("/generator/filtered")
     public String giveRandomFilteredDish(Model model,
         @RequestParam("mealType") String mealType,
-        @RequestParam("cookTime") String maxCookTime,
-        @RequestParam("recipeName") String nameOfRecipe){
+        @RequestParam("cookTime") String maxCookTime){
 
+        String nameOfRecipe = "";
         List<Recipe> collectedRecipes = searchService.searchCookBook(mealType, maxCookTime, nameOfRecipe);
-        int randomSelector = new Random().nextInt(collectedRecipes.size());
-        Recipe chosenOne = collectedRecipes.get(randomSelector);
-        model.addAttribute("recipe", chosenOne);
+        
+        model.addAttribute("recipe", GeneratorRecipeService.generateOneDish(collectedRecipes));
         return "generate-dish";
     }
 }

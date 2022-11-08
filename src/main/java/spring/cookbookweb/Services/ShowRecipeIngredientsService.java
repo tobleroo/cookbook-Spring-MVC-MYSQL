@@ -5,6 +5,10 @@ import java.util.List;
 
 import spring.cookbookweb.Entity.Recipe;
 
+/**
+ * ONLY USED TO DISPLAY INGREDIENT DATA
+ * NEEDED TO SEND TO FOREACH THYMELEAF 
+ */
 public class ShowRecipeIngredientsService {
 
     // only used to append ingredients in foreach to update recipe!!
@@ -21,7 +25,7 @@ public class ShowRecipeIngredientsService {
 
     // send in a recipe obj to extract ignredients to a separate list of this class type. 
     // for sending to frontend
-    public static List<ShowRecipeIngredientsService> extrectIngredients(Recipe recipe){
+    public static List<ShowRecipeIngredientsService> extractIngredients(Recipe recipe){
         List<ShowRecipeIngredientsService> ingredients = new ArrayList<>();
         for(int i = 0; i < recipe.getIngredients().size(); i++){
             ingredients.add(new ShowRecipeIngredientsService(
