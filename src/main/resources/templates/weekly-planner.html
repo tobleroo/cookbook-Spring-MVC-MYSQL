@@ -1,4 +1,3 @@
-
 <html xmlns="http://www.thymeleaf.org">
 <head>
         <title>Weekly planner</title>
@@ -11,21 +10,21 @@
 
     
     <section class="input-box">
-        <form action="#" method="post" id="plannerForm">
-            <!-- section wil be for each recipe, amount, type and such -->
+        <form th:action="@{/generated-planner}" method="get" id="plannerForm">
+            
             <section id="options-box"> 
                 <section id="optionNum">
-                    <!-- type of meal -->
-                    <select name="mealType" id="meal">
+                    
+                    <select th:name="mealType" id="meal">
                         <option value="breakfast">Breakfast</option>
                         <option value="lunch">Lunch</option>
                         <option value="dinner">Dinner</option>
                         <option value="snack">Snack</option>
                     </select>
-                    <!-- portions -->
-                    <input type="number" name="portions" id="mealPortions" placeholder="portions">
-                    <!-- max cooking time -->
-                    <input type="number" name="maxTime" id="maxTimeMeal" placeholder="max cook time">
+                    
+                    <input type="number" th:name="portions" id="mealPortions" placeholder="portions">
+                    
+                    <input type="number" th:name="maxTime" id="maxTimeMeal" placeholder="max cook time">
                 </section>
             </section>
             <div class="add-meals-box">
@@ -33,17 +32,17 @@
                 <button type="submit">Create Plan</button>
             </div>
         </form>
-    </section>
+    </section> 
 
-    <!-- show results box -->
+    
     <section class="show-plan-box">
         
     </section>
-    <!-- show groceries shopping list -->
+    
     <section class="show-grocies-box">
 
     </section>
-        
+
     <div th:replace="fragments/footer :: footer-basic"></div>
     
     <script type="text/javascript" th:src="@{/js/weeklyPlanner.js}"></script>

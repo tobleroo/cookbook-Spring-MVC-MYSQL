@@ -43,14 +43,14 @@ public class RecipeController {
         return "list-recipies";
     }
 
-    // @GetMapping("/addrecipepage")
-    // public String addRecipeForm(Model model){
-    //     model.addAttribute("recipe", new Recipe());
-    //     return "add-recipe";
-    // }
+    @GetMapping("/addrecipepage")
+    public String addRecipeForm(Model model){
+        model.addAttribute("recipe", new Recipe());
+        return "add-recipe";
+    }
 
     @PostMapping("/saverecipedemo")
-    public String getDataForm(@RequestParam("ingrName") String[] ingrNames,  // required false changed to NAME name in input html
+    public String getDataForm(@RequestParam("ingrName") String[] ingrNames,
         @RequestParam("ingrAmount") float[]ingrAmounts,
         @RequestParam("ingrWeight") String[] ingrWeights,
         @RequestParam("recipeName") String recipeName,
