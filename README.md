@@ -8,7 +8,7 @@ todo list!!
    - generera baserat på typ av måltid eller tillagningstid
 
 4. lägg till veckoplanerare
-   - ska kunna välja antal middagar och portioner
+   - ska kunna välja antal maträtter och portioner
    - räkna ut korrekt mängd av alla ingredienser
    - visa i veckoplan
    - auto skapa en inköpslista

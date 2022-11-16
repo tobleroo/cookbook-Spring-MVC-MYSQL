@@ -34,12 +34,40 @@
         </form>
     </section> 
 
-    
-    <section class="show-plan-box">
+    <section class="weekly-planner">
+
+        <section class="show-plan-box">
+            <div th:each="recipe: ${recipes}" class="each-recipe-box">
+                <div class="name-box">
+                    <h2 th:text="${recipe.recipeName}" class="recipe-name"></h2>
+                </div>
+                <div class="recipe-details-box">
+                    <p>Cooking time:<span th:text="${recipe.cookTime}"></span> minutes</p>
+                    <p>Difficulty level:<span th:text="${recipe.difficulty}"></span></p>
+                    <p>Portions:<span th:text="${recipe.portions}"></span></p>
+                </div>
+            </div>
+        </section>
         
-    </section>
-    
-    <section class="show-grocies-box">
+        <!-- WORKING -->
+        <section class="show-grocies-box">
+            <div th:each="recipe: ${recipes}" class="each-recipe-grocerie">
+                <div class="recipe-groceries-name">
+                    <h2 th:text="${recipe.recipeName}"></h2>
+                </div>
+                <div class="groceries-box">
+                    <div th:each="ingredient: ${recipe.ingredients}" class="recipe-groceries-names display-item">
+                        <p th:text="${ingredient.ingredientName}"></p>
+                    </div>
+                    <div th:each="amount: ${recipe.amount}" class="recipe-groceries-amounts display-item">
+                        <p th:text="${amount.amount}"></p>
+                    </div>
+                    <div th:each="weight: ${recipe.weight}" class="recipe-grocerie-weights display-item">
+                        <p th:text="${weight.weightType}"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     </section>
 

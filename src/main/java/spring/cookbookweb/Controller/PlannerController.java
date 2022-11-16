@@ -28,7 +28,6 @@ public class PlannerController {
         
         List<Recipe> weeklyPlan = PlannerService.calculateIngredientMeasures(PlannerService.getFromDB(mealType, maxCookTime), portions);
         
-        
         model.addAttribute("recipes", weeklyPlan);
         return "weekly-planner";
     }

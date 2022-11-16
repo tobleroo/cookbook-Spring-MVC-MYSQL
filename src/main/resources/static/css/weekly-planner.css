@@ -6,7 +6,63 @@
     padding: 1rem;
 }
 
-/* show pweekply plan box details*/
+/* show weekly plan box details*/
 
+.weekly-planner{
+    border: solid violet 3px;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.show-plan-box{
+    margin-top: 1rem;
+    display: flex;
+    flex-flow: column wrap;
+    border: solid yellow 3px;
+    max-width: 50%;
+}
+
+.each-recipe-box{
+    border: solid red 2px;
+    display: flex;
+    flex-flow: column wrap;
+    margin: 1rem;
+}
+
+.name-box{
+    padding: 2rem;
+    color: beige;
+}
+
+.recipe-details-box{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.recipe-details-box p,span{
+    padding: .3rem;
+    color: beige;
+}
 
 /* show grocies box details*/
+
+.each-recipe-grocerie{
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.groceries-box{
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.groceries-box p{
+    padding: .5rem;
+    color: beige;
+}
+
+.display-item{
+    display: flex;
+    flex-flow: row nowrap;
+}
