@@ -7,7 +7,7 @@ todo list!!
 3. --- DONE --- förbättra generatorn.
    - generera baserat på typ av måltid eller tillagningstid
 
-4. lägg till veckoplanerare
+4. --- DONE --- lägg till veckoplanerare
    - ska kunna välja antal maträtter och portioner
    - räkna ut korrekt mängd av alla ingredienser
    - visa i veckoplan
