@@ -1,0 +1,27 @@
+<html xmlns="http://www.thymeleaf.org">
+<head>
+        <title>login</title>
+        <link th:href="@{/css/fragments.css}" rel="stylesheet" />
+        <link th:href="@{/css/user-login.css}" rel="stylesheet" />
+</head>
+<body>
+
+    <div th:replace="fragments/nav :: navbar"></div>
+
+    <section>
+        <form action="post" th:action="@{/userLogin}">
+            <div class="username-box">
+                <label for="username">Username:</label>
+                <input type="text" name="username" th:name="userName">
+            </div>
+            <div class="password-box">
+                <label for="userpassword">password:</label>
+                <input type="password" name="userpassword" th:name="userPassword">
+            </div>
+        </form>
+    </section>
+
+    <div th:replace="fragments/footer :: footer-basic"></div>
+    
+    <!-- <script type="text/javascript" th:src="@{/js/weeklyPlanner.js}"></script> -->
+</body>

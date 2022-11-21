@@ -1,0 +1,34 @@
+<html xmlns="http://www.thymeleaf.org">
+<head>
+        <title>Sign up</title>
+        <link th:href="@{/css/fragments.css}" rel="stylesheet" />
+        <link th:href="@{/css/sign-up.css}" rel="stylesheet" />
+</head>
+<body>
+
+    <div th:replace="fragments/nav :: navbar"></div>
+
+    <section class="create-acc-box">
+        <form action="post" th:action="@{/createAccount}">
+            <div class="email-box">
+                <label for="input-email">Email:</label>
+                <input type="email" name="input-email" th:name="userEmail">
+            </div>
+            <div class="name-box">
+                <label for="real-name">Name</label>
+                <input type="text" name="real-name">
+                <label for="nick-name">Nickname:*</label>
+                <input type="text" th:name="nickName" name="nick-name">
+            </div>
+            <div class="password-box">
+                <label for="user-password">Password:</label>
+                <input type="password" name="user-password" th:name="userPassword">
+            </div>
+        </form>
+    </section>
+
+
+    <div th:replace="fragments/footer :: footer-basic"></div>
+    
+    <!-- <script type="text/javascript" th:src="@{/js/weeklyPlanner.js}"></script> -->
+</body>

@@ -14,11 +14,17 @@ todo list!!
    - auto skapa en inköpslista
 
 5. skapa konton
-   - kunna skapa individuella konton
-   - spara recept individuellt
-   - 
+   - front end reg & login
+   - user entity + repo
+   - user service
+   - oauth 
+   - anpassa sidorna för okänd/inloggad
 
 6. designa hemsidan
+   - skapa en index sida
+   - skapa en konto-detalj sida
+   - fixa color-patterns och layouts
+   - rediesigna knappar & dylikt
 
 7. deploya server
 
