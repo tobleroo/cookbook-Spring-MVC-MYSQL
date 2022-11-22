@@ -1,10 +1,12 @@
 package spring.cookbookweb.Controller;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+
 
 import spring.cookbookweb.Entity.User;
 import spring.cookbookweb.Services.UserService;
@@ -34,17 +36,24 @@ public class UserController {
 
     // creatation stuff
 
-    @GetMapping("/new-account-page")
-    public String createAccountPage(){
+    @GetMapping("/new-account")
+    public String createAccountPage(Model model){
+        model.addAttribute("user", new User());
         return "sign-up";
     }
 
-    @PostMapping("/saveNewUser")
-    public String saveNewUSer(@RequestBody User user) {
+    @PostMapping("/new-account")
+    public String saveNewUSer(@ModelAttribute User user, Model model) {
         
-        userService.saveNewAccount(user);
+        if(!(userService.checkIfEmailAlreadyInUse(user))){
+
+            userService.saveNewAccount(userService.encryptUserPassword(user));
+            model.addAttribute("sugnUpSuccess", true);
+        }else{
+            model.addAttribute("signUpError", true);
+        }
         
-        return "user-login";
+        return "sign-up";
     }
     
 }

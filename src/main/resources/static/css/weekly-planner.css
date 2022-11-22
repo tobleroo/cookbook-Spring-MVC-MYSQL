@@ -47,14 +47,24 @@
 
 /* show grocies box details*/
 
+.show-grocies-box{
+    border: solid green 2px;
+    max-width: 50%;
+}
+
 .each-recipe-grocerie{
     display: flex;
     flex-flow: column nowrap;
 }
 
+.recipe-groceries-name h2{
+    color: beige;
+}
+
 .groceries-box{
     display: flex;
     flex-flow: row wrap;
+    border-bottom: solid white 1px;
 }
 
 .groceries-box p{
@@ -64,5 +74,6 @@
 
 .display-item{
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
+    
 }

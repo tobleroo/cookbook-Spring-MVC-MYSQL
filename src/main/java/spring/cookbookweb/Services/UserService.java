@@ -15,7 +15,22 @@ public class UserService {
     }
 
     public void saveNewAccount(User newUser){
+        
         userRepo.save(newUser);
+    }
+
+    public boolean checkIfEmailAlreadyInUse(User user){
+
+        return userRepo.existsByEmail(user.getEmail());
+    }
+
+    public User encryptUserPassword(User user){
+
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String cryptedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(cryptedPassword);
+
+        return user;
     }
 
 }

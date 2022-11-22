@@ -56,14 +56,14 @@
                     <h2 th:text="${recipe.recipeName}"></h2>
                 </div>
                 <div class="groceries-box">
-                    <div th:each="ingredient: ${recipe.ingredients}" class="recipe-groceries-names display-item">
-                        <p th:text="${ingredient.ingredientName}"></p>
+                    <div class="recipe-groceries-names display-item">
+                        <p th:each="ingredient: ${recipe.ingredients}" th:text="${ingredient.ingredientName}"></p>
                     </div>
-                    <div th:each="amount: ${recipe.amount}" class="recipe-groceries-amounts display-item">
-                        <p th:text="${amount.amount}"></p>
+                    <div class="recipe-groceries-amounts display-item">
+                        <p th:each="amount: ${recipe.amount}" th:text="${amount.amount}"></p>
                     </div>
-                    <div th:each="weight: ${recipe.weight}" class="recipe-grocerie-weights display-item">
-                        <p th:text="${weight.weightType}"></p>
+                    <div class="recipe-grocerie-weights display-item">
+                        <p th:each="weight: ${recipe.weight}" th:text="${weight.weightType}"></p>
                     </div>
                 </div>
             </div>

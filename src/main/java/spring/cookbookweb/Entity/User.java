@@ -23,7 +23,9 @@ public class User {
     private LocalDate registrationDate;
 
     
-    public User() {}
+    public User() {
+        this.registrationDate = LocalDate.now();
+    }
 
     public User(String name, String password, String email) {
         this.name = name;

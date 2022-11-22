@@ -9,22 +9,29 @@
     <div th:replace="fragments/nav :: navbar"></div>
 
     <section class="create-acc-box">
-        <form action="post" th:action="@{/createAccount}">
-            <div class="email-box">
-                <label for="input-email">Email:</label>
-                <input type="email" name="input-email" th:name="userEmail">
-            </div>
+        <form action="#" th:action="@{/new-account}" th:object="${user}" method="post">
             <div class="name-box">
                 <label for="real-name">Name</label>
-                <input type="text" name="real-name">
+                <input type="text" th:field="*{name}">
                 <label for="nick-name">Nickname:*</label>
-                <input type="text" th:name="nickName" name="nick-name">
+                <input type="text" th:field="*{nickName}">
             </div>
             <div class="password-box">
                 <label for="user-password">Password:</label>
-                <input type="password" name="user-password" th:name="userPassword">
+                <input type="password" th:field="*{password}">
+            </div>
+            <div class="email-box">
+                <label for="input-email">Email:</label>
+                <input type="email" th:field="*{email}">
+            </div>
+            <div class="submit-btn-box">
+                <button type="submit">sign up!</button>
             </div>
         </form>
+        <div class="message-box">
+            <p th:if="${signUpError}" class="signup-error">Email already exists!</p>
+            <p th:if="${signUpSuccess}" class="signup-success">Account has been created!</p>
+        </div>
     </section>
 
 

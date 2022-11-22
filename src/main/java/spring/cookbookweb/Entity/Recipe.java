@@ -24,10 +24,10 @@ public class Recipe {
     
     private String recipeName;
     private String description;
-    private int cookTime;
     private String difficulty;
     private String mealType;
     private int portions;
+    private int cookTime;
 
 
     // ManyToMany connection to ingredients DB table
