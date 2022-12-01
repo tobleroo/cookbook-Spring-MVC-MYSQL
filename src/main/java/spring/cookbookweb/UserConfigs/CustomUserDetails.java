@@ -1,6 +1,11 @@
 package spring.cookbookweb.UserConfigs;
 
+import java.util.Collection;
+
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import spring.cookbookweb.Entity.User;
 
 public class CustomUserDetails implements UserDetails{
     
@@ -45,8 +50,8 @@ public class CustomUserDetails implements UserDetails{
         return true;
     }
      
-    public String getFullName() {
-        return user.getFirstName() + " " + user.getLastName();
-    }
+    // public String getFullName() {
+    //     return user.getFirstName() + " " + user.getLastName();
+    // }
 
 }

@@ -1,5 +1,6 @@
 package spring.cookbookweb.Services;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import spring.cookbookweb.Entity.User;
