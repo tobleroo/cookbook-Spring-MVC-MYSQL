@@ -1,8 +1,11 @@
 package spring.cookbookweb.UserAndConfig;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,22 +17,30 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class WebSecurityConfig{
 
+    @Autowired
+    private UserDetailsService userDetailsService;
+
     @Bean
-    public UserDetailsService userDetailsService(){
-        return new CustomUserDetailsService(null);
+    AuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider provider
+                 = new DaoAuthenticationProvider();
+        provider.setUserDetailsService(userDetailsService);
+        provider.setPasswordEncoder(new BCryptPasswordEncoder());
+        return  provider;
     }
 
     @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+    public SecurityFilterChain configure(HttpSecurity http) throws Exception{
 
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-     
         return http
-            
+            .csrf(csrf -> csrf.disable())
+            .authorizeRequests(auth -> {
+                auth.antMatchers("/").permitAll();
+                auth.antMatchers("/user").hasRole("USER");
+            })
+            .httpBasic()
             .build();
+            
     }
     
 }
