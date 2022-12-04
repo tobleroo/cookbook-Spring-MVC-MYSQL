@@ -1,0 +1,24 @@
+
+
+<html xmlns="http://www.thymeleaf.org">
+
+    <head>
+        <title>register</title>
+        <link th:href="@{/css/fragments.css}" rel="stylesheet" />
+    </head>
+    <body>
+
+        <div th:replace="fragments/nav :: navbar"></div>
+        
+        <div class="form-register-box">
+            <form th:action="@{process-register}" method="post" th:object="${user}">
+                <input type="text" th:field="*{userName}" id="username" placeholder="username">
+                <input type="password" th:field="*{password}" placeholder="password">
+                <button type="submit">register!</button>
+            </form>
+        </div>
+
+        <div th:replace="fragments/footer :: footer-basic"></div>
+        
+    </body>
+</html>
