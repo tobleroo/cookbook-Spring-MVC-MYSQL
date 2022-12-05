@@ -16,10 +16,16 @@ public class UserController {
         this.userRepo = userRepo;
     }
 
-    @GetMapping("/registration")
+    @GetMapping("/register")
     public String getRegister(Model model){
         model.addAttribute("user", new MyUser());
         return "registerPage";
+    }
+
+    @GetMapping("/login")
+    public String getLogin(Model model){
+        model.addAttribute("user", new MyUser());
+        return "user-login";
     }
 
     @PostMapping("/process-register")
