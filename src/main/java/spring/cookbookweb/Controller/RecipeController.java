@@ -2,6 +2,7 @@
 
 import java.util.List;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,6 +37,7 @@ public class RecipeController {
         this.myRecipeService = new AddRecipeService(this.ingrRepo, this.recipeRepo, this.amountRepo, this.weightRepo);
     }
 
+    @PreAuthorize("hasAuthority('USER')")
     @GetMapping("/recipies")
     public String showRecipies(Model model){
         
