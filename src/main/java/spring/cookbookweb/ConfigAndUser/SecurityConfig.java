@@ -16,20 +16,16 @@ public class SecurityConfig {
 
     private final CustomUserDetailsService userDetailsService;
 
-    
-    
     public SecurityConfig(CustomUserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
     }
-
-
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         return http
                 .csrf().disable()
                 .authorizeRequests(auth -> auth
-                    .mvcMatchers("/resources/**").permitAll()
+                    .mvcMatchers("/css/**", "/scripts/**").permitAll()
                     .mvcMatchers("/register", "/save-new-user").permitAll()
                     .anyRequest().authenticated())
                 .userDetailsService(userDetailsService)
@@ -37,6 +33,7 @@ public class SecurityConfig {
                 .formLogin()
                     .loginPage("/login")
                     .permitAll()
+                    .defaultSuccessUrl("/recipies", true)
                 .and()
                 .logout().permitAll()
                 .and()
