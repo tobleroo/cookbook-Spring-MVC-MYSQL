@@ -8,8 +8,10 @@
 
     <div th:replace="fragments/nav :: navbar"></div>
 
+    <p>login page</p>
+
     <section>
-        <form action="post" th:action="@{/userLogin}">
+        <form method="post" th:action="@{/login}">
             <div class="username-box">
                 <label for="username">Username:</label>
                 <input type="text" name="username" th:name="userName">
@@ -17,6 +19,9 @@
             <div class="password-box">
                 <label for="userpassword">password:</label>
                 <input type="password" name="password" th:name="userPassword">
+            </div>
+            <div class="submit-box">
+                <button type="submit">log in!</button>
             </div>
         </form>
     </section>

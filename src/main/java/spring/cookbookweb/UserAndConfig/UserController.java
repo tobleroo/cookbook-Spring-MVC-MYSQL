@@ -34,6 +34,7 @@ public class UserController {
         String cryptedPass = passwordEncoder.encode(user.getPassword());
 
         user.setPassword(cryptedPass);
+        user.setRole("USER");
         userRepo.save(user);
         System.out.println("worked all the way here!");
         return"user-login";
