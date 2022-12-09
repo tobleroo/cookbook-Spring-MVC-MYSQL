@@ -18,6 +18,10 @@
             </form>
         </div>
 
+        <div sec:authentication="principal.username"></div>
+        <div sec:authorize="isAuthenticated()">is auth</div>
+        <div sec:authorize="hasAuthority('USER')">Text visible to user.</div>
+
         <div th:replace="fragments/footer :: footer-basic"></div>
         
     </body>
