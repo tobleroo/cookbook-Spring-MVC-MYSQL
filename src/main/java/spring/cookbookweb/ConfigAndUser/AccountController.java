@@ -8,8 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.fasterxml.jackson.annotation.JsonCreator.Mode;
-
 
 @Controller
 public class AccountController {
@@ -32,7 +30,7 @@ public class AccountController {
         PasswordEncoder encoder = new BCryptPasswordEncoder();
         user.setPassword(encoder.encode(user.getPassword()));
         userRepo.save(user);
-        return "weekly-planner";
+        return "user-login";
     }
 
     @GetMapping("/login")
