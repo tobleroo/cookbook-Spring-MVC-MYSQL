@@ -3,12 +3,15 @@
 import java.util.List;
 
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import spring.cookbookweb.ConfigAndUser.SecurityUser;
+import spring.cookbookweb.ConfigAndUser.UserService;
 import spring.cookbookweb.Entity.Recipe;
 import spring.cookbookweb.Repository.IngredientAmountRepository;
 import spring.cookbookweb.Repository.IngredientRepository;
@@ -26,22 +29,26 @@ public class RecipeController {
     private final IngredientAmountRepository amountRepo;
     private final IngredientWeightRepository weightRepo;
     private final AddRecipeService myRecipeService;
+    private final UserService userService;
     
 
     RecipeController(RecipeRepository repository, IngredientRepository ingrRepo,
-    IngredientAmountRepository amountRepo, IngredientWeightRepository weightRepo){
+    IngredientAmountRepository amountRepo, IngredientWeightRepository weightRepo, UserService userService){
         this.recipeRepo = repository;
         this.ingrRepo = ingrRepo;
         this.amountRepo = amountRepo;
         this.weightRepo = weightRepo;
+        this.userService = userService;
         this.myRecipeService = new AddRecipeService(this.ingrRepo, this.recipeRepo, this.amountRepo, this.weightRepo);
     }
 
     @PreAuthorize("hasAuthority('USER')")
     @GetMapping("/recipies")
-    public String showRecipies(Model model){
+    public String showRecipies(Model model, @AuthenticationPrincipal SecurityUser user){
         
-        model.addAttribute("recipes", recipeRepo.findAll());
+        System.out.println(user.getUsername());
+        System.out.println(user.getRecipies());
+        // model.addAttribute("recipes", recipeRepo.findAll());
         return "list-recipies";
     }
 
@@ -61,7 +68,8 @@ public class RecipeController {
         @RequestParam("recipeTime") int cookTime,
         @RequestParam("recipeType") String recipeType,
         @RequestParam("id") long id,
-        @RequestParam("recipePortions") int portions){
+        @RequestParam("recipePortions") int portions,
+        @AuthenticationPrincipal SecurityUser user){
 
         myRecipeService.addIngredientsToDB(ingrNames);
         myRecipeService.addAmountsToDB(ingrAmounts);
@@ -78,6 +86,7 @@ public class RecipeController {
         }
 
         myRecipeService.addRecipeToDBWithIngredients(newRecipe, ingrNames, ingrAmounts, ingrWeights);
+        userService.addRecipeToAccountAndSave(user, newRecipe);
 
         return "redirect:/recipies";
     }

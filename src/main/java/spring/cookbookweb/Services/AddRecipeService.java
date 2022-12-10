@@ -44,9 +44,9 @@ public class AddRecipeService {
         for(Ingredient newIngr : newIngredients){
             if(ingrRepo.findByIngredientName(newIngr.getIngredientName()) == null){
                 ingrRepo.save(newIngr);
-                System.out.println("ingredient object saved to DB");
+                // System.out.println("ingredient object saved to DB");
             }else{
-                System.out.println("obj does exist already");
+                // System.out.println("obj does exist already");
             }
         }
     }
@@ -63,9 +63,9 @@ public class AddRecipeService {
         for(IngredientAmount newIngrAmount : newAmounts){
             if(amountRepo.findByAmount(newIngrAmount.getAmount()) == null){
                 amountRepo.save(newIngrAmount);
-                System.out.println("ingredient amount object saved to DB");
+                // System.out.println("ingredient amount object saved to DB");
             }else{
-                System.out.println("amount does exist already in DB");
+                // System.out.println("amount does exist already in DB");
             }
         }
     }
@@ -82,9 +82,9 @@ public class AddRecipeService {
         for(IngredientWeightType newIngrWeight : newAmounts){
             if(weightRepo.findByWeightType(newIngrWeight.getWeightType())== null){
                 weightRepo.save(newIngrWeight);
-                System.out.println("ingredient weight object saved to DB");
+                // System.out.println("ingredient weight object saved to DB");
             }else{
-                System.out.println("amount does exist already in DB");
+                // System.out.println("amount does exist already in DB");
             }
         }
     }

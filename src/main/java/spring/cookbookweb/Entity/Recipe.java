@@ -6,13 +6,17 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import spring.cookbookweb.ConfigAndUser.User;
 
 @Entity
 @Table(name = "recipes")
@@ -29,6 +33,9 @@ public class Recipe {
     private int portions;
     private int cookTime;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     // ManyToMany connection to ingredients DB table
     @ManyToMany(cascade = CascadeType.ALL)
@@ -58,6 +65,8 @@ public class Recipe {
         this.mealType = mealType;
         this.portions = portions;
     }
+
+    
 
 
     public int getPortions() {
@@ -227,6 +236,16 @@ public class Recipe {
         return "Recipe [recipeId=" + recipeId + ", recipeName=" + recipeName + ", description=" + description
                 + ", cookTime=" + cookTime + ", difficulty=" + difficulty + ", mealType=" + mealType + ", portions="
                 + portions + ", ingredients=" + ingredients + ", amount=" + amount + ", weight=" + weight + "]";
+    }
+
+
+    public User getUser() {
+        return user;
+    }
+
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     
