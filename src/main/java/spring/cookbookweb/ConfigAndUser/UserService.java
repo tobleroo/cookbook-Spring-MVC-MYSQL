@@ -15,12 +15,10 @@ public class UserService {
     RecipeRepository recipeRepo;
 
     
-
     public UserService(UserRepository userRepo, RecipeRepository recipeRepo) {
         this.userRepo = userRepo;
         this.recipeRepo = recipeRepo;
     }
-
 
 
     //save the recipe to the user account
@@ -30,15 +28,13 @@ public class UserService {
         User userObj = secUser.getUser();
 
         //find all current recipies to this acc
+        List<Recipe> accRecipes = userObj.getAccountRecipies();
 
         // add the new one to the list
-        List<Recipe> accRecipes = new ArrayList<>();
         accRecipes.add(recipeRepo.findByRecipeId(recipe.getId()));
 
         //add list to user
         userObj.setAccountRecipies(accRecipes);
-
-        System.out.println(userObj.getAccountRecipies().size());
 
         // resave the user with updated recipe list
         userRepo.save(userObj);

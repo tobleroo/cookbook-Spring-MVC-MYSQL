@@ -46,8 +46,8 @@ public class RecipeController {
     @GetMapping("/recipies")
     public String showRecipies(Model model, @AuthenticationPrincipal SecurityUser user){
         
-        System.out.println(user.getUsername());
-        System.out.println(user.getRecipies());
+        // System.out.println(user.getUsername());
+        System.out.println(user.getRecipies().get(0).getIngredients().get(0).getIngredientName());
         // model.addAttribute("recipes", recipeRepo.findAll());
         return "list-recipies";
     }
