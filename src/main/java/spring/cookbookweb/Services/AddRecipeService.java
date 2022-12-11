@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import spring.cookbookweb.ConfigAndUser.SecurityUser;
 import spring.cookbookweb.Entity.Ingredient;
 import spring.cookbookweb.Entity.IngredientAmount;
 import spring.cookbookweb.Entity.IngredientWeightType;
@@ -90,7 +91,7 @@ public class AddRecipeService {
     }
 
     // final method to save it all to a recipe to db
-    public void addRecipeToDBWithIngredients(Recipe myRecipe, String[] ingredients, float[] ingrAmounts, String[] weightType){
+    public void addRecipeToDBWithIngredients(Recipe myRecipe, String[] ingredients, float[] ingrAmounts, String[] weightType, SecurityUser user){
         
         List<Ingredient> ingredientsName = new ArrayList<>();
         List<IngredientAmount> ingredientsAmounts = new ArrayList<>();
@@ -105,6 +106,7 @@ public class AddRecipeService {
         myRecipe.setIngredients(ingredientsName);
         myRecipe.setWeight(ingredientWeights);
         myRecipe.setAmount(ingredientsAmounts);
+        myRecipe.setUser(user.getUser());
         recRepo.save(myRecipe);
         
     }

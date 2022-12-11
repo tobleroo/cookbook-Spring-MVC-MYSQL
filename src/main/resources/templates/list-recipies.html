@@ -11,7 +11,10 @@
 
     <section th:replace="fragments/search-bar :: searchbar-basic"></section>
 
-    <div class="view-box">
+    <div class="demo">
+        <h1>hello there</h1>
+    </div>
+    <!-- <div class="view-box">
         <div th:each="recipes: ${recipes}" class="recipe-box">
             <div class="recipe-title">
                 <h2 th:text="${recipes.recipeName}" th:id="${#ids.seq('recipeNameID')}"></h2>
@@ -39,7 +42,7 @@
             <div th:id="${#ids.seq('ingredientWeightID')}" style="display: none;">
                 <span th:each="weightType :${recipes.weight}" th:text="${weightType.weightType}"></span>
             </div>
-            <!-- <button type="button" onclick="turnIngredientsToLists('ingredient-names')">demo click</button> -->
+             <button type="button" onclick="turnIngredientsToLists('ingredient-names')">demo click</button> 
         </div>
     </div>
 
@@ -65,7 +68,7 @@
             <div class="ingredients-box-big" id="ingredientsBigBox">
             </div> 
         </div>
-    </div>
+    </div> -->
 
     <div th:replace="fragments/footer :: footer-basic"></div>
     

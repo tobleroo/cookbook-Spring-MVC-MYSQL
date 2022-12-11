@@ -85,7 +85,7 @@ public class RecipeController {
             newRecipe.setId(id);
         }
 
-        myRecipeService.addRecipeToDBWithIngredients(newRecipe, ingrNames, ingrAmounts, ingrWeights);
+        myRecipeService.addRecipeToDBWithIngredients(newRecipe, ingrNames, ingrAmounts, ingrWeights, user);
         userService.addRecipeToAccountAndSave(user, newRecipe);
 
         return "redirect:/recipies";
