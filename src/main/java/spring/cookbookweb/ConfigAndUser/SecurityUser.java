@@ -2,13 +2,10 @@ package spring.cookbookweb.ConfigAndUser;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
-import spring.cookbookweb.Entity.Recipe;
 
 public class SecurityUser implements UserDetails{
 
@@ -28,16 +25,12 @@ public class SecurityUser implements UserDetails{
         return user.getUsername();
     }
 
-    public List<Recipe> getRecipies(){
-        return user.getAccountRecipies();
-    }
-
-    public void setRecipies(List<Recipe> recipies){
-        user.setAccountRecipies(recipies);
-    }
-
     public User getUser(){
         return this.user;
+    }
+
+    public Long getUserId(){
+        return user.getId();
     }
     
     @Override

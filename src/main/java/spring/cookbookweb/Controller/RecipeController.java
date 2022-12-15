@@ -46,8 +46,9 @@ public class RecipeController {
     @GetMapping("/recipies")
     public String showRecipies(Model model, @AuthenticationPrincipal SecurityUser user){
         
-        // System.out.println(user.getUsername());
-        System.out.println(user.getRecipies().get(0).getIngredients().get(0).getIngredientName());
+        // List<Recipe> demo = recipeRepo.findByUserAccountId(user.getUserId());
+        // System.out.println(demo.get(0).getIngredients().get(0).getIngredientName());
+        
         // model.addAttribute("recipes", recipeRepo.findAll());
         return "list-recipies";
     }
@@ -86,7 +87,7 @@ public class RecipeController {
         }
 
         myRecipeService.addRecipeToDBWithIngredients(newRecipe, ingrNames, ingrAmounts, ingrWeights, user);
-        userService.addRecipeToAccountAndSave(user, newRecipe);
+        
 
         return "redirect:/recipies";
     }

@@ -106,7 +106,7 @@ public class AddRecipeService {
         myRecipe.setIngredients(ingredientsName);
         myRecipe.setWeight(ingredientWeights);
         myRecipe.setAmount(ingredientsAmounts);
-        myRecipe.setUser(user.getUser());
+        myRecipe.setUserAccountId(user.getUserId());
         recRepo.save(myRecipe);
         
     }

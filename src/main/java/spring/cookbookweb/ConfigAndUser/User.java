@@ -1,17 +1,10 @@
 package spring.cookbookweb.ConfigAndUser;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import spring.cookbookweb.Entity.Recipe;
 
 @Entity
 @Table(name = "users")
@@ -24,9 +17,6 @@ public class User {
     private String username;
     private String password;
     private String role;
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Recipe> accountRecipies = new ArrayList<>();
 
     public User() {
     }
@@ -66,12 +56,7 @@ public class User {
     public void setUserId(Long userId) {
         this.userId = userId;
     }
-    public List<Recipe> getAccountRecipies() {
-        return accountRecipies;
-    }
-    public void setAccountRecipies(List<Recipe> accountRecipies) {
-        this.accountRecipies = accountRecipies;
-    }
+
     @Override
     public String toString() {
         return "User [id=" + userId + ", username=" + username + ", password=" + password + ", role=" + role + "]";
@@ -79,3 +64,18 @@ public class User {
 
     
 }
+
+/* 
+ * 
+ * @NamedEntityGraph(name = "graph.UserRecipies" ,attributeNodes = @NamedAttributeNode(value = "recipies"))
+@NamedEntityGraph(
+    name = "graph.UserRecipiesIngredientsAmountsWeights",
+    attributeNodes = @NamedAttributeNode(value = "recipies", subgraph = "subgraph.recipe"),
+    subgraphs = { 
+        @NamedSubgraph(name = "subgraph.recipe", 
+                attributeNodes = @NamedAttributeNode(value = "ingredients")),
+        @NamedSubgraph(name = "subgraph.recipe", 
+                attributeNodes = @NamedAttributeNode(value = "amount")),
+        @NamedSubgraph(name = "subgraph.recipe",
+                attributeNodes = @NamedAttributeNode(value = "weight")) })
+ */

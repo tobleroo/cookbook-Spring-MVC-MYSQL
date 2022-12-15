@@ -1,23 +1,17 @@
 package spring.cookbookweb.Entity;
 
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import spring.cookbookweb.ConfigAndUser.User;
 
 @Entity
 @Table(name = "recipes")
@@ -34,9 +28,7 @@ public class Recipe {
     private int portions;
     private int cookTime;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    private Long userAccountId;
 
     // ManyToMany connection to ingredients DB table
     @ManyToMany(cascade = CascadeType.ALL)
@@ -160,6 +152,16 @@ public class Recipe {
     }
 
 
+    public Long getUserAccountId() {
+        return userAccountId;
+    }
+
+
+    public void setUserAccountId(Long userAccountId) {
+        this.userAccountId = userAccountId;
+    }
+
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -239,15 +241,6 @@ public class Recipe {
                 + portions + ", ingredients=" + ingredients + ", amount=" + amount + ", weight=" + weight + "]";
     }
 
-
-    public User getUser() {
-        return user;
-    }
-
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     
 
