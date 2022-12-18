@@ -1,0 +1,50 @@
+.homepage-logo-box{
+    color: beige;
+    background-color: black;
+    text-align: center;
+    font-size: xx-large;
+    padding: 2rem 0;
+}
+
+/* main box */
+.content-box{
+    max-width: 100rem;
+    color: wheat;
+    margin: 3rem auto;
+    border: solid yellow 2px;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+
+
+/* news box (left side) */
+.dev-news-box{
+    border: solid green 2px;
+    margin: .5rem;
+    flex: 2;
+}
+
+/* all features */
+.features-box{
+    border: solid red 2px;
+    margin: .5rem;
+    flex: 5;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.feature-box{
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.options-one-box{
+    border: solid 2px purple;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.options-two-box{
+    border: solid 2px hotpink;
+}

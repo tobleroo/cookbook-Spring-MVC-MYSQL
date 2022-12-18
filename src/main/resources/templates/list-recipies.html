@@ -14,8 +14,8 @@
     <div class="demo">
         <h1>hello there</h1>
     </div>
-    <!-- <div class="view-box">
-        <div th:each="recipes: ${recipes}" class="recipe-box">
+    <div class="view-box">
+        <div th:each="recipes: ${userDTO.recipies}" class="recipe-box">
             <div class="recipe-title">
                 <h2 th:text="${recipes.recipeName}" th:id="${#ids.seq('recipeNameID')}"></h2>
             </div>
@@ -68,7 +68,7 @@
             <div class="ingredients-box-big" id="ingredientsBigBox">
             </div> 
         </div>
-    </div> -->
+    </div>
 
     <div th:replace="fragments/footer :: footer-basic"></div>
     

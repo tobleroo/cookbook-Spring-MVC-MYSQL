@@ -14,28 +14,39 @@ body{
 
 /* navbar styles */
 
-nav a{
-    text-decoration: none;
-    color: white;
-    padding: 1rem 1.5rem;
-    border: solid rgb(143, 240, 253) 2px;
-    border-radius: 20px;
-    margin: 0 .5rem;
-}
-
-/* view-recipies styling */
-
 nav{
     display: flex;
     flex-flow: row nowrap;
     width: 100%;
-    justify-content: center;
     background-color: rgb(29, 18, 123);
-    padding: 1rem 0;
+    justify-content: space-between;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+nav a{
+    text-decoration: none;
+    color: white;
+    font-size:x-large;
+    padding: 1rem;
 }
 
 nav a:hover{
     background-color: rgba(25, 110, 213, 0.601);
+    border-right: solid rgb(143, 240, 253) 2px;
+    border-left: solid rgb(143, 240, 253) 2px;
+}
+
+.options-box{
+
+}
+
+.options-box a{
+    margin: 0;
+}
+
+.logged-in-box, .not-logged-in-box{
+
 }
 
 /* footer styles */

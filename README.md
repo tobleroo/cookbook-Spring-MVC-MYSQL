@@ -13,21 +13,29 @@ todo list!!
    - visa i veckoplan
    - auto skapa en inköpslista
 
-5. skapa konton
+5. --- DONE --- skapa konton
    - front end reg & login
    - user entity + repo
-   - user service
-   - oauth 
+   - user service 
    - anpassa sidorna för okänd/inloggad
 
 6. designa hemsidan
+   - -X- navbar login/logout 
+   - -X- designa navbar 
    - skapa en index sida
-   - skapa en konto-detalj sida
+   - lägg om layout på alla sidor
    - fixa color-patterns och layouts
    - rediesigna knappar & dylikt
 
-7. deploya server
+7. algo fixes
+   - rätta till amounts i veckoplaneraren
 
-8. web scraping
-   - kolla om det är lagligt
-   - kunna ta recept från andra hemsidor.
+8. UNIT TESTING
+   - unit tester för mina services
+   - unit tester för DB connections
+
+9. ERROR CATCHING
+   - skapa en error sida. 
+   - try catcha där det behövs (?)
+
+

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home page</title>
+    <link th:href="@{/css/fragments.css}" rel="stylesheet" />
+    <link th:href="@{/css/homepage.css}" rel="stylesheet" />
+</head>
+<body>
+    
+    <section class="homepage-logo-box">
+        <h1>Welcome to {website name}</h1>
+    </section>
+
+    <section class="content-box">
+        <div class="dev-news-box">
+            <div class="dev-news">
+                <h3>dev news 1</h3>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores facilis esse, repudiandae aut, perferendis harum ut sunt distinctio vero sint provident cumque vel id pariatur beatae tenetur ex quasi laudantium!
+                </p>
+            </div>
+            <div class="dev-news">
+                <h3>dev news 1</h3>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores facilis esse, repudiandae aut, perferendis harum ut sunt distinctio vero sint provident cumque vel id pariatur beatae tenetur ex quasi laudantium!
+                </p>
+            </div>
+        </div>
+        <div class="features-box">
+            <div class="options-one-box feature-box">
+                <div class="feature-add feature">
+                    <h3>Add a recipe!</h3>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias, ipsa.</p>
+                </div>
+                <div class="feature-view feature">
+                    <h3>View Cookbook</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, veritatis?</p>
+                </div>
+                <div class="search-cookbook feature">
+                    <h3>Search!</h3>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime, dolores!</p>
+                </div>
+            </div>
+            <div class="options-two-box feature-box">
+                <div class="feature-add feature">
+                    <h3>Add a recipe!</h3>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias, ipsa.</p>
+                </div>
+                <div class="feature-view feature">
+                    <h3>View Cookbook</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, veritatis?</p>
+                </div>
+                <div class="search-cookbook feature">
+                    <h3>Search!</h3>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime, dolores!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+
+
+
+
+
+
+    <div th:replace="fragments/footer :: footer-basic"></div>
+
+</body>

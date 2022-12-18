@@ -13,11 +13,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import spring.cookbookweb.ConfigAndUser.SecurityUser;
 import spring.cookbookweb.ConfigAndUser.UserService;
 import spring.cookbookweb.Entity.Recipe;
+import spring.cookbookweb.Entity.UserDTO;
 import spring.cookbookweb.Repository.IngredientAmountRepository;
 import spring.cookbookweb.Repository.IngredientRepository;
 import spring.cookbookweb.Repository.IngredientWeightRepository;
 import spring.cookbookweb.Repository.RecipeRepository;
 import spring.cookbookweb.Services.AddRecipeService;
+import spring.cookbookweb.Services.GetUserDTO;
 import spring.cookbookweb.Services.ShowRecipeIngredientsService;
 
 
@@ -46,10 +48,10 @@ public class RecipeController {
     @GetMapping("/recipies")
     public String showRecipies(Model model, @AuthenticationPrincipal SecurityUser user){
         
-        // List<Recipe> demo = recipeRepo.findByUserAccountId(user.getUserId());
         // System.out.println(demo.get(0).getIngredients().get(0).getIngredientName());
+        UserDTO userDTO = new GetUserDTO(recipeRepo).getUser(user);
         
-        // model.addAttribute("recipes", recipeRepo.findAll());
+        model.addAttribute("userDTO", userDTO);
         return "list-recipies";
     }
 

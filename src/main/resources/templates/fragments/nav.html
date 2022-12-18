@@ -3,17 +3,21 @@
 <body>
 
     <nav th:fragment="navbar">
-        <div class="logo-homepage">
-            
-        </div>
-        <div sec:authorize="isAuthenticated()">
+
+        <div sec:authorize="isAuthenticated()" class="options-box">
+            <a th:href="@{/}">Home</a>
             <a th:href="@{/addrecipepage}">Add recipe</a>
             <a th:href="@{/recipies}">View cookbook</a>
             <a th:href="@{/generate-dish}">Generator</a>
             <a th:href="@{/meal-planner}">Weekly Planner</a>
         </div>
-        <a th:href="@{/login-page}">Login</a>
-        <a th:href="@{/register}">Sign up!</a>
+        <div class="logged-in-box" sec:authorize="isAuthenticated()">
+            <a th:href="@{/logout}">Logout</a>
+        </div>
+        <div class="not-logged-in-box" sec:authorize="isAnonymous()">
+            <a th:href="@{/login-page}">Login</a>
+            <a th:href="@{/register}">Sign up!</a>
+        </div>
         
     </nav>
 
