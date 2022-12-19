@@ -20,8 +20,10 @@ public class PlannerService {
     public static List<Recipe> getFromDB(String[] mealtypes, String[] maxCookTime){
         List<Recipe> generated = new ArrayList<>();
 
+        Long id = (long) 1;
+
         for(int i = 0; i < mealtypes.length; i++){
-            List<Recipe> temporary = mySearch.searchCookBook(mealtypes[i], maxCookTime[i], "");
+            List<Recipe> temporary = mySearch.searchCookBook(mealtypes[i], maxCookTime[i], "", id);
             generated.add(GeneratorRecipeService.generateOneDish(temporary));
         }
         

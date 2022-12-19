@@ -46,10 +46,11 @@ public class GeneratorController {
     @GetMapping("/generator/filtered")
     public String giveRandomFilteredDish(Model model,
         @RequestParam("mealType") String mealType,
-        @RequestParam("cookTime") String maxCookTime){
+        @RequestParam("cookTime") String maxCookTime,
+        @AuthenticationPrincipal SecurityUser user){
 
         String nameOfRecipe = "";
-        List<Recipe> collectedRecipes = searchService.searchCookBook(mealType, maxCookTime, nameOfRecipe);
+        List<Recipe> collectedRecipes = searchService.searchCookBook(mealType, maxCookTime, nameOfRecipe, user.getUserId());
         
         model.addAttribute("recipe", GeneratorRecipeService.generateOneDish(collectedRecipes));
         return "generate-dish";

@@ -21,6 +21,8 @@ public interface RecipeRepository extends JpaRepository<Recipe, Long>{
     // fresh searches
     //1.
     List<Recipe> findByCookTimeLessThanEqual(int maxTime);
+
+    List<Recipe> findByCookTimeLessThanEqualAndUserAccountId(int maxTime, Long id);
     //2.
     List<Recipe> findByRecipeNameContainingAndCookTimeLessThanEqual(String searchName, int maxTime);
     //3.

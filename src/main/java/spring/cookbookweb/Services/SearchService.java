@@ -28,7 +28,7 @@ public class SearchService {
         this.weightRepo = weightRepo;
     }
 
-    public List<Recipe> searchCookBook(String mealType, String maxCookTime, String nameToSearch){
+    public List<Recipe> searchCookBook(String mealType, String maxCookTime, String nameToSearch, Long id){
 
         //convert input number from string to int
         int cookTime = 100000;
@@ -43,8 +43,9 @@ public class SearchService {
         //3. specific type, no search , time
         //4. specific type, search text, time
 
+
         if(mealType.equals("all") && nameToSearch == ""){
-            searchesRecipies = recRepo.findByCookTimeLessThanEqual(cookTime);
+            searchesRecipies = recRepo.findByCookTimeLessThanEqualAndUserAccountId(cookTime, id);
         }else if(mealType.equals("all") && nameToSearch != ""){
             searchesRecipies = recRepo.findByRecipeNameContainingAndCookTimeLessThanEqual(nameToSearch, cookTime);
         }else if(!(mealType.equals("all")) && nameToSearch == ""){
