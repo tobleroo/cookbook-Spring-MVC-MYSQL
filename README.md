@@ -19,6 +19,10 @@ todo list!!
    - user service 
    - anpassa sidorna för okänd/inloggad
 
+51. 
+   - fixa weekly planner algo
+   - weekly planner add meal JS function
+
 6. designa hemsidan
    - -X- navbar login/logout 
    - -X- designa navbar 

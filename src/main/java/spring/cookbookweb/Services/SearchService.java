@@ -47,11 +47,11 @@ public class SearchService {
         if(mealType.equals("all") && nameToSearch == ""){
             searchesRecipies = recRepo.findByCookTimeLessThanEqualAndUserAccountId(cookTime, id);
         }else if(mealType.equals("all") && nameToSearch != ""){
-            searchesRecipies = recRepo.findByRecipeNameContainingAndCookTimeLessThanEqual(nameToSearch, cookTime);
+            searchesRecipies = recRepo.findByRecipeNameContainingAndCookTimeLessThanEqualAndUserAccountId(nameToSearch, cookTime, id);
         }else if(!(mealType.equals("all")) && nameToSearch == ""){
-            searchesRecipies = recRepo.findByMealTypeAndCookTimeLessThanEqual(mealType, cookTime);
+            searchesRecipies = recRepo.findByMealTypeAndCookTimeLessThanEqualAndUserAccountId(mealType, cookTime, id);
         }else if(!(mealType.equals("all")) && nameToSearch != ""){
-            searchesRecipies = recRepo.findByRecipeNameContainingAndMealTypeAndCookTimeLessThanEqual(nameToSearch, mealType, cookTime);
+            searchesRecipies = recRepo.findByRecipeNameContainingAndMealTypeAndCookTimeLessThanEqualAndUserAccountId(nameToSearch, mealType, cookTime, id);
         }
         
         return searchesRecipies;

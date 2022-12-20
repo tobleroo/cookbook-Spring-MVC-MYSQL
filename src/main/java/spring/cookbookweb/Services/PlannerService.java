@@ -17,11 +17,9 @@ public class PlannerService {
     }
 
     //method to retrieve recipies from DB
-    public static List<Recipe> getFromDB(String[] mealtypes, String[] maxCookTime){
+    public static List<Recipe> getFromDB(String[] mealtypes, String[] maxCookTime, Long id){
         List<Recipe> generated = new ArrayList<>();
-
-        Long id = (long) 1;
-
+        
         for(int i = 0; i < mealtypes.length; i++){
             List<Recipe> temporary = mySearch.searchCookBook(mealtypes[i], maxCookTime[i], "", id);
             generated.add(GeneratorRecipeService.generateOneDish(temporary));
@@ -36,7 +34,7 @@ public class PlannerService {
         for(int a = 0; a < generatedRecipes.size(); a++){
 
             // loop through each recipes all ingredients and change portion values
-            for(int i = 0; i < generatedRecipes.get(a).getIngredients().size(); i++){
+            for(int i = 0; i < generatedRecipes.get(a).getIngredients().size()-1; i++){
                 generatedRecipes.get(a).getAmount().get(i).setAmount(
                 (generatedRecipes.get(a).getAmount().get(i).getAmount() / generatedRecipes.get(a).getPortions()) 
                 * Integer.parseInt(portions[a]) );

@@ -11,9 +11,6 @@
 
     <section th:replace="fragments/search-bar :: searchbar-basic"></section>
 
-    <div class="demo">
-        <h1>hello there</h1>
-    </div>
     <div class="view-box">
         <div th:each="recipes: ${userDTO.recipies}" class="recipe-box">
             <div class="recipe-title">

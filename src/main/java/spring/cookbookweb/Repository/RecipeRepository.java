@@ -19,15 +19,13 @@ public interface RecipeRepository extends JpaRepository<Recipe, Long>{
     List<Recipe> findByUserAccountId(Long id);
     
     // fresh searches
-    //1.
-    List<Recipe> findByCookTimeLessThanEqual(int maxTime);
 
     List<Recipe> findByCookTimeLessThanEqualAndUserAccountId(int maxTime, Long id);
     //2.
-    List<Recipe> findByRecipeNameContainingAndCookTimeLessThanEqual(String searchName, int maxTime);
+    List<Recipe> findByRecipeNameContainingAndCookTimeLessThanEqualAndUserAccountId(String searchName, int maxTime, Long id);
     //3.
-    List<Recipe> findByMealTypeAndCookTimeLessThanEqual(String type, int maxtime);
+    List<Recipe> findByMealTypeAndCookTimeLessThanEqualAndUserAccountId(String type, int maxtime, Long id);
     //4.
-    List<Recipe> findByRecipeNameContainingAndMealTypeAndCookTimeLessThanEqual(String searchName, String mealType, int maxtime);
+    List<Recipe> findByRecipeNameContainingAndMealTypeAndCookTimeLessThanEqualAndUserAccountId(String searchName, String mealType, int maxtime, Long id);
 
 }

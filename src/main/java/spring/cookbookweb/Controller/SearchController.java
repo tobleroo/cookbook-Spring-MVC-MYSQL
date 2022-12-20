@@ -31,7 +31,6 @@ public class SearchController {
         //get the recipes from the searchService and repos
         List<Recipe> chosenRecipies = searchService.searchCookBook(mealType, maxCookTime, nameOfRecipe, user.getUserId());
         UserDTO newUser = new UserDTO(user.getUsername(), user.getUserId(), chosenRecipies);
-        System.out.println(chosenRecipies.size());
         model.addAttribute("userDTO", newUser);
         return "list-recipies";
     }

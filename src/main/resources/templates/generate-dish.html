@@ -8,7 +8,11 @@
 
     <div th:replace="fragments/nav :: navbar"></div>
 
+    <div th:if="${noRecipies != null}">
+        <p th:text="${noRecipies}"></p>
+    </div>
     <div class="generator-box">
+
 
         <!-- <div class="selections-box">
             <form th:action="@{/getrandomdish}" method="get">

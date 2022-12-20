@@ -51,8 +51,13 @@ public class GeneratorController {
 
         String nameOfRecipe = "";
         List<Recipe> collectedRecipes = searchService.searchCookBook(mealType, maxCookTime, nameOfRecipe, user.getUserId());
+
+        if(collectedRecipes.isEmpty()){
+            model.addAttribute("noRecipies", "no recipies of this kind exists in your cookbook!");
+        }else{
+            model.addAttribute("recipe", GeneratorRecipeService.generateOneDish(collectedRecipes));
+        }
         
-        model.addAttribute("recipe", GeneratorRecipeService.generateOneDish(collectedRecipes));
         return "generate-dish";
     }
 }
