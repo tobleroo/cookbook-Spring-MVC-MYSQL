@@ -8,7 +8,9 @@
 
     <div th:replace="fragments/nav :: navbar"></div>
 
-    <p>login page</p>
+    <div th:if="${successRegister != null}">
+        <p th:text="${successRegister}"></p>
+    </div>
 
     <section>
         <form method="post" th:action="@{/login}">

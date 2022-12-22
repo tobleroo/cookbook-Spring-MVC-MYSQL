@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import spring.cookbookweb.Entity.IngredientAmount;
 import spring.cookbookweb.Entity.Recipe;
 
 @Service
@@ -31,21 +32,24 @@ public class PlannerService {
     // changing amount in each ingredients to users desired portion amount
     public static List<Recipe> calculateIngredientMeasures(List<Recipe> generatedRecipes, String[] portions){
 
-        for(int a = 0; a < generatedRecipes.size(); a++){
+        
+        for(int i = 0; i < generatedRecipes.size(); i++){
 
-            // loop through each recipes all ingredients and change portion values
-            for(int i = 0; i < generatedRecipes.get(a).getIngredients().size()-1; i++){
-                generatedRecipes.get(a).getAmount().get(i).setAmount(
-                (generatedRecipes.get(a).getAmount().get(i).getAmount() / generatedRecipes.get(a).getPortions()) 
-                * Integer.parseInt(portions[a]) );
+            List<IngredientAmount> redoneList = new ArrayList<>();
+
+            for(IngredientAmount amount : generatedRecipes.get(i).getAmount()){
+                IngredientAmount redoneAmount = new IngredientAmount();
+                redoneAmount.setAmount( amount.getAmount() / generatedRecipes.get(i).getPortions() * Integer.parseInt(portions[i]) );
+                redoneList.add(redoneAmount);
             }
 
-            generatedRecipes.get(a).setPortions(Integer.parseInt(portions[a]));
+            generatedRecipes.get(i).setAmount(redoneList);
+
         }
 
         return generatedRecipes;
     }
     
-
+    
     
 }

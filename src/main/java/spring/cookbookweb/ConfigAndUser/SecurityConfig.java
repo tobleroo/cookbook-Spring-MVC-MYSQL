@@ -23,10 +23,10 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         return http
-                .csrf().disable()
+                // .csrf().disable()
                 .authorizeRequests(auth -> auth
                     .mvcMatchers("/css/**", "/scripts/**").permitAll()
-                    .mvcMatchers("/register", "/save-new-user").permitAll()
+                    .mvcMatchers("/register", "/save-new-user","/").permitAll()
                     .anyRequest().authenticated())
                 .userDetailsService(userDetailsService)
                 .headers(headers -> headers.frameOptions().sameOrigin())

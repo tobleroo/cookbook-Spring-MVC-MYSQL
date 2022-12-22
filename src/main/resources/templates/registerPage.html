@@ -9,6 +9,10 @@
     <body>
 
         <div th:replace="fragments/nav :: navbar"></div>
+
+        <div th:if="${alreadyExists != null}">
+            <p th:text="${alreadyExists}"></p>
+        </div>
         
         <div class="form-register-box">
             <form th:action="@{/save-new-user}" method="post" th:object="${user}">

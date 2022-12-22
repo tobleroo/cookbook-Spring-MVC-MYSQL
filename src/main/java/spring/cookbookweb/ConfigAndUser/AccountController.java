@@ -1,8 +1,5 @@
 package spring.cookbookweb.ConfigAndUser;
 
-
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,10 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class AccountController {
 
-    private UserRepository userRepo;
+    private UserService userService;
 
-    public AccountController(UserRepository userRepo) {
-        this.userRepo = userRepo;
+    public AccountController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping("/register")
@@ -25,12 +22,16 @@ public class AccountController {
     }
 
     @PostMapping("/save-new-user")
-    public String saveNewAccount(User user){
-        user.setRole("USER");
-        PasswordEncoder encoder = new BCryptPasswordEncoder();
-        user.setPassword(encoder.encode(user.getPassword()));
-        userRepo.save(user);
-        return "user-login";
+    public String saveNewAccount(User user, Model model){
+
+        if(userService.saveUser(user)){
+            model.addAttribute("alreadyExists", "username already exists!");
+            return "registerPage";
+        }else{
+            model.addAttribute("successRegister", "Account seccessfully created!");
+            return "user-login";
+        }
+        
     }
 
     @GetMapping("/login")

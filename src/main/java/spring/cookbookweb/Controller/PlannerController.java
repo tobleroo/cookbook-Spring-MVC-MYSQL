@@ -37,6 +37,7 @@ public class PlannerController {
         if(maxCookTime.length == 0){
             String [] replacer = {""};
             generatedList = PlannerService.calculateIngredientMeasures(PlannerService.getFromDB(mealType, replacer, user.getUserId()), portions);
+            // PlannerService.calculateIngredientMeasures(PlannerService.getFromDB(mealType, replacer, user.getUserId()), portions);
             
         }else{
             generatedList = PlannerService.calculateIngredientMeasures(PlannerService.getFromDB(mealType, maxCookTime, user.getUserId()), portions);
@@ -47,8 +48,5 @@ public class PlannerController {
         model.addAttribute("recipes", generatedList);
         return "weekly-planner";
     }
-
-    //create post for generating the planner and return to show
-
 
 }
