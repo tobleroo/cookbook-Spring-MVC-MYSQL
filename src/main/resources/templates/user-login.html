@@ -12,13 +12,17 @@
         <p th:text="${successRegister}"></p>
     </div>
 
+    <div th:if="${wrongLogin != null}">
+        <p th:text="${wrongLogin}"></p>
+    </div>
+
     <section>
         <form method="post" th:action="@{/login}">
-            <div class="username-box">
+            <div class="username-box input-box">
                 <label for="username">Username:</label>
                 <input type="text" name="username">
             </div>
-            <div class="password-box">
+            <div class="password-box input-box">
                 <label for="userpassword">password:</label>
                 <input type="password" name="password">
             </div>
@@ -32,6 +36,5 @@
     
 
     <div th:replace="fragments/footer :: footer-basic"></div>
-    
-    <!-- <script type="text/javascript" th:src="@{/js/weeklyPlanner.js}"></script> -->
+
 </body>

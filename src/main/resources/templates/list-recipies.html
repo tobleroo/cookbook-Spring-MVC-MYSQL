@@ -11,7 +11,54 @@
 
     <section th:replace="fragments/search-bar :: searchbar-basic"></section>
 
-    <div class="view-box">
+
+    <div class="all-recipies-box">
+        <div th:each="recipes: ${userDTO.recipies}" class="recipe-box">
+            <div class="over-details">
+                <div class="details-box recipe-name">
+                    <p class="detail-label">Name:</p>
+                    <p th:text="${recipes.recipeName}"></p>
+                </div>
+                <div class="details-box recipe-type">
+                    <p class="detail-label">Type:</p>
+                    <p th:text="${recipes.mealType}"></p>
+                </div>
+                <div class="details-box recipe-diff">
+                    <p class="detail-label">Difficulty:</p>
+                    <p th:text="${recipes.difficulty}"></p>
+                </div>
+                <div class="details-box recipe-time">
+                    <p class="detail-label">Time:</p>
+                    <p th:text="${recipes.cookTime}"></p>
+                </div>
+                <div class="details-box recipe-portions">
+                    <p class="detail-label">Portions:</p>
+                    <p th:text="${recipes.portions}"></p>
+                </div>
+                <div class="see-more-box">
+                    <button type="button" onclick="showAdditionalDetails(this.id)" th:id="${#ids.seq('recipe')}" ><i class="fa-solid fa-arrow-down fa-3x"></i></button>
+                </div>
+            </div>
+            <div class="extra-details" th:id="${#ids.seq('extraDetails')}">
+                <div class="description-box">
+                    <p th:text="${recipes.description}"></p>
+                </div>
+                <div class="ingredients-box">
+                    <div th:id="${#ids.seq('ingredientNameID')}" class="ingredients">
+                        <span th:each="ingredient :${recipes.ingredients}" th:text="${ingredient.ingredientName}"></span>
+                    </div>
+                    <div th:id="${#ids.seq('ingredientAmountID')}" class="amounts">
+                        <span th:each="amount :${recipes.amount}" th:text="${amount.amount}"></span>
+                    </div>
+                    <div th:id="${#ids.seq('ingredientWeightID')}" class="weights">
+                        <span th:each="weightType :${recipes.weight}" th:text="${weightType.weightType}"></span>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="view-box">
         <div th:each="recipes: ${userDTO.recipies}" class="recipe-box">
             <div class="recipe-title">
                 <h2 th:text="${recipes.recipeName}" th:id="${#ids.seq('recipeNameID')}"></h2>
@@ -38,8 +85,7 @@
             </div>
             <div th:id="${#ids.seq('ingredientWeightID')}" style="display: none;">
                 <span th:each="weightType :${recipes.weight}" th:text="${weightType.weightType}"></span>
-            </div>
-             <button type="button" onclick="turnIngredientsToLists('ingredient-names')">demo click</button> 
+            </div> 
         </div>
     </div>
 
@@ -65,7 +111,7 @@
             <div class="ingredients-box-big" id="ingredientsBigBox">
             </div> 
         </div>
-    </div>
+    </div> -->
 
     <div th:replace="fragments/footer :: footer-basic"></div>
     

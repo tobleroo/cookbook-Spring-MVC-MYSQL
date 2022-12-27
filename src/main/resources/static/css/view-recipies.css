@@ -1,192 +1,77 @@
 
-/* overall layout */
 body{
-    align-items: center;
-    color: white;
+    color:black;
 }
 
-.view-box{
-    margin-top: 5rem;
-    width: 80%;
-    max-width: 100rem;
+.all-recipies-box{
     display: flex;
-    flex-flow: row wrap;
-}
-
-.recipe-box{
-    border: solid 2px rgb(139, 247, 255);
-    border-radius: 15px;
-    margin: 1rem;
-    min-width: 15rem;
-    max-width: 20rem;
-}
-
-.recipe-title{
-    padding: .5rem;
-    border-bottom: solid rgb(80, 212, 186) 2px;
-}
-
-.recipe-title p{
-    float: left;
-}
-
-.recipe-data{
-    display: flex;
+    margin: 1rem auto;
     flex-flow: column nowrap;
-    justify-content: space-evenly;
+    /* max-width: 50vw; */
 }
 
-.recipe-data p{
-    margin: .5rem;
-    border-bottom: solid rgb(43, 77, 94) 2px;
-    font-size:large;
-}
-
-/* buttons styling */ 
-
-.recipe-options-box{
-    margin: 1rem 0;
+.over-details{
     display: flex;
-    justify-content: space-evenly;
-    flex-flow: row wrap;
+    flex-flow: row nowrap;
+    background-color: lightgreen;
+    width: 50vw;
+    max-width: 1000px;
 }
 
-.recipe-options-box a{
-    padding: .7rem 1rem;
-    text-decoration: none;
-    color: black;
-    border-radius: 15px;
+.recipe-name{
+    flex:3;
 }
 
-#updateBtn{
-    background-color: rgb(58, 172, 210);
+.recipe-type{
+    flex: 2;
 }
 
-#deleteBtn{
-    background-color: rgb(184, 33, 33);
+.recipe-diff{
+    flex: 1;
 }
 
-.recipe-options-box i{
-    background-color: gray;
-    padding: .5rem;
-}
-
-.recipe-options-box button{
-    cursor: pointer;
-    border: solid rgb(0, 255, 0) 2px;
-    background-color: rgb(169, 233, 169);
-    border-radius: 15px;
-    padding: 1rem 3rem;
-    margin-top: .5rem;
-}
-
-/* description data */ 
-
-.recipe-desc{
-    border: solid blue 2px;
-    border-radius: 15px;
-    margin: 1rem;
-    padding: .5rem;
-    display:none;
-}
-
-/* big screen settings */
-
-.big-screen{
-    position: absolute;
-    left: 15%;
-    top: 15%;
-    margin: auto;
-    background-color: rgb(0, 18, 108);
-    border: solid lightblue 3px;
-    border-radius: 15px;
-    z-index: 1;
-    display: none;
-    flex-direction: column;
-    height: 70%;
-    width: 70%;
-    color: white;
-}
-
-/*exit box */
-
-.exit-btn-box button{
-    float: right;
-    margin: .5rem;
-    height: 2rem
-}
-
-.overview-details-box{
-    display: flex;
-    flex-flow: row wrap;
-    padding: 1rem;
-    height: 45%;
-}
-
-.img-view-box{
-    flex:1;
-    text-align: center;
+.recipe-time{
+    flex: 1;
 }
 
 .details-box{
-    flex:1;
-}
-
-.details-box h2{
-    text-align: center;
-    margin-bottom: 1rem;
-}
-
-/* descriptions and ingredients view */
-.specifics-details-box{
-    display: flex;
-    flex-flow: row wrap;
     padding: .5rem;
-    height: 50%;
 }
 
-.description-box-big{
-    flex:1;
-    border: solid rgb(170, 170, 170) 2px;
-    border-radius: 15px;
-    margin-right: .5rem;
+/* addiotional details */
+
+.extra-details{
+    background-color: lightgreen;
+    width: 50vw;
+    max-width: 1000px;
+    display: none;
+    flex-flow: row nowrap;
 }
 
-.description-box-big p{
-    padding: 1rem;
-    font-size: larger;
-}
-
-.ingredients-box-big{
-    flex:1;
-    text-align: center;
-    border: solid rgb(181, 181, 181) 2px;
-    border-radius: 15px;
-    display: flex;
-    flex-flow: column wrap;
-    align-items: center;
-    overflow: auto;
-}
-
-.one-ingredient{
-    display: flex;
-    flex-flow: row wrap;
-    margin: 1rem;
-}
-
-.one-ingredient p{
-    border-bottom: solid red 2px;
+.description-box{
     padding: .5rem;
-    font-size: larger;
+    width: 70%;
 }
 
-#ingredient-amount{
-    padding-right: .2rem;
-    margin-right: 0;
+.ingredients-box{
+    display: flex;
+    flex-flow: row nowrap;
+    width: 30%;
+    text-align: center;
 }
 
-#ingredient-weight{
-    padding-left: 0;
-    margin-left: 0;
+.ingredients{
+    flex:1;
+    display: flex;
+    flex-flow: column nowrap;
 }
 
+.amounts, .weights{
+    flex: 1;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.amounts span, .ingredients span, .weights span{
+    padding: .5rem 0;
+}

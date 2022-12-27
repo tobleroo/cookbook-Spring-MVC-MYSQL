@@ -1,3 +1,62 @@
 body{
     color:beige;
 }
+
+.important-box{
+    border: solid red 2px;
+    margin: 0 auto;
+    font-size: x-large;
+    width: 50vw;
+    max-width: 50rem;
+    padding: 1rem;
+}
+
+.already-exists{
+    color: beige;
+    font-size: xx-large;
+    border-bottom: solid black 2px;
+    padding: .5rem;
+    margin: 3rem auto 1rem;
+}
+
+section{
+    margin: .5rem auto;
+}
+
+.input-box{
+    display: flex;
+    flex-flow: column nowrap;
+    font-size:xx-large;
+}
+
+.input-box label{
+    margin-bottom: .3rem;
+}
+
+.input-box input{
+    font-size: x-large;
+    border-radius: 10px;
+    padding: 0 .8rem;
+    border: none;
+    margin: 0 0 1rem;
+}
+
+.submit-box{
+    display: flex;
+    justify-content: center;
+}
+
+.submit-box button{
+    font-size: xx-large;
+    background-color: blue;
+    border-radius: 10px;
+    padding: .7rem 1.4rem;
+    color: beige;
+    border: none;
+}
+
+.submit-box button:hover{
+    background-color: rgb(59, 185, 228);
+    border: solid blue 4px;
+    cursor: pointer;
+}

@@ -37,16 +37,25 @@ nav a:hover{
     border-left: solid rgb(143, 240, 253) 2px;
 }
 
-.options-box{
+#logoutBtn{
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size:x-large;
+    height: 100%;
+    /* padding: 1rem; */
+    
+}
 
+#logoutBtn:hover{
+    cursor: pointer;
+    background-color: rgba(25, 110, 213, 0.601);
+    border-right: solid rgb(143, 240, 253) 2px;
+    border-left: solid rgb(143, 240, 253) 2px;
 }
 
 .options-box a{
     margin: 0;
-}
-
-.logged-in-box, .not-logged-in-box{
-
 }
 
 /* footer styles */

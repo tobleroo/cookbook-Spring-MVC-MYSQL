@@ -5,22 +5,41 @@
     <head>
         <title>register</title>
         <link th:href="@{/css/fragments.css}" rel="stylesheet" />
+        <link th:href="@{/css/sign-up.css}" rel="stylesheet" />
     </head>
     <body>
 
         <div th:replace="fragments/nav :: navbar"></div>
 
-        <div th:if="${alreadyExists != null}">
-            <p th:text="${alreadyExists}"></p>
+        
+        <div class="important-box">
+            <p>This site is under development! Therefore, do not use any of your regular passwords nor your real name in case of security breach</p>
         </div>
         
-        <div class="form-register-box">
-            <form th:action="@{/save-new-user}" method="post" th:object="${user}">
-                <input type="text" th:field="*{username}" id="username" placeholder="username">
-                <input type="password" th:field="*{password}" placeholder="password">
-                <button type="submit">register!</button>
-            </form>
+        <div th:if="${alreadyExists != null}" class="already-exists">
+            <p th:text="${alreadyExists}"></p>
         </div>
+
+        <section class="form-register-box">
+            <form th:action="@{/save-new-user}" method="post" th:object="${user}">
+                <div class="input-box">
+                    <label for="username">Username:</label>
+                    <input type="text" th:field="*{username}" id="username" placeholder="username" name="username">
+                </div>
+                <div class="input-box">
+                    <label for="password">password:</label>
+                    <input type="password" th:field="*{password}" placeholder="password" name="password">
+                </div>
+                <div class="input-box">
+                    <label for="regKey">Registration Key:</label>
+                    <input type="text" name="regKey" th:name="registrationKey">
+                </div>
+                <div class="submit-box">
+                    <button type="submit">register!</button>
+                </div>
+
+            </form>
+        </section>
 
         <!-- <div sec:authentication="principal.username"></div> -->
         <div sec:authorize="isAuthenticated()">is auth</div>

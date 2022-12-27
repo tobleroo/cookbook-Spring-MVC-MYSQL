@@ -35,8 +35,9 @@ public class SecurityConfig {
                     .permitAll()
                     .defaultSuccessUrl("/recipies", true)
                 .and()
-                .logout().permitAll()
-                .and()
+                .logout(logout -> logout
+                .logoutUrl("/user/logout")
+                .logoutSuccessUrl("/"))
                 .build();
     }
 

@@ -12,6 +12,8 @@
         <h1>Welcome to {website name}</h1>
     </section>
 
+    <div th:replace="fragments/nav :: navbar"></div>
+
     <section class="content-box">
         <div class="dev-news-box">
             <div class="dev-news">
@@ -20,40 +22,40 @@
                 </p>
             </div>
             <div class="dev-news">
-                <h3>dev news 1</h3>
+                <h3>dev news 2</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero omnis debitis voluptatum veritatis blanditiis eius ipsa culpa nobis distinctio, placeat ratione eaque! Commodi neque doloremque illum facilis eaque tenetur nostrum maiores voluptatem, et quibusdam mollitia quisquam asperiores harum, quam ipsum corporis sequi impedit eligendi! Dolorem laboriosam, eos vitae harum nisi quia similique ratione laudantium ducimus veritatis impedit, blanditiis aperiam animi?
                 </p>
             </div>
         </div>
         <div class="features-box">
             <div class="options-one-box feature-box">
-                <div class="feature-add feature">
+                <a th:href="@{/addrecipepage}" class="feature-add feature">
                     <i class="fa-light fa-plus fa-6x"></i>
                     <h3>Add a recipe!</h3>
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias, ipsa.</p>
-                </div>
-                <div class="feature-view feature">
+                </a>
+                <a th:href="@{/recipies}" class="feature-view feature">
+                    <i class="fa-solid fa-book-open fa-6x"></i>
                     <h3>View Cookbook</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, veritatis?</p>
-                </div>
-                <div class="search-cookbook feature">
+                </a>
+                <a th:href="@{/recipies}" class="search-cookbook feature">
+                    <i class="fa-solid fa-magnifying-glass fa-6x"></i>
                     <h3>Search!</h3>
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime, dolores!</p>
-                </div>
+                </a>
             </div>
             <div class="options-two-box feature-box">
-                <div class="feature-add feature">
-                    <h3>Add a recipe!</h3>
+                <a th:href="@{/generate-dish}" class="feature-add feature">
+                    <i class="fa-solid fa-shuffle fa-6x"></i>
+                    <h3>Generate random meal!</h3>
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias, ipsa.</p>
-                </div>
-                <div class="feature-view feature">
-                    <h3>View Cookbook</h3>
+                </a>
+                <a th:href="@{/meal-planner}" class="feature-view feature">
+                    <i class="fa-solid fa-list fa-6x"></i>
+                    <h3>Generate a meal Plan!</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, veritatis?</p>
-                </div>
-                <div class="search-cookbook feature">
-                    <h3>Search!</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime, dolores!</p>
-                </div>
+                </a>
             </div>
         </div>
     </section>

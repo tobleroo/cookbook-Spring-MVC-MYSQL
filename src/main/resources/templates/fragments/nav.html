@@ -11,9 +11,9 @@
             <a th:href="@{/generate-dish}">Generator</a>
             <a th:href="@{/meal-planner}">Weekly Planner</a>
         </div>
-        <div class="logged-in-box" sec:authorize="isAuthenticated()">
-            <a th:href="@{/logout}">Logout</a>
-        </div>
+        <form th:action="@{/user/logout}" method="post" sec:authorize="isAuthenticated()" id="logoutForm">
+            <button type="submit" id="logoutBtn">Logout</button>
+        </form>
         <div class="not-logged-in-box" sec:authorize="isAnonymous()">
             <a th:href="@{/login-page}">Login</a>
             <a th:href="@{/register}">Sign up!</a>
