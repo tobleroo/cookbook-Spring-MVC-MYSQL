@@ -1,65 +1,52 @@
 
 
+/* generator bar */
+
 .generator-box{
-    display: flex;
-    flex-direction: column;
-    border: solid red 2px;
-    width: 80%;
-    margin-top: 10rem;
-    max-width: 70rem;
-    margin: auto;
-}
-
-.selections-box{
-    border: green solid 2px;
-    flex:1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.selections-box button{
-    padding: 1rem;
-    background-color: blue;
-    color: white;
-}
-
-.show-recipe-box{
-    flex:1;
-    border: solid yellow 2px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5rem 0;
-}
-
-.recipe-card{
-    border: solid blue 3px;
+    width: 100%;
     display: flex;
     flex-flow: column nowrap;
-    max-width: 75%;
-    background-color: aliceblue;
+    justify-items: center;
+    border: solid red 2px;
 }
 
-.recipe-title-box h3{
-    padding: 2rem;
-    border-bottom: solid black 2px;
+.searchbar-box{
+    margin: 2rem auto;
+}
+
+.searchbar-box select,input,button{
+    font-size: 30px;
+}
+
+/* meal show box */
+
+.show-recipe-box{
+    margin: 3rem auto;
+    color: beige
+}
+
+.recipe-title-box{
+    font-size: 30px;
+    padding: 1rem 1.5rem
 }
 
 .recipe-description-box{
-    padding: 1.5rem .5rem;
+    font-size: 20px;
+    padding: 1rem;
+    border: solid yellow 2px;
 }
 
 .recipe-details-box{
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-around;
-    border-top: solid black 2px;
+    justify-content: space-between;
+    font-size: 20px;
+    width: 100%;
+    border: solid green 2px;
 }
 
 .recipe-details-box p{
-    padding: .5rem;
-    border-left: solid blue 2px;
-    border-right: solid green 2px;
+    padding: 1rem;
+    border: solid red 2px;
 }
 

@@ -13,10 +13,10 @@ function showAdditionalDetails(boxId){
 
     if( window.getComputedStyle( detailsBox ).display === "none" ) {
         detailsBox.style.display = "flex";
-        document.getElementById('recipe'+id).innerHTML = '<i class="fa-solid fa-arrow-up-long fa-3x"></i>';
+        document.getElementById('recipe'+id).innerHTML = '<i class="fa-solid fa-arrow-up-long fa-2x"></i>';
     } else {
         detailsBox.style.display = "";
-        document.getElementById('recipe'+id).innerHTML = '<i class="fa-solid fa-arrow-down fa-3x">';
+        document.getElementById('recipe'+id).innerHTML = '<i class="fa-solid fa-arrow-down fa-2x">';
     }
 
 

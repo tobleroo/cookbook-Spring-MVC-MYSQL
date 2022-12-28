@@ -9,50 +9,56 @@
 
     <div th:replace="fragments/nav :: navbar"></div>
 
-    <section th:replace="fragments/search-bar :: searchbar-basic"></section>
+    <section th:replace="fragments/search-bar :: searchbar-basic" id="list-search"></section>
 
 
     <div class="all-recipies-box">
         <div th:each="recipes: ${userDTO.recipies}" class="recipe-box">
             <div class="over-details">
                 <div class="details-box recipe-name">
-                    <p class="detail-label">Name:</p>
+                    <h4 class="detail-label">Name:</h4>
                     <p th:text="${recipes.recipeName}"></p>
                 </div>
                 <div class="details-box recipe-type">
-                    <p class="detail-label">Type:</p>
+                    <h4 class="detail-label">Type:</h4>
                     <p th:text="${recipes.mealType}"></p>
                 </div>
                 <div class="details-box recipe-diff">
-                    <p class="detail-label">Difficulty:</p>
+                    <h4 class="detail-label">Difficulty:</h4>
                     <p th:text="${recipes.difficulty}"></p>
                 </div>
                 <div class="details-box recipe-time">
-                    <p class="detail-label">Time:</p>
+                    <h4 class="detail-label">Time:</h4>
                     <p th:text="${recipes.cookTime}"></p>
                 </div>
                 <div class="details-box recipe-portions">
-                    <p class="detail-label">Portions:</p>
+                    <h4 class="detail-label">Portions:</h4>
                     <p th:text="${recipes.portions}"></p>
                 </div>
                 <div class="see-more-box">
-                    <button type="button" onclick="showAdditionalDetails(this.id)" th:id="${#ids.seq('recipe')}" ><i class="fa-solid fa-arrow-down fa-3x"></i></button>
+                    <button type="button" onclick="showAdditionalDetails(this.id)" th:id="${#ids.seq('recipe')}" ><i class="fa-solid fa-arrow-down fa-2x"></i></button>
                 </div>
             </div>
             <div class="extra-details" th:id="${#ids.seq('extraDetails')}">
-                <div class="description-box">
-                    <p th:text="${recipes.description}"></p>
+                <div class="all-extra-details-box">
+                    <div class="description-box">
+                        <p th:text="${recipes.description}"></p>
+                    </div>
+                    <div class="ingredients-box">
+                        <div th:id="${#ids.seq('ingredientNameID')}" class="ingredients">
+                            <span th:each="ingredient :${recipes.ingredients}" th:text="${ingredient.ingredientName}"></span>
+                        </div>
+                        <div th:id="${#ids.seq('ingredientAmountID')}" class="amounts">
+                            <span th:each="amount :${recipes.amount}" th:text="${amount.amount}"></span>
+                        </div>
+                        <div th:id="${#ids.seq('ingredientWeightID')}" class="weights">
+                            <span th:each="weightType :${recipes.weight}" th:text="${weightType.weightType}"></span>
+                        </div> 
+                    </div>
                 </div>
-                <div class="ingredients-box">
-                    <div th:id="${#ids.seq('ingredientNameID')}" class="ingredients">
-                        <span th:each="ingredient :${recipes.ingredients}" th:text="${ingredient.ingredientName}"></span>
-                    </div>
-                    <div th:id="${#ids.seq('ingredientAmountID')}" class="amounts">
-                        <span th:each="amount :${recipes.amount}" th:text="${amount.amount}"></span>
-                    </div>
-                    <div th:id="${#ids.seq('ingredientWeightID')}" class="weights">
-                        <span th:each="weightType :${recipes.weight}" th:text="${weightType.weightType}"></span>
-                    </div> 
+                <div class="maintain-box">
+                    <a th:href="@{/updaterecipe(id=${recipes.id})}" id="updateBtn" class="recipeBtn">update recipe</a>
+                    <a th:href="@{/deleterecipe(id=${recipes.id})}" id="deleteBtn" class="recipeBtn">Delete recipe</a>
                 </div>
             </div>
         </div>

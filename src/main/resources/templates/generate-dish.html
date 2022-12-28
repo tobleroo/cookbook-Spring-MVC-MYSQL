@@ -13,13 +13,6 @@
     </div>
     <div class="generator-box">
 
-
-        <!-- <div class="selections-box">
-            <form th:action="@{/getrandomdish}" method="get">
-                <button type="submit">Generate</button>
-            </form>
-        </div> -->
-
         <section th:fragment="searchbar-basic" class="searchbar-box">
             <form method="get" th:action="@{/generator/filtered}">
                 <select name="mealType" id="mealInput">
