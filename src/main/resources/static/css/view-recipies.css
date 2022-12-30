@@ -31,6 +31,7 @@ body{
     width: 50vw;
     max-width: 1000px;
     border-bottom: solid black 1px;
+    border-radius: 10px 10px 0 0;
 }
 
 .recipe-box{
