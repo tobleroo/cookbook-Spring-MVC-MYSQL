@@ -34,12 +34,23 @@
                     <h3 th:text="${recipe.recipeName}"></h3>
                 </div>
                 <div class="recipe-description-box">
+                    <h4>Instructions:</h4>
                     <p th:text="${recipe.description}"></p>
                 </div>
                 <div class="recipe-details-box">
-                    <p th:text="${recipe.difficulty}"></p>
-                    <p th:text="${recipe.cookTime}"></p>
-                    <p th:text="${recipe.mealType}"></p>
+                    <div class="detail-box">
+                        <h4>Difficulty:</h4>
+                        <p th:text="${recipe.difficulty}"></p>
+                    </div>
+                    <div class="detail-box">
+                        <h4>Time:</h4>
+                        <p th:text="${recipe.cookTime}"></p>
+                    </div>
+                    <div class="detail-box">
+                        <h4>Mealtype:</h4>
+                        <p th:text="${recipe.mealType}"></p>
+                    </div>
+                    
                 </div>
             </div>
             
