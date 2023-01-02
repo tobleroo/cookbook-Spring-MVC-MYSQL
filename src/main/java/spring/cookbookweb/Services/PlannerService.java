@@ -22,8 +22,10 @@ public class PlannerService {
         List<Recipe> generated = new ArrayList<>();
         
         for(int i = 0; i < mealtypes.length; i++){
-            List<Recipe> temporary = mySearch.searchCookBook(mealtypes[i], maxCookTime[i], "", id);
-            generated.add(GeneratorRecipeService.generateOneDish(temporary));
+            if(mySearch.checkIfMealtypeExists(mealtypes[i])){
+                List<Recipe> temporary = mySearch.searchCookBook(mealtypes[i], maxCookTime[i], "", id);
+                generated.add(GeneratorRecipeService.generateOneDish(temporary));
+            }
         }
         
         return generated;
@@ -44,6 +46,7 @@ public class PlannerService {
             }
 
             generatedRecipes.get(i).setAmount(redoneList);
+            generatedRecipes.get(i).setPortions(Integer.parseInt(portions[i]));
 
         }
 

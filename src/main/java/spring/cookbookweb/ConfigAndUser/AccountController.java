@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -22,14 +23,19 @@ public class AccountController {
     }
 
     @PostMapping("/save-new-user")
-    public String saveNewAccount(User user, Model model){
+    public String saveNewAccount(User user, Model model, @RequestParam("registrationKey") String regKey){
 
-        if(userService.saveUser(user)){
-            model.addAttribute("alreadyExists", "username already exists!");
-            return "registerPage";
+        if(regKey.equals("TJdev")){
+            if(userService.saveUser(user)){
+                model.addAttribute("alreadyExists", "username already exists!");
+                return "registerPage";
+            }else{
+                model.addAttribute("successRegister", "Account seccessfully created!");
+                return "user-login";
+            }
         }else{
-            model.addAttribute("successRegister", "Account seccessfully created!");
-            return "user-login";
+            model.addAttribute("regKeyError", "wrong registration key!");
+            return "registerPage";
         }
         
     }

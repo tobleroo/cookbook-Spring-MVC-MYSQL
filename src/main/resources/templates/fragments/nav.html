@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link th:href="@{/css/fragments.css}" rel="stylesheet" />
+</head>
 <body>
 
-    <nav th:fragment="navbar">
+    <nav th:fragment="navbar" class="big-nav">
 
         <div sec:authorize="isAuthenticated()" class="options-box">
             <a th:href="@{/}">Home</a>
@@ -15,11 +18,36 @@
             <button type="submit" id="logoutBtn">Logout</button>
         </form>
         <div class="not-logged-in-box" sec:authorize="isAnonymous()">
+            <a th:href="@{/}">Home</a>
             <a th:href="@{/login-page}">Login</a>
             <a th:href="@{/register}">Sign up!</a>
         </div>
         
     </nav>
+
+    <div class="mobile-nav" th:fragment="mobile-navbar">
+
+        <div class="burger-box">
+            <button type="button" onclick="openCloseMobileNav()" id="open-navbox"><i class="fa-solid fa-bars fa-3x"></i></button>
+        </div>
+
+        <div class="links" style="display:none;" id="mobile-options-box">
+            <div sec:authorize="isAuthenticated()" class="mobile-options">
+                <a th:href="@{/}">Home</a>
+                <a th:href="@{/addrecipepage}">Add recipe</a>
+                <a th:href="@{/recipies}">View cookbook</a>
+                <a th:href="@{/generate-dish}">Generator</a>
+                <a th:href="@{/meal-planner}">Weekly Planner</a>
+            </div>
+            <form th:action="@{/user/logout}" method="post" sec:authorize="isAuthenticated()" id="logoutForm">
+                <button type="submit" id="logoutBtn">Logout</button>
+            </form>
+            <div class="not-logged-in-box" sec:authorize="isAnonymous()">
+                <a th:href="@{/login-page}">Login</a>
+                <a th:href="@{/register}">Sign up!</a>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>

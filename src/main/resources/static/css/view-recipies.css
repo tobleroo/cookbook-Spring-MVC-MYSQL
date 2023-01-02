@@ -5,14 +5,17 @@ body{
 
 .searchbar-box{
     margin: 0 auto;
+    display: flex;
+    flex-flow: row wrap;
 }
 
 .searchbar-box input,select{
     /* height: 3vh; */
     /* padding-top: 1rem ; */
     font-size: 24px;
-    max-width: 15vw;
-    background-color: lightblue;
+    min-width: 10vw;
+    background-color: black;
+    color: beige;
 }
 
 
@@ -20,18 +23,19 @@ body{
 .all-recipies-box{
     display: flex;
     margin: 1rem auto;
-    flex-flow: column nowrap;
+    flex-flow: column wrap;
     /* max-width: 50vw; */
 }
 
 .over-details{
     display: flex;
-    flex-flow: row nowrap;
-    background-color: rgb(145, 220, 233);
+    flex-flow: row wrap;
+    background-color: rgb(66, 66, 66);
     width: 50vw;
     max-width: 1000px;
     border-bottom: solid black 1px;
     border-radius: 10px 10px 0 0;
+    color: beige;
 }
 
 .recipe-box{
@@ -61,23 +65,30 @@ body{
 
 /* button design */
 i{
-    background-color: rgb(145, 220, 233);
+    background-color: rgb(66, 66, 66);
     border: none;
+    padding: .2rem .5rem;
+}
+
+i:hover{
+    cursor: pointer;
 }
 
 /* addiotional details */
 
 .extra-details{
-    background-color: rgb(93, 183, 199);
+    background-color: rgb(97, 97, 97);
     width: 50vw;
     max-width: 1000px;
     display: none;
-    flex-flow: column nowrap;
+    flex-flow: column wrap;
+    border-radius: 0 0 10px 10px;
+    color: beige;
 }
 
 .all-extra-details-box{
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
 }
 
 .description-box{
@@ -89,7 +100,7 @@ i{
 
 .ingredients-box{
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     width: 30%;
     text-align: center;
     padding-left: .3rem;
@@ -98,13 +109,13 @@ i{
 .ingredients{
     flex:1;
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: column wrap;
 }
 
 .amounts, .weights{
     flex: 1;
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: column wrap;
 }
 
 .amounts span, .ingredients span, .weights span{
@@ -119,15 +130,15 @@ i{
 }
 
 #updateBtn{
-    background-color: rgb(118, 250, 250);
+    background-color: rgb(204, 204, 204);
 }
 
 #updateBtn:hover{
-    background-color: blue;
+    background-color: rgb(50, 144, 156);
 }
 
 #deleteBtn{
-    background-color: rgb(252, 127, 127);
+    background-color: rgb(109, 50, 50);
 }
 
 #deleteBtn:hover{
@@ -140,4 +151,40 @@ i{
     text-decoration: none;
     color: black;
     border-radius: 10px;
+}
+
+
+/* ---------- RESPONSIVE -----------  */
+
+@media screen and (max-width: 750px) {
+
+    .searchbar-box{
+        display: flex;
+        flex-flow: column wrap;
+    }
+
+    .searchbar-box input,select, button{
+        margin: 0 auto;
+    }
+
+
+    .all-extra-details-box{
+        flex-flow: column;
+    }
+
+    .extra-details, .over-details{
+        margin: 0 auto;
+        width: 90%;
+    }
+
+    .ingredients-box, .description-box{
+        margin: 0 auto;
+        width: 90%;
+    }
+
+    .ingredients-box span{
+        margin: 0;
+        padding: 0;
+    }
+
 }

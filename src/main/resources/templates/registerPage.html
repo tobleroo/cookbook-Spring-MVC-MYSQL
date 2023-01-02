@@ -6,10 +6,13 @@
         <title>register</title>
         <link th:href="@{/css/fragments.css}" rel="stylesheet" />
         <link th:href="@{/css/sign-up.css}" rel="stylesheet" />
+        <script src="https://kit.fontawesome.com/1ebb5ff465.js" crossorigin="anonymous"></script>
     </head>
     <body>
 
         <div th:replace="fragments/nav :: navbar"></div>
+
+        <div th:replace="fragments/nav :: mobile-navbar" id="mobile-nav"></div>
 
         
         <div class="important-box">
@@ -18,6 +21,10 @@
         
         <div th:if="${alreadyExists != null}" class="already-exists">
             <p th:text="${alreadyExists}"></p>
+        </div>
+
+        <div  th:if="${regKeyError != null}" class="wrong-regKey">
+            <p th:text="${regKeyError}"></p>
         </div>
 
         <section class="form-register-box">
@@ -41,11 +48,9 @@
             </form>
         </section>
 
-        <!-- <div sec:authentication="principal.username"></div> -->
-        <div sec:authorize="isAuthenticated()">is auth</div>
-        <div sec:authorize="hasAuthority('USER')">Text visible to user.</div>
-
         <div th:replace="fragments/footer :: footer-basic"></div>
+
+        <script type="text/javascript" th:src="@{/scripts/mobileNav.js}"></script>
         
     </body>
 </html>

@@ -104,9 +104,37 @@ a, a:visited{
 }
 
 .feature i{
-    color: aqua;
+    color: rgb(202, 202, 139);
 }
 
 .feature h3{
     font-size: x-large;
 }
+
+
+/* -------- RESPONSIVE ----------- */
+
+@media screen and (max-width: 750px) {
+
+    .content-box{
+        flex-flow: column-reverse nowrap;
+        justify-content: center;
+    }
+
+    .feature-box{
+        flex-flow: column nowrap;
+        justify-content: center;
+    }
+
+    .feature-box a{
+        margin: 1rem auto;
+        padding-bottom: .5rem;
+    }
+
+    .dev-news-box{
+        margin: 0 auto;
+        max-width: 80%;
+        border: solid rgb(87, 87, 87) 3px;
+        max-height: 70vh;
+    }
+  }

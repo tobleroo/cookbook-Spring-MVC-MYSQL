@@ -28,6 +28,10 @@ public class SearchService {
         this.weightRepo = weightRepo;
     }
 
+    public Boolean checkIfMealtypeExists(String mealtype){
+        return recRepo.existsByMealType(mealtype);
+    }
+
     public List<Recipe> searchCookBook(String mealType, String maxCookTime, String nameToSearch, Long id){
 
         //convert input number from string to int

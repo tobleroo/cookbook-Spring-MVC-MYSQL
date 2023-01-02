@@ -1,79 +1,103 @@
 
 
-/* input box details */
+/* search bar */
+
 .input-box{
-    border: solid 2px red;
-    padding: 1rem;
+    margin: 0 auto;
 }
 
-/* show weekly plan box details*/
-
-.weekly-planner{
-    border: solid violet 3px;
-    display: flex;
-    flex-flow: row wrap;
+.input-box select, input {
+    background-color: black;
+    color: beige;
+    font-size: 20px;
 }
 
-.show-plan-box{
-    margin-top: 1rem;
-    display: flex;
-    flex-flow: column wrap;
-    border: solid yellow 3px;
-    max-width: 50%;
-}
-
-.each-recipe-box{
-    border: solid red 2px;
-    display: flex;
-    flex-flow: column wrap;
+.input-box button{
+    font-size: 20px;
+    padding: .3rem;
     margin: 1rem;
 }
 
-.name-box{
-    padding: 2rem;
-    color: beige;
+.input-box button:hover{
+    cursor: pointer;
 }
 
-.recipe-details-box{
+.optionBtn{
+    background-color: red;
+    font-size: 10px;
+    margin: 0;
+}
+
+/* recipe view box */
+
+.weekly-planner{
     display: flex;
-    flex-flow: row wrap;
+    color: beige;
+    flex-flow: column;
+}
+
+.each-recipe-box{
+    margin: .5rem auto;
+    border: solid rgb(194, 194, 194) 3px;
+    width: 60%;
+}
+
+/* overall details box */
+
+.overall-details{
+    display: flex;
+    flex-flow: column;
+    border-bottom: solid rgb(194, 194, 194) 2px;
+}
+
+.recipe-name-box{
+    justify-content: center;
+    padding: 1rem 1.5rem;
+    font-size: 20px;
+    border-bottom: solid rgb(179, 179, 179) 3px;
+}
+
+.recipe-details{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 25px;
+    padding: .5rem .7rem;
+}
+
+.recipe-details p{
+    margin: 1rem 0;
+}
+
+/* ingredients box */
+
+.ingr-box{
+    margin: 1rem 0;
+    display: flex;
+    flex-flow: row;
+    font-size: 20px;
     justify-content: center;
 }
 
-.recipe-details-box p,span{
+.ingr-box p{
     padding: .3rem;
-    color: beige;
+    border-bottom: solid rgb(214, 214, 214) 2px;
 }
 
-/* show grocies box details*/
+/* -------- RESPONSIVE ----------- */
 
-.show-grocies-box{
-    border: solid green 2px;
-    max-width: 50%;
+@media screen and (max-width: 750px) {
+
+    select, input, button{
+        font-size: 20px;
+    }
+
+    .optionMeal{
+        padding-top: .5rem;
+        margin-bottom: .5rem;
+        border-bottom: solid beige 2px;
+    }
+
+
 }
 
-.each-recipe-grocerie{
-    display: flex;
-    flex-flow: column nowrap;
-}
-
-.recipe-groceries-name h2{
-    color: beige;
-}
-
-.groceries-box{
-    display: flex;
-    flex-flow: row wrap;
-    border-bottom: solid white 1px;
-}
-
-.groceries-box p{
-    padding: .5rem;
-    color: beige;
-}
-
-.display-item{
-    display: flex;
-    flex-flow: column nowrap;
-    
-}

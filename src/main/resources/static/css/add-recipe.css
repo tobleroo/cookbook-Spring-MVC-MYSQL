@@ -180,6 +180,33 @@ body{
 }
 
 
+/* ---------- RESPONSIVE -----------  */
+
+@media screen and (max-width: 750px) {
+
+    label{
+        color: beige;
+    }
+
+    .recipe-name-box, .recipe-specs-box, .specs-input, .recipe-desc-box{
+        display: flex;
+        flex-flow: column nowrap;
+        width: 90%;
+        margin: .3rem auto;
+    }
+
+    .one-ingredient-box{
+        flex-flow: column;
+        border: solid beige 2px;
+        margin: .5vh 3vw;
+    }
+
+    .one-ingredient-box input{
+        width: 80%;
+    }
+
+}
+
 
 
 

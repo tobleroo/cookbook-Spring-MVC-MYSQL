@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <head>
     <title>Home page</title>
     <link th:href="@{/css/fragments.css}" rel="stylesheet" />
@@ -9,10 +10,14 @@
 <body>
     
     <section class="homepage-logo-box">
-        <h1>Welcome to {website name}</h1>
+        <h1>Welcome to Tj's Cookbook!</h1>
     </section>
 
-    <div th:replace="fragments/nav :: navbar"></div>
+    <div th:replace="fragments/nav :: navbar" id="big-navbar"></div>
+
+    <div th:replace="fragments/nav :: mobile-navbar" id="mobile-nav"></div>
+
+
 
     <section class="content-box">
         <div class="dev-news-box">
@@ -69,5 +74,7 @@
 
 
     <div th:replace="fragments/footer :: footer-basic"></div>
+
+    <script type="text/javascript" th:src="@{/scripts/mobileNav.js}"></script>
 
 </body>

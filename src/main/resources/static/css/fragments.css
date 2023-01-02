@@ -7,6 +7,7 @@
 
 body{
     background-color: rgb(22, 18, 93);
+    background-image: linear-gradient(to bottom left, rgb(0, 0, 0), rgb(32, 32, 32), rgb(2, 1, 5));
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -18,7 +19,7 @@ nav{
     display: flex;
     flex-flow: row nowrap;
     width: 100%;
-    background-color: rgb(29, 18, 123);
+    background-color: rgb(0, 0, 0);
     justify-content: space-between;
     padding: 1rem;
     margin-bottom: 1rem;
@@ -32,15 +33,15 @@ nav a{
 }
 
 nav a:hover{
-    background-color: rgba(25, 110, 213, 0.601);
-    border-right: solid rgb(143, 240, 253) 2px;
-    border-left: solid rgb(143, 240, 253) 2px;
+    background-color: rgba(75, 107, 146, 0.601);
+    border-right: solid rgb(243, 243, 243) 2px;
+    border-left: solid rgb(253, 255, 255) 2px;
 }
 
 #logoutBtn{
     background-color: transparent;
     border: none;
-    color: white;
+    color: beige;
     font-size:x-large;
     height: 100%;
     /* padding: 1rem; */
@@ -49,9 +50,7 @@ nav a:hover{
 
 #logoutBtn:hover{
     cursor: pointer;
-    background-color: rgba(25, 110, 213, 0.601);
-    border-right: solid rgb(143, 240, 253) 2px;
-    border-left: solid rgb(143, 240, 253) 2px;
+    background-color: rgba(136, 136, 136, 0.601);
 }
 
 .options-box a{
@@ -61,7 +60,7 @@ nav a:hover{
 /* footer styles */
 
 footer{
-    background-color: rgb(16, 74, 101);
+    background-color: rgb(32, 32, 32);
     color: wheat;
     width: 100%;
     margin-top: auto;
@@ -69,4 +68,62 @@ footer{
 
 footer p{
     padding: 1rem 0;
+}
+
+
+/* responsive navar */
+
+.burger-box i{
+    background-color: beige;
+}
+
+@media screen and (min-width: 751px) {
+
+    .mobile-nav{
+        display: none;
+        position: absolute;
+    }
+
+    .big-nav{
+        display: flex;
+    }
+
+}
+
+
+@media screen and (max-width: 750px) {
+
+    .mobile-nav{
+        display: block;
+    }
+
+    .big-nav{
+        display: none;
+    }
+
+    .links{
+        display: flex;
+        flex-flow: column nowrap;
+        background-color: rgb(46, 46, 46);
+        padding: 3rem;
+    }
+
+    .mobile-options{
+        display: flex;
+        flex-flow: column;
+        margin-bottom: .5rem;
+    }
+
+    .mobile-options a{
+        font-size: 20px;
+        padding: .3rem;
+        text-decoration: none;
+        color: beige;
+    }
+
+    .mobile-options a:hover{
+        background-color: gray;
+    }
+
+
 }

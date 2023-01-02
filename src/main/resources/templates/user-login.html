@@ -3,12 +3,15 @@
         <title>login</title>
         <link th:href="@{/css/fragments.css}" rel="stylesheet" />
         <link th:href="@{/css/user-login.css}" rel="stylesheet" />
+        <script src="https://kit.fontawesome.com/1ebb5ff465.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
     <div th:replace="fragments/nav :: navbar"></div>
 
-    <div th:if="${successRegister != null}">
+    <div th:replace="fragments/nav :: mobile-navbar" id="mobile-nav"></div>
+
+    <div th:if="${successRegister != null}" class="success-reg">
         <p th:text="${successRegister}"></p>
     </div>
 
@@ -36,5 +39,7 @@
     
 
     <div th:replace="fragments/footer :: footer-basic"></div>
+    
+    <script type="text/javascript" th:src="@{/scripts/mobileNav.js}"></script>
 
 </body>

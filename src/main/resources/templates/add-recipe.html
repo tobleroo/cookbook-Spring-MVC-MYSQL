@@ -1,82 +1,86 @@
 
-
+<!DOCTYPE html>
 <html xmlns="http://www.thymeleaf.org">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<head>
+    <title>all recipies</title>
+    <link th:href="@{/css/fragments.css}" rel="stylesheet" />
+    <link th:href="@{/css/add-recipe.css}" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/1ebb5ff465.js" crossorigin="anonymous"></script>
+</head>
+<body>
 
-    <head>
-        <title>all recipies</title>
-        <link th:href="@{/css/fragments.css}" rel="stylesheet" />
-        <link th:href="@{/css/add-recipe.css}" rel="stylesheet" />
-    </head>
-    <body>
+    <div th:replace="fragments/nav :: navbar"></div>
 
-        <div th:replace="fragments/nav :: navbar"></div>
-        
-        <div class="add-recipe-box">
-            <form method="post" th:action="@{/saverecipedemo}">
-                <div class="recipe-name-box">
-                    <label for="recipeName">Recipe name:</label>
-                    <input type="text" th:name="recipeName" id="recipeName" th:attr= "value = ${recipe.recipeName}" required>
+    <div th:replace="fragments/nav :: mobile-navbar" id="mobile-nav"></div>
+    
+    <div class="add-recipe-box">
+        <form method="post" th:action="@{/saverecipedemo}">
+            <div class="recipe-name-box">
+                <label for="recipeName">Recipe name:</label>
+                <input type="text" th:name="recipeName" id="recipeName" th:attr= "value = ${recipe.recipeName}" required>
+            </div>
+            <div class="recipe-specs-box">
+                <div class="specs-input">
+                    <label for="typeOfMeal">type of meal:</label>
+                    <select th:name="recipeType" id="typeOfMeal" required>
+                        <option value="Breakfast">Breakfast</option>
+                        <option value="Lunch">Lunch</option>
+                        <option value="Dinner">Dinner</option>
+                        <option value="Snack">Snack</option>
+                    </select>
                 </div>
-                <div class="recipe-specs-box">
-                    <div class="specs-input">
-                        <label for="typeOfMeal">type of meal:</label>
-                        <select th:name="recipeType" id="typeOfMeal" required>
-                            <option value="Breakfast">Breakfast</option>
-                            <option value="Lunch">Lunch</option>
-                            <option value="Dinner">Dinner</option>
-                            <option value="Snack">Snack</option>
-                        </select>
-                    </div>
-                    <div class="specs-input">
-                        <label for="recipeDiff">difficulty:</label>
-                        <select th:name="recipeDiff" id="recipeDiff" required>
-                            <option value="easy">Easy</option>
-                            <option value="medium">Medium</option>
-                            <option value="hard">Hard</option>
-                        </select>
-                    </div>
-                    <div class="specs-input specs-time-box">
-                        <label for="cookTime">time(minutes):</label>
-                        <input type="number" id="cookTime" th:name="recipeTime" min="0" max="1000" th:attr= "value = ${recipe.cookTime}" required>
-                    </div>
-                    <div class="specs-input">
-                        <label for="portions">Portions:</label>
-                        <input type="number" id="portions" th:name="recipePortions" min="0" max="1000" th:attr= "value = ${recipe.portions}" required>
-                    </div>
+                <div class="specs-input">
+                    <label for="recipeDiff">difficulty:</label>
+                    <select th:name="recipeDiff" id="recipeDiff" required>
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
                 </div>
-                <div class="recipe-desc-box">
-                    <label for="recipeDescription">Description:</label>
-                    <textarea type="text" id="recipeDescription" th:name="recipeDescription" th:text="${recipe.description}" required></textarea>
+                <div class="specs-input specs-time-box">
+                    <label for="cookTime">time(minutes):</label>
+                    <input type="number" id="cookTime" th:name="recipeTime" min="0" max="1000" th:attr= "value = ${recipe.cookTime}" required>
                 </div>
-                <input type="number" style="display: none;" th:field="${recipe.id}" th:name="id">
-
-                <!-- th:field="${recipe.description}" -->
-
-                <!-- recipe stuff below -->
-                <div class="ingredients-box" id="inputsBox">
-                    <div class="add-ingredient-btn-box">
-                        <button type="button" id="addIngrBtn">add ingredient</button>
-                    </div>
-                    <div class="one-ingredient-box" id="input-box" th:if ="${#lists.isEmpty(ingredientList)}">
-                        <input type="text" placeholder="ingredient name" th:name="ingrName" id="ingrName" class="ingr-name">
-                        <input type="number" placeholder="weight" th:name="ingrAmount" id="ingrAmount" class="ingr-amount" step=".01">
-                        <input type="text" placeholder="weight type" th:name="ingrWeight" id="ingrWeight" class="ingr-weight">
-                    </div>
-                    <!-- foreach with ingredients for updateing recipes -->
-                    <div class="update-ingredient-box one-ingredient-box" th:each="ingredientData: ${ingredientList}" th:id="${#ids.seq('existingID')}">
-                        <input type="text" placeholder="ingredient name" th:name="ingrName" id="ingrName" required class="ingr-name" th:attr= "value = ${ingredientData.ingredientName}">
-                        <input type="number" placeholder="weight" th:name="ingrAmount" id="ingrAmount" required class="ingr-amount" step=".01" th:attr= "value = ${ingredientData.amount}">
-                        <input type="text" placeholder="weight type" th:name="ingrWeight" id="ingrWeight" required class="ingr-weight" th:attr= "value = ${ingredientData.weightType}">
-                        <!-- add remove Btn -->
-                        <button type="button" onclick="removeExistingIngredient(this.id)" class="removeBtn" th:id="${#ids.seq('IdToRemove')}">Remove</button>
-                    </div>
+                <div class="specs-input">
+                    <label for="portions">Portions:</label>
+                    <input type="number" id="portions" th:name="recipePortions" min="0" max="1000" th:attr= "value = ${recipe.portions}" required>
                 </div>
+            </div>
+            <div class="recipe-desc-box">
+                <label for="recipeDescription">Description:</label>
+                <textarea type="text" id="recipeDescription" th:name="recipeDescription" th:text="${recipe.description}" required></textarea>
+            </div>
+            <input type="number" style="display: none;" th:field="${recipe.id}" th:name="id">
 
-                <button type="submit" id="add-recipe-btn">add it!</button>
-            </form>
-        </div>
+            <!-- th:field="${recipe.description}" -->
 
-        <div th:replace="fragments/footer :: footer-basic"></div>
-        <script type="text/javascript" th:src="@{/scripts/addRecipe.js}"></script>
-    </body>
+            <!-- recipe stuff below -->
+            <div class="ingredients-box" id="inputsBox">
+                <div class="add-ingredient-btn-box">
+                    <button type="button" id="addIngrBtn">add ingredient</button>
+                </div>
+                <div class="one-ingredient-box" id="input-box" th:if ="${#lists.isEmpty(ingredientList)}">
+                    <input type="text" placeholder="ingredient name" th:name="ingrName" id="ingrName" class="ingr-name">
+                    <input type="number" placeholder="weight" th:name="ingrAmount" id="ingrAmount" class="ingr-amount" step=".01">
+                    <input type="text" placeholder="weight type" th:name="ingrWeight" id="ingrWeight" class="ingr-weight">
+                </div>
+                <!-- foreach with ingredients for updateing recipes -->
+                <div class="update-ingredient-box one-ingredient-box" th:each="ingredientData: ${ingredientList}" th:id="${#ids.seq('existingID')}">
+                    <input type="text" placeholder="ingredient name" th:name="ingrName" id="ingrName" required class="ingr-name" th:attr= "value = ${ingredientData.ingredientName}">
+                    <input type="number" placeholder="weight" th:name="ingrAmount" id="ingrAmount" required class="ingr-amount" step=".01" th:attr= "value = ${ingredientData.amount}">
+                    <input type="text" placeholder="weight type" th:name="ingrWeight" id="ingrWeight" required class="ingr-weight" th:attr= "value = ${ingredientData.weightType}">
+                    <!-- add remove Btn -->
+                    <button type="button" onclick="removeExistingIngredient(this.id)" class="removeBtn" th:id="${#ids.seq('IdToRemove')}">Remove</button>
+                </div>
+            </div>
+
+            <button type="submit" id="add-recipe-btn">add it!</button>
+        </form>
+    </div>
+
+    <div th:replace="fragments/footer :: footer-basic"></div>
+    <script type="text/javascript" th:src="@{/scripts/addRecipe.js}"></script>
+    <script type="text/javascript" th:src="@{/scripts/mobileNav.js}"></script>
+</body>
 </html>

@@ -1,18 +1,20 @@
-<html xmlns="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <head>
     <title>Generator</title>
     <link th:href="@{/css/fragments.css}" rel="stylesheet" />
     <link th:href="@{/css/generate-dish.css}" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/1ebb5ff465.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
     <div th:replace="fragments/nav :: navbar"></div>
 
-    <div th:if="${noRecipies != null}">
-        <p th:text="${noRecipies}"></p>
-    </div>
-    <div class="generator-box">
+    <div th:replace="fragments/nav :: mobile-navbar" id="mobile-nav"></div>
 
+    <div class="generator-box">
+        
         <section th:fragment="searchbar-basic" class="searchbar-box">
             <form method="get" th:action="@{/generator/filtered}">
                 <select name="mealType" id="mealInput">
@@ -26,7 +28,11 @@
                 <button type="submit">search</button>
             </form>
         </section>
-    
+        
+        <div th:if="${noRecipies != null}" class="no-recipe-error-box">
+            <p th:text="${noRecipies}"></p>
+        </div>
+
         <div th:each="recipe: ${recipe}" class="show-recipe-box">
 
             <div class="recipe-card">
@@ -58,5 +64,7 @@
     </div>
     
     <div th:replace="fragments/footer :: footer-basic"></div>
+
+    <script type="text/javascript" th:src="@{/scripts/mobileNav.js}"></script>
 
 </body>

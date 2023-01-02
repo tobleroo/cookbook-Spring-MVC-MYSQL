@@ -19,6 +19,18 @@ body{
     margin: 3rem auto 1rem;
 }
 
+.wrong-regKey{
+    margin: 1rem auto;
+    padding: 1rem 2rem;
+    border: solid yellow 2px;
+}
+
+.wrong-regKey p{
+    font-size: 25px;
+    padding-bottom: .1rem;
+    border-bottom: solid yellow 2px;
+}
+
 section{
     margin: .5rem auto;
 }
@@ -48,7 +60,7 @@ section{
 
 .submit-box button{
     font-size: xx-large;
-    background-color: blue;
+    background-color: rgb(88, 88, 99);
     border-radius: 10px;
     padding: .7rem 1.4rem;
     color: beige;
@@ -56,7 +68,7 @@ section{
 }
 
 .submit-box button:hover{
-    background-color: rgb(59, 185, 228);
-    border: solid blue 4px;
+    background-color: rgb(113, 117, 60);
+    border: solid rgb(154, 154, 155) 3px;
     cursor: pointer;
 }
