@@ -1,10 +1,8 @@
 
 
 ## My recipe cookbook 
-========
 
 #### Technologies used
-====
 
 * Java 17
 * Spring boot
@@ -14,10 +12,7 @@
 * JavaScript
 * CSS
 
-==== 
-
 ### Features
-====
 
 1. ### Authentication
 To use the features of this project one must create an account. Authentication is based on Spring's security framework.
